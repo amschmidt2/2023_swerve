@@ -1,4 +1,4 @@
- /* 
+ /*
 package frc.robot.commands.auto;
 
 import com.pathplanner.lib.PathPlanner;
@@ -32,4 +32,4 @@ public class DriveForward extends SequentialCommandGroup {
             .andThen(() -> swerveDrive.drive(0, 0, 0, false)));
   }
 }
-*/
+ */
