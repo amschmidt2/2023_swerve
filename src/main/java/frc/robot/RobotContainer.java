@@ -10,19 +10,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.DriveConstants.ModulePosition;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ToggleFieldOriented;
-import frc.robot.commands.auto.DriveForward;
-import frc.robot.commands.auto.FiveBallAuto;
+import edu.wpi.first.wpilibj2.command.button.*;
+//import frc.robot.commands.auto.DriveForward;
+//import frc.robot.commands.auto.FiveBallAuto;
 import frc.robot.commands.swerve.JogDriveModule;
 import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
+//import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Compressor;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -42,10 +46,15 @@ public class RobotContainer {
 
   static Joystick leftJoystick = new Joystick(OIConstants.kDriverControllerPort);
   static Joystick rightJoystick = new Joystick(OIConstants.kDriverControllerPort);
+  public static Compressor compressor = new Compressor();
 
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
+
+
+  
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -59,54 +68,22 @@ public class RobotContainer {
 
     m_fieldSim.initSim();
     initializeAutoChooser();
-    // sc.showAll();
-    // Configure default commands
-  // m_robotDrive.setDefaultCommand(
-        // The left stick controls translation of the robot.
-        // Turning is controlled by the X axis of the right stick.
-        // new SetSwerveDrive(
-         //m_robotDrive,
 
-        // () -> -m_coDriverController.getRawAxis(1),
-         //() -> -m_coDriverController.getRawAxis(0),
-         //() -> -m_coDriverController.getRawAxis(4)));
-        m_robotDrive.setDefaultCommand(
-        new SetSwerveDrive(
-            m_robotDrive,
-            () -> leftJoystick.getRawAxis(1),
-            () -> leftJoystick.getRawAxis(0),
-            () -> rightJoystick.getRawAxis(4)));
 
-    driver.leftTrigger.whileHeld(new JogTurnModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3)));
 
-    // individual modules
-    driver.leftBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        true));
-
-    // all modules
-    driver.rightBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        false));
-
+    configureButtonBindings();
+   
 
         JoystickButton button_8 = new JoystickButton(leftJoystick,8);
-        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);       
+        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);   
+        JoystickButton X_button = new JoystickButton(leftJoystick, 1); // change to int 
 
-        button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
+        //JoystickButton button_6 = new JoystickButton(leftJoystick, 6); 
+        
+        X_button.whileTrue(compressor.move());
+      
+
+     //   button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));
@@ -119,12 +96,20 @@ public class RobotContainer {
 
   }
 
+  private void configureButtonBindings(){
+    //X_button.onTrue(new InstantCommand(() -> compressor.move()));
+    //X_button.onTrue(compressor.move());
+    //(compressor.move());
+
+  }
+
   private void initializeAutoChooser() {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
-    m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
-    m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
+    //m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
+    //m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
 
     SmartDashboard.putData("Auto Selector", m_autoChooser);
+
 
   }
 

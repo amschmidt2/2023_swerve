@@ -4,12 +4,15 @@
 
 package frc.robot;
 
+//import edu.wpi.first.wpilibj.GenericHID;
+// look up class name VVV edu....
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 
 /** Add your docs here. */
-public class GamepadButtons {
+
+public class GamepadButtons{ //extends GenericHID{
     public JoystickButton X_button;
     public JoystickButton Y_button;
     public JoystickButton A_button;
@@ -34,6 +37,7 @@ public class GamepadButtons {
 
     public GamepadButtons(XboxController controller, boolean model) {
         // Setup gamepad LOGITECH
+       //super();
 
         if (!model) {
             X_button = new JoystickButton(controller, 1);
