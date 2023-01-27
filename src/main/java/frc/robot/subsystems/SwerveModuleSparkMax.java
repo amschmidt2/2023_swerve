@@ -17,6 +17,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
@@ -47,7 +48,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
 
   public final CTRECanCoder m_turnCANcoder;
 
-  public ModulePosition m_modulePosition;// enum with test module names;
+  public SwerveModulePosition m_modulePosition;// enum with test module names;
 
   SwerveModuleState state;
 
@@ -106,7 +107,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
    * @param turningEncoderOffset
    */
   public SwerveModuleSparkMax(
-      ModulePosition modulePosition,
+      SwerveModulePosition modulePosition,
       int driveMotorCanChannel,
       int turningMotorCanChannel,
       int cancoderCanChannel,
@@ -284,7 +285,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
       return new SwerveModuleState(m_driveEncoder.getVelocity(), new Rotation2d(Units.degreesToRadians(angle)));
   }
 
-  public ModulePosition getModulePosition() {
+  public SwerveModulePosition getModulePosition() {
 
     return m_modulePosition;
   }
