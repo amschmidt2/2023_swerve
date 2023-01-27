@@ -17,6 +17,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
@@ -271,6 +272,10 @@ public class SwerveModuleSparkMax extends SubsystemBase {
 
     REVPhysicsSim.getInstance().run();
 
+  }
+
+  public SwerveModulePosition getPosition() {
+    return new SwerveModulePosition(m_driveEncoder.getPositionConversionFactor()* m_driveEncoder.getPosition(), getHeadingRotation2d());
   }
 
   public SwerveModuleState getState() {
