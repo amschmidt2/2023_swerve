@@ -21,6 +21,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -91,13 +92,15 @@ public class DriveSubsystem extends SubsystemBase {
       DriveConstants.kD_Theta,
       Constants.TrapezoidConstants.kThetaControllerConstraints);
 
-  private final SwerveDrivePoseEstimator m_odometry = new SwerveDrivePoseEstimator(
-      getHeadingRotation2d(),
-      new Pose2d(),
-      kSwerveKinematics,
-      VecBuilder.fill(0.1, 0.1, 0.1),
-      VecBuilder.fill(0.05),
-      VecBuilder.fill(0.1, 0.1, 0.1));
+  // private final SwerveDrivePoseEstimator m_odometry = new SwerveDrivePoseEstimator(
+  //     getHeadingRotation2d(),
+  //     new Pose2d(),
+  //     kSwerveKinematics,
+  //     VecBuilder.fill(0.1, 0.1, 0.1),
+  //     VecBuilder.fill(0.05),
+  //     VecBuilder.fill(0.1, 0.1, 0.1));
+
+  private final SwerveDrivePoseEstimator m_odometry = new SwerveDrivePoseEstimator(kSwerveKinematics, getHeadingRotation2d(), null, getPoseMeters());
 
   private boolean showOnShuffleboard = true;
 
@@ -176,11 +179,19 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Yaw",-m_gyro.getYaw());
 
   }
+// public Pose2d update​(Rotation2d gyroAngle, SwerveModulePosition[] modulePositions)
 
+//for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) module.getModulePosition();
   public void updateOdometry() {
+    SwerveModulePosition[] positions = new  SwerveModulePosition[4];
+    int i = 0;
+    for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) {
+      positions[i++] =(SwerveModulePosition)module.getModulePosition();
+}
+
     m_odometry.update(
         getHeadingRotation2d(),
-        ModuleMap.orderedValues(getModuleStates(), new SwerveModuleState[0]));
+        ModuleMap.orderedValues(getModulePosition(), new SwerveModuleState[0])); // was an array of swerve module pos --> each 4
 
     for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) {
       Translation2d modulePositionFromChassis = DriveConstants.kModuleTranslations
