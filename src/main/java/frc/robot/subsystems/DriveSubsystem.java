@@ -21,6 +21,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -91,13 +92,8 @@ public class DriveSubsystem extends SubsystemBase {
       DriveConstants.kD_Theta,
       Constants.TrapezoidConstants.kThetaControllerConstraints);
 
-  private final SwerveDrivePoseEstimator m_odometry = new SwerveDrivePoseEstimator(
-      getHeadingRotation2d(),
-      new Pose2d(),
-      kSwerveKinematics,
-      VecBuilder.fill(0.1, 0.1, 0.1),
-      VecBuilder.fill(0.05),
-      VecBuilder.fill(0.1, 0.1, 0.1));
+  private final SwerveDrivePoseEstimator m_odometry;
+  SwerveModulePosition[] mpos;
 
   private boolean showOnShuffleboard = true;
 
@@ -113,6 +109,9 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
+    SwerveModulePosition[] mpos = new SwerveModulePosition[4];
+    mpos = m_swerveModules.values().toArray(mpos);
+    m_odometry = new SwerveDrivePoseEstimator(kSwerveKinematics, getHeadingRotation2d(), mpos, new Pose2d());
 
     m_gyro.reset();
 
@@ -180,7 +179,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void updateOdometry() {
     m_odometry.update(
         getHeadingRotation2d(),
-        ModuleMap.orderedValues(getModuleStates(), new SwerveModuleState[0]));
+        ModuleMap.orderedValues(getModulePositions(), new SwerveModulePosition[0]));
 
     for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) {
       Translation2d modulePositionFromChassis = DriveConstants.kModuleTranslations
@@ -203,8 +202,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void setOdometry(Pose2d pose) {
-
-    m_odometry.resetPosition(pose, pose.getRotation());
+    m_odometry.resetPosition(pose.getRotation(), mpos, pose);
     m_gyro.reset();
 
   }
@@ -221,6 +219,15 @@ public class DriveSubsystem extends SubsystemBase {
   public Rotation2d getHeadingRotation2d() {
     return Rotation2d.fromDegrees(getHeadingDegrees());
   }
+
+  public Map<ModulePosition, SwerveModulePosition> getModulePositions() {
+    Map<ModulePosition, SwerveModulePosition> map = new HashMap<>();
+    for (ModulePosition i : m_swerveModules.keySet()) {
+      map.put(i, m_swerveModules.get(i).getPosition());
+    }
+    return map;
+  }
+
 
   public Map<ModulePosition, SwerveModuleState> getModuleStates() {
     Map<ModulePosition, SwerveModuleState> map = new HashMap<>();
