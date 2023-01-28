@@ -10,17 +10,25 @@ public class Compressor {
     DoubleSolenoid leftCubeIntake = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 1, 2);
     DoubleSolenoid rightCubeIntake = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 3, 4);
 
-    DoubleSolenoid leftConeIntake = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 5, 6);
-    DoubleSolenoid rightConeIntake = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 7, 8);
-    
-    private boolean cubeExtended = false;
+    private boolean extended = false;
+    private String name; 
     
     public Compressor(String name){
         this.name = name;
 
         
     }
-
+    
+    public void cubeExtend(){
+        if(extended == true){
+            leftCubeIntake.set(Value.kForward);
+            rightCubeIntake.set(Value.kForward);
+        }
+        else{
+            leftCubeIntake.set(Value.kReverse);
+            leftCubeIntake.set(Value.kReverse);
+        }
+    }
 
 
 

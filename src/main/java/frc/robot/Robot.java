@@ -4,106 +4,63 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DataLogManager;
-import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.subsystems.DriveSystem;
 
-// import subsystems here
-import frc.robot.subsystems.MAXSwerveModule;
-import frc.robot.subsystems.*;
-
-
-
+/**
+ * The VM is configured to automatically run this class, and to call the functions corresponding to
+ * each mode, as described in the TimedRobot documentation. If you change the name of this class or
+ * the package after creating this project, you must also update the build.gradle file in the
+ * project.
+ */
 public class Robot extends TimedRobot {
-  // private Command m_autonomousCommand;
 
-  // private RobotContainer m_robotContainer;
-  
- 
+  DriveSystem driveSystem;
+  private XboxController driveController = new XboxController(0);
+
+  /**
+   * This function is run when the robot is first started up and should be used for any
+   * initialization code.
+   */
   @Override
   public void robotInit() {
-    // if (RobotBase.isReal())
-    
-    //   DataLogManager.start();
+    driveSystem = new DriveSystem();
 
-    
-    // m_robotContainer = new RobotContainer();
-
-
-  }
-
-  
-  @Override
-  public void robotPeriodic() {
-    
-    CommandScheduler.getInstance().run();
-
-    // m_robotContainer.m_fieldSim.periodic();
-
-    // m_robotContainer.periodic();
-
-    // m_robotContainer.m_robotDrive.throttleValue = m_robotContainer.getThrottle();
-   
-  }
-
- 
-  @Override
-  public void disabledInit() {
-    String[] g = {"a","b","c"}; 
-    SmartDashboard.putStringArray("g", g);
   }
 
   @Override
-  public void disabledPeriodic() {
-  }
-
-  
-  @Override
-  public void autonomousInit() {
-    
-    // if (m_autonomousCommand != null) {
-    //   m_autonomousCommand.schedule();
-    // }
-  }
-
-  
-  @Override
-  public void autonomousPeriodic() {
-  }
+  public void robotPeriodic() {}
 
   @Override
-  public void teleopInit() {
-    
-    // if (m_autonomousCommand != null) {
-    //   m_autonomousCommand.cancel();
-    // }
+  public void autonomousInit() {}
 
-    
-  }
+  @Override
+  public void autonomousPeriodic() {}
 
-  
+  @Override
+  public void teleopInit() {}
+
   @Override
   public void teleopPeriodic() {
+    driveSystem.teleop(driveController.getLeftX(), driveController.getLeftY(), driveController.getRightX());
   }
 
   @Override
-  public void testInit() {
-   
-    CommandScheduler.getInstance().cancelAll();
-  }
-
- 
-  @Override
-  public void testPeriodic() {
-  }
+  public void disabledInit() {}
 
   @Override
-  public void simulationPeriodic() {
-    // m_robotContainer.m_fieldSim.periodic();
-    // m_robotContainer.simulationPeriodic();
-  }
+  public void disabledPeriodic() {}
 
+  @Override
+  public void testInit() {}
+
+  @Override
+  public void testPeriodic() {}
+
+  @Override
+  public void simulationInit() {}
+
+  @Override
+  public void simulationPeriodic() {}
 }
