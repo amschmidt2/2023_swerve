@@ -50,10 +50,10 @@ public class ConfigMap {
     public static final double DRIVETRAIN_WHEELBASE_METERS = Units.inchesToMeters(25);
 
     // off sets
-    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(33); //pos - 78.514 --> 79.277
-    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(287); // pos - 50.977 --> 52.207 new
-    public static final double BACK_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(318); // pos 17.402 --> 17.139 new
-    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(166); // pos- 247.412 --> 304.146 new
+    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(79); //pos - 78.514 --> 79.277
+    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(52); // pos - 50.977 --> 52.207 new
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(17); // pos 17.402 --> 17.139 new
+    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(304); // pos- 247.412 --> 304.146 new
 
     public static final double MAX_VOLTAGE = 12.0;
     public static final double MAX_VELOCITY_METERS_PER_SECOND = 8000.0 / 60.0 *
