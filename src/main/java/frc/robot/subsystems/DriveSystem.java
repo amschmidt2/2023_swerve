@@ -65,7 +65,7 @@ public class DriveSystem {
         public DriveSystem() {
                 
             m_frontLeftModule = Mk4iSwerveModuleHelper.createNeo(
-                            Mk4iSwerveModuleHelper.GearRatio.L1,
+                            Mk4iSwerveModuleHelper.GearRatio.L2,
                             ConfigMap.FRONT_LEFT_MODULE_DRIVE_MOTOR,
                             ConfigMap.FRONT_LEFT_MODULE_STEER_MOTOR,
                             ConfigMap.FRONT_LEFT_MODULE_STEER_ENCODER,
@@ -73,21 +73,21 @@ public class DriveSystem {
 
             // We will do the same for the other modules
             m_frontRightModule = Mk4iSwerveModuleHelper.createNeo(
-                            Mk4iSwerveModuleHelper.GearRatio.L1,
+                            Mk4iSwerveModuleHelper.GearRatio.L2,
                             ConfigMap.FRONT_RIGHT_MODULE_DRIVE_MOTOR,
                             ConfigMap.FRONT_RIGHT_MODULE_STEER_MOTOR,
                             ConfigMap.FRONT_RIGHT_MODULE_STEER_ENCODER,
                             ConfigMap.FRONT_RIGHT_MODULE_STEER_OFFSET);
 
             m_backLeftModule = Mk4iSwerveModuleHelper.createNeo(
-                            Mk4iSwerveModuleHelper.GearRatio.L1,
+                            Mk4iSwerveModuleHelper.GearRatio.L2,
                             ConfigMap.BACK_LEFT_MODULE_DRIVE_MOTOR,
                             ConfigMap.BACK_LEFT_MODULE_STEER_MOTOR,
                             ConfigMap.BACK_LEFT_MODULE_STEER_ENCODER,
                             ConfigMap.BACK_LEFT_MODULE_STEER_OFFSET);
 
             m_backRightModule = Mk4iSwerveModuleHelper.createNeo(
-                            Mk4iSwerveModuleHelper.GearRatio.L1,
+                            Mk4iSwerveModuleHelper.GearRatio.L2,
                             ConfigMap.BACK_RIGHT_MODULE_DRIVE_MOTOR,
                             ConfigMap.BACK_RIGHT_MODULE_STEER_MOTOR,
                             ConfigMap.BACK_RIGHT_MODULE_STEER_ENCODER,
