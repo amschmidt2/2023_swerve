@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.DriveConstants.ModulePosition;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.CompressorCommand;
 import frc.robot.commands.ToggleFieldOriented;
 import edu.wpi.first.wpilibj2.command.button.*;
 //import frc.robot.commands.auto.DriveForward;
@@ -53,6 +54,7 @@ public class RobotContainer {
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
 
 
+
   
 
 
@@ -80,7 +82,7 @@ public class RobotContainer {
 
         //JoystickButton button_6 = new JoystickButton(leftJoystick, 6); 
         
-        X_button.whileTrue(compressor.move());
+        X_button.whileTrue(new CompressorCommand(compressor));
       
 
      //   button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
