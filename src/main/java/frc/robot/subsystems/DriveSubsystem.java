@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.ctre.phoenix.unmanaged.Unmanaged;
 import com.kauailabs.navx.frc.AHRS;
+import java.util.stream.Collectors;
 
 import edu.wpi.first.hal.SimDouble;
 import edu.wpi.first.hal.simulation.SimDeviceDataJNI;
@@ -110,7 +111,7 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
     SwerveModulePosition[] mpos = new SwerveModulePosition[4];
-    mpos = m_swerveModules.values().toArray(mpos);
+    mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos);
     m_odometry = new SwerveDrivePoseEstimator(kSwerveKinematics, getHeadingRotation2d(), mpos, new Pose2d());
 
     m_gyro.reset();
