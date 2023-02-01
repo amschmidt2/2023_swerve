@@ -22,7 +22,11 @@ import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
+//import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Compressor; 
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Intake;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -46,6 +50,10 @@ public class RobotContainer {
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
+  
+  Compressor compressor = new Compressor();
+  Arm arm = new Arm();
+  Intake intake = new Intake();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -104,8 +112,10 @@ public class RobotContainer {
 
 
         JoystickButton button_8 = new JoystickButton(leftJoystick,8);
-        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);       
+        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
+        JoystickButton X_button = new JoystickButton(leftJoystick, 4);     
 
+        X_button.whenPressed(new Compressor(compressor.move()));
         button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
