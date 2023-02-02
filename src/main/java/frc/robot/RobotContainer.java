@@ -27,6 +27,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Compressor; 
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Conveyor; 
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -54,6 +55,7 @@ public class RobotContainer {
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Intake intake = new Intake();
+  Conveyor conveyor = new Conveyor();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
