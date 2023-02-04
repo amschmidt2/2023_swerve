@@ -22,7 +22,9 @@ import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
+//Import Subsystems here
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.FloorIntake;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -46,6 +48,7 @@ public class RobotContainer {
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
+  FloorIntake floorIntake = new FloorIntake();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -77,36 +80,39 @@ public class RobotContainer {
             () -> leftJoystick.getRawAxis(0),
             () -> rightJoystick.getRawAxis(4)));
 
-    driver.leftTrigger.whileHeld(new JogTurnModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3)));
+  //  driver.leftTrigger.whileHeld(new JogTurnModule(
+   //     m_robotDrive,
+   //     () -> -m_coDriverController.getRawAxis(1),
+   //     () -> m_coDriverController.getRawAxis(0),
+   //     () -> m_coDriverController.getRawAxis(2),
+   //     () -> m_coDriverController.getRawAxis(3)));
 
     // individual modules
-    driver.leftBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        true));
+ //  driver.leftBumper.whileHeld(new JogDriveModule(
+      //  m_robotDrive,
+   //     () -> -m_coDriverController.getRawAxis(1),
+     //   () -> m_coDriverController.getRawAxis(0),
+       // () -> m_coDriverController.getRawAxis(2),
+       // () -> m_coDriverController.getRawAxis(3),
+       // true));
 
     // all modules
-    driver.rightBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        false));
+   // driver.rightBumper.whileHeld(new JogDriveModule(
+   //     m_robotDrive,
+    //    () -> -m_coDriverController.getRawAxis(1),
+     //   () -> m_coDriverController.getRawAxis(0),
+      //  () -> m_coDriverController.getRawAxis(2),
+       // () -> m_coDriverController.getRawAxis(3),
+       // false));
 
 
         JoystickButton button_8 = new JoystickButton(leftJoystick,8);
-        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);       
+        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);
+        JoystickButton X_button = new JoystickButton(leftJoystick, 4);       
 
+        X_button.onTrue(new FloorIntake(floorIntake.munch()));
         button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
+        //X_button.onTrue(new FloorIntake(floorIntake.munch()));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));
