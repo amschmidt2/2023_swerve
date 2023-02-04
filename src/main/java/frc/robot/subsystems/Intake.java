@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /*
     Make States for Intake:
         Sleeping --> When robot turns off, motor off
@@ -23,15 +25,7 @@ public class Intake extends SubsystemBase{
         System.out.println("hello!");
     }
 
-    public void roll(){
-        if(izzyMotor == true){
-            izzyMotor.set(1);
-        }
-        else{
-            izzyMotor.set(0);
-        }
-    }
-
+    public void roll(){}
     
 
 } // keep brace

@@ -51,6 +51,7 @@ public class RobotContainer {
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
+  final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true); 
   
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
@@ -87,37 +88,37 @@ public class RobotContainer {
             () -> leftJoystick.getRawAxis(0),
             () -> rightJoystick.getRawAxis(4)));
 
-    driver.leftTrigger.whileHeld(new JogTurnModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3)));
+   // driver.leftTrigger.whileHeld(new JogTurnModule(
+      //  m_robotDrive,
+     //   () -> -m_coDriverController.getRawAxis(1),
+     //   () -> m_coDriverController.getRawAxis(0),
+     //   () -> m_coDriverController.getRawAxis(2),
+     //   () -> m_coDriverController.getRawAxis(3)));
 
     // individual modules
-    driver.leftBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        true));
+    //driver.leftBumper.whileHeld(new JogDriveModule(
+     //   m_robotDrive,
+      //  () -> -m_coDriverController.getRawAxis(1),
+     //   () -> m_coDriverController.getRawAxis(0),
+     //   () -> m_coDriverController.getRawAxis(2),
+      //  () -> m_coDriverController.getRawAxis(3),
+      //  true));
 
     // all modules
-    driver.rightBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        false));
+    //driver.rightBumper.whileHeld(new JogDriveModule(
+      //  m_robotDrive,
+      //  () -> -m_coDriverController.getRawAxis(1),
+      //  () -> m_coDriverController.getRawAxis(0),
+      //  () -> m_coDriverController.getRawAxis(2),
+      //  () -> m_coDriverController.getRawAxis(3),
+      //  false));
 
 
         JoystickButton button_8 = new JoystickButton(leftJoystick,8);
         JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
         JoystickButton X_button = new JoystickButton(leftJoystick, 4);     
 
-        X_button.whenPressed(new Compressor(compressor.move()));
+        X_button.onTrue(new Compressor(compressor.move()));
         button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
