@@ -3,34 +3,35 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-/*
-    Has encoder for position of where the Arm is  
-    Line Break Sensor 
-    Make States for Arm:
-        Sleeping --> Arm Turn oof
 
-    Make States for ArmIntake:
-        Listens to Arm States
-        Collecting --> getting from connor 
-
-    ArmIntake picks up the cube from connor 
-*/
 
 public class Arm extends SubsystemBase{
     //neo motor that is geared 75:1
-    private CANSparkMax armMotor = new CANSparkMax(0, MotorType.kBrushless);
-    // private String state = "sleeping";
+    private CANSparkMax armMotor = new CANSparkMax(10, MotorType.kBrushless);
+    private int armCurrentLimit = 20;
+    private double armOutputPower = 0.4; 
+    private boolean armExtended = false;
+    private double armPower;
 
-    //Arm and the Arm Intake 
 
     public Arm(){
-
+        //armMotor.setInverted(true);
     }
 
-
-    public void talk(){
-        System.out.println("hello");
+    @Override
+    public void periodic() {
+    // This method will be called once per scheduler run
     }
 
+    public void setArmMotor(){
+        armMotor.set(0.5);    
+    }
 
+   public void armMove(){
+        if(armExtended == true){
+            armPower = -armOutputPower;
+
+        }    
+   }            
+        
 }

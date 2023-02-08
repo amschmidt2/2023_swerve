@@ -27,8 +27,9 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
+import frc.robot.commands.IntakeArmCommand;
 import frc.robot.subsystems.Arm;
-// import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
 
 /*
@@ -53,11 +54,12 @@ public class RobotContainer {
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
-  final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true); 
+  //final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true); 
   
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
+  IntakeArm intakeArm = new IntakeArm();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -127,12 +129,14 @@ public class RobotContainer {
 
         JoystickButton button_8 = new JoystickButton(leftJoystick,8);
         JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
-        JoystickButton X_button = new JoystickButton(leftJoystick, 4);     
+        JoystickButton X_button = new JoystickButton(leftJoystick, 4);
+        JoystickButton A_button = new JoystickButton(leftJoystick, 2);     
 
       X_button.onTrue(new CompressorCommandExtend(compressor));
       X_button.onFalse(new CompressorCommandRetract(compressor));
+      A_button.onTrue(new IntakeArmCommand(intakeArm));
        
-        // button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
+        button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));
