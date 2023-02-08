@@ -10,27 +10,21 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 //import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 import frc.robot.subsystems.Compressor;
 
-public class CompressorCommand extends CommandBase {
+public class CompressorCommandRetract extends CommandBase {
   /** Creates a new Compressor. */
   DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 1, 2); //object
   DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
-  //private String name;
-  private boolean extended = false;
+
   Compressor compressor;
 
-  public CompressorCommand(Compressor compressor) {
+  public CompressorCommandRetract(Compressor compressor ) {
     this.compressor = compressor;
   }
   @Override
   public void execute() {
-    compressor.move();
+    System.out.println("Executing "+ this.getClass().getName());
+    compressor.reverse();
   }
-
-  public boolean isExtended(){
-    return extended;
-  }
-
-
 
 } // <-- leave this bracket 
 
