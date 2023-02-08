@@ -25,6 +25,7 @@ import frc.robot.simulation.FieldSim;
 //import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Compressor; 
+import frc.robot.commands.CompressorCommand;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Conveyor; 
@@ -128,8 +129,10 @@ public class RobotContainer {
         JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
         JoystickButton X_button = new JoystickButton(leftJoystick, 4);     
 
-        X_button.onTrue(new Compressor(compressor.move()));
-        button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
+      //X_button.onTrue(new CompressorCommmad(compressor));
+      X_button.onTrue(new CompressorCommand(compressor));
+       
+        // button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));
