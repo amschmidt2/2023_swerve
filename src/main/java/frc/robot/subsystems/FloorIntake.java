@@ -11,27 +11,20 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class FloorIntake extends SubsystemBase{
     CANSparkMax floorMotor = new CANSparkMax(0,MotorType.kBrushless);
-    DoubleSolenoid leftFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 1, 2);
-    DoubleSolenoid rightFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 3, 4);
+   //DoubleSolenoid leftFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 0, 1);
+    //DoubleSolenoid rightFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 3, 4);
     private boolean extended = false;
 
     public FloorIntake(){
         
     }
 
-    public void munch(){
-        if(extended){
-            leftFC.set(Value.kReverse);
-            leftFC.set(Value.kReverse);
-            floorMotor.set(0);
-        }
-        else{
-            leftFC.set(Value.kForward);
-            rightFC.set(Value.kForward);
-            floorMotor.set(0.5);
-        }
-        extended = !extended;
+    public void forward(){
+        floorMotor.set(0.5);
+    }
 
+    public void reverse(){
+        floorMotor.set(-0.5);
     }
 
     public boolean isExtended(){

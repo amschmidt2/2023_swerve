@@ -9,22 +9,22 @@ import frc.robot.subsystems.FloorIntake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
-public class FloorIntakeCommand  {
-    DoubleSolenoid leftFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 1, 2);
-    DoubleSolenoid rightFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 3, 4);
-    CANSparkMax floorMotor = new CANSparkMax(0, MotorType.kBrushless);    
+public class ForwardFloorIntakeCommand extends CommandBase  {
+   // DoubleSolenoid leftFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 1, 2);
+   // DoubleSolenoid rightFC = new DoubleSolenoid(PneumaticsModuleType.REVPH, 3, 4);
+    CANSparkMax floorMotor = new CANSparkMax(12, MotorType.kBrushless);    
 
     private boolean extended = false;
 
     FloorIntake floorIntake;
 
-    public FloorIntakeCommand(FloorIntake floorIntake){
+    public ForwardFloorIntakeCommand(FloorIntake floorIntake){
         this.floorIntake = floorIntake;
     }
 
     //@Override
     public void execute(){
-        floorIntake.munch();
+        floorIntake.forward();
     }
 
     public boolean isExtended(){

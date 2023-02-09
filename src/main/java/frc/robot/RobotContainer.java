@@ -25,6 +25,8 @@ import frc.robot.simulation.FieldSim;
 //Import Subsystems here
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FloorIntake;
+import frc.robot.commands.ForwardFloorIntakeCommand;
+import frc.robot.commands.ReverseFloorIntakeCommand;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -110,8 +112,9 @@ public class RobotContainer {
         JoystickButton button_7 = new JoystickButton(leftJoystick, 7);
         JoystickButton X_button = new JoystickButton(leftJoystick, 4);       
 
-        X_button.onTrue(new FloorIntake(floorIntake.munch()));
-        button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
+        X_button.onTrue(new ForwardFloorIntakeCommand(floorIntake));
+        X_button.onFalse(new ReverseFloorIntakeCommand(floorIntake));
+        button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
         //X_button.onTrue(new FloorIntake(floorIntake.munch()));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
