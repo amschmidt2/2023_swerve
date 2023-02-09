@@ -27,26 +27,37 @@ public class Arm extends SubsystemBase{
         armMotor.set(percent);    
     }
 
-   public void armColapse(){
-        if(armExtended == true){
+    public void armColapse(){
+        armPower = armOutputPower;
+        setArmMotor(armPower);
+    }
+
+    public void armExtend(){
+        armPower = -armOutputPower;
+        setArmMotor(armPower);
+    }
+
+  // public void armColapse(){
+    //    if(armExtended == true){
             //lowers arm
-            armPower = armOutputPower;
-        }  
-        else{
-            armPower = 0.0;
-        }
-        setArmMotor(armPower);
-   }    
-   
-   public void armExtend(){
-        if(armExtended == false){
+      //      armPower = armOutputPower;
+        //}  
+       // else if(armExtended == false){
             //raises arm
-            armPower = -armOutputPower;
-        }  
-        else{
-            armPower = 0.0;
-        }
-        setArmMotor(armPower);
-   }
+         //   armPower = -armOutputPower;
+        //}  
+        //else{
+          //  armPower = 0.0;
+        //}
+        //setArmMotor(armPower);
+       //else{
+          //  armPower = 0.0;
+        //}
+        //setArmMotor(armPower);
+  // }    
+   
+  // public void armExtend(){
+       
+  // }
         
 } // keep brace 

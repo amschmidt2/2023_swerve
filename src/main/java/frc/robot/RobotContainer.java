@@ -25,12 +25,12 @@ import frc.robot.simulation.FieldSim;
 //import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Compressor; 
-import frc.robot.commands.CompressorCommandExtend;
-import frc.robot.commands.CompressorCommandRetract;
-import frc.robot.commands.IntakeArmCommand;
+//import frc.robot.commands.CompressorCommandExtend;
+//import frc.robot.commands.CompressorCommandRetract;
+//import frc.robot.commands.IntakeArmCommand;
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
-import frc.robot.commands.ArmExtendCommand;
+//import frc.robot.commands.ArmExtendCommand;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
 
@@ -136,10 +136,10 @@ public class RobotContainer {
         JoystickButton leftBumper = new JoystickButton(leftJoystick, 7);
         JoystickButton rightBumper = new JoystickButton(leftJoystick, 8);
 
-      X_button.onTrue(new CompressorCommandExtend(compressor));
-      X_button.onFalse(new CompressorCommandRetract(compressor));
-      A_button.onTrue(new IntakeArmCommand(intakeArm));
-      leftBumper.onTrue(new ArmExtendCommand(arm));
+      //X_button.onTrue(new CompressorCommandExtend(compressor));
+      //X_button.onFalse(new CompressorCommandRetract(compressor));
+     // A_button.onTrue(new IntakeArmCommand(intakeArm));
+      //leftBumper.onTrue(new ArmExtendCommand(arm));
       rightBumper.onTrue(new ArmColaspeCommand(arm));
        
         button_8.onTrue(new ToggleFieldOriented(m_robotDrive));

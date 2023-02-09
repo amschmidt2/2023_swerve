@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class IntakeArm{
-private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless);
+private CANSparkMax intakeMotor = new CANSparkMax(12, MotorType.kBrushless);
 private int intakeCurrentLimit = 25;
 private int intakeHoldCurrentLimit = 5;
 private double intakeOutputPower = 1.0;

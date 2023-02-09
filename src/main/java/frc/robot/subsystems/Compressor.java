@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
   DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 1, 2); //object
-  DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
+ // DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
 
   public Compressor() {
     //this.name = name;
     
     leftDS.set(Value.kReverse);
-    rightDS.set(Value.kReverse);
+   // rightDS.set(Value.kReverse);
   }
 
   @Override
@@ -30,12 +30,12 @@ public class Compressor extends SubsystemBase {
 
   public void reverse() {
     leftDS.set(Value.kReverse);
-      rightDS.set(Value.kReverse);
+     // rightDS.set(Value.kReverse);
   }
 
   public void forward() {
     leftDS.set(Value.kForward);
-      rightDS.set(Value.kForward);
+     // rightDS.set(Value.kForward);
   }
 
 
