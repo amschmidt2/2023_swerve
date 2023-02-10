@@ -9,6 +9,7 @@ import frc.robot.subsystems.Arm;
 public class ArmExtendCommand extends CommandBase{
   CANSparkMax armMotor = new CANSparkMax(12, MotorType.kBrushless);
    private boolean armExtended = false;
+   private double armPower = 0; 
    Arm arm;
 
 
@@ -17,7 +18,13 @@ public class ArmExtendCommand extends CommandBase{
    }
 
    public void execute(){
-       arm.armExtend();
+      if(armExtended == true){
+            arm.armExtend();
+            System.out.println("Can you see me?" + getClass());
+      } 
+      else{
+            arm.setArmMotor(armPower);
+      }
    }
 
    public boolean isArmExtended(){

@@ -31,6 +31,7 @@ import frc.robot.subsystems.Compressor;
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
+import frc.robot.commands.ArmHoldCommand;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
 
@@ -140,7 +141,9 @@ public class RobotContainer {
       //X_button.onFalse(new CompressorCommandRetract(compressor));
      // A_button.onTrue(new IntakeArmCommand(intakeArm));
       leftBumper.onTrue(new ArmExtendCommand(arm));
+      leftBumper.onFalse(new ArmHoldCommand(arm));
       rightBumper.onTrue(new ArmColaspeCommand(arm));
+      rightBumper.onFalse(new ArmHoldCommand(arm));
        
         button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
