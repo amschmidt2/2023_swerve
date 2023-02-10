@@ -14,12 +14,7 @@ public class ArmExtendCommand extends CommandBase {
       }
 
       public void execute() {
-            if (armExtended == true) {
-                  arm.armExtend();
-                  System.out.println("Can you see me?" + getClass());
-            } else {
-                  arm.setArmMotor(armPower);
-            }
+            arm.armExtend();
       }
 
       public boolean isArmExtended() {

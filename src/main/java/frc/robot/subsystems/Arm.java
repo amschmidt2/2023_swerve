@@ -30,6 +30,7 @@ public class Arm extends SubsystemBase{
     public void armColapse(){
         armPower = armOutputPower;
         setArmMotor(armPower);
+        
     }
 
     public void armExtend(){

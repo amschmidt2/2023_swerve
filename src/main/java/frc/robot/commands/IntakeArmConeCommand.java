@@ -2,11 +2,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.IntakeArm;
-public class IntakeArmCommand extends CommandBase{
-
+public class IntakeArmConeCommand extends CommandBase{
   private boolean intakeExtended = false;
   IntakeArm intakeArm;
-  public IntakeArmCommand(IntakeArm intakeArm) {
+
+  public IntakeArmConeCommand(IntakeArm intakeArm) {
     addRequirements(intakeArm);
      this.intakeArm = intakeArm;
   }

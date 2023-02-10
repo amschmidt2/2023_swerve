@@ -10,18 +10,14 @@ public class ArmColaspeCommand extends CommandBase{
     Arm arm;
 
 
-    public ArmColaspeCommand(Arm arm){
+    public  ArmColaspeCommand(Arm arm){
         addRequirements(arm);
         this.arm = arm;
     }
-
+@Override
     public void execute(){
-       if(armExtended == true){
         arm.armColapse();
-       }
-       else{
-        arm.setArmMotor(armPower);
-       }
+    
     }
 
     public boolean isArmExtended(){

@@ -27,40 +27,44 @@ public void setIntakeMotor(double percent, int amps){
 }
 
 public void intakeCube(){
-    if(intakeExtended == true){
+ //   if(intakeExtended == true){
         intakePower = intakeOutputPower;
         intakeAmps = intakeCurrentLimit;
         lastGamePiece = cube;
-    }
-    else if(lastGamePiece == cube){
-        intakePower = intakeHoldPower;
-        intakeAmps = intakeHoldCurrentLimit; 
-    }
-    else{
-        intakePower = 0.0;
-        intakeAmps = 0;
-    }
+    // }
+    // else if(lastGamePiece == cube){
+    //     intakePower = intakeHoldPower;
+    //     intakeAmps = intakeHoldCurrentLimit; 
+    // }
+    // else{
+    //     intakePower = 0.0;
+    //     intakeAmps = 0;
+    // }
     setIntakeMotor(intakePower, intakeAmps);
 }
 
 public void intakeCone(){
-    if(intakeExtended == true){
+  //  if(intakeExtended == true){
         intakePower = -intakeOutputPower;
         intakeAmps = intakeCurrentLimit;
         lastGamePiece = cone;
-    }
-    else if(lastGamePiece == cone){
-        intakePower = -intakeHoldPower;
-        intakeAmps = intakeHoldCurrentLimit;
-    }
-    else{
-        intakePower = 0.0;
-        intakeAmps = 0; 
-    }
+    // }
+    // else if(lastGamePiece == cone){
+    //     intakePower = -intakeHoldPower;
+    //     intakeAmps = intakeHoldCurrentLimit;
+    // }
+    // else{
+    //     intakePower = 0.0;
+    //     intakeAmps = 0; 
+    // }
     setIntakeMotor(intakePower, intakeAmps);
 }
 
-
+public void stopArmIntake(){
+    intakePower = 0;
+    intakeAmps = 0;
+    setIntakeMotor(intakePower, intakeAmps);
+}
 
 
 } //<-- leave brace
