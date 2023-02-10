@@ -4,8 +4,13 @@
 
 package frc.robot;
 
+import java.nio.file.Path;
+
+import edu.wpi.first.math.trajectory.Trajectory;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,6 +28,7 @@ import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
 import frc.robot.subsystems.DriveSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -47,77 +53,23 @@ public class RobotContainer {
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
 
+SendableChooser<Command> autoChooser = SendableChooser<>();
+
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Preferences.removeAll();
-    Pref.deleteUnused();
-    Pref.addMissing();
-    SmartDashboard.putData("Scheduler", CommandScheduler.getInstance());
-    // Configure the button bindings
+    chooser.addOption("1_cone_1_cube", object);
+    chooser.addOption("1_cone_2-cube_no_doc_bottom", object);
+    chooser.addOption("1_cone_2_cube_no_doc_top", object);
+    chooser.addOption("1_cone_2_cube", object);
+    chooser.addOption("1_cone_3_cube", object);
+    chooser.addOption("1_cone_4_cube", object);
 
-    m_fieldSim.initSim();
-    initializeAutoChooser();
-    // sc.showAll();
-    // Configure default commands
-  // m_robotDrive.setDefaultCommand(
-        // The left stick controls translation of the robot.
-        // Turning is controlled by the X axis of the right stick.
-        // new SetSwerveDrive(
-         //m_robotDrive,
-
-        // () -> -m_coDriverController.getRawAxis(1),
-         //() -> -m_coDriverController.getRawAxis(0),
-         //() -> -m_coDriverController.getRawAxis(4)));
-        m_robotDrive.setDefaultCommand(
-        new SetSwerveDrive(
-            m_robotDrive,
-            () -> leftJoystick.getRawAxis(1),
-            () -> leftJoystick.getRawAxis(0),
-            () -> rightJoystick.getRawAxis(4)));
-
-    driver.leftTrigger.whileHeld(new JogTurnModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3)));
-
-    // individual modules
-    driver.leftBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        true));
-
-    // all modules
-    driver.rightBumper.whileHeld(new JogDriveModule(
-        m_robotDrive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        false));
-
-
-        JoystickButton button_8 = new JoystickButton(leftJoystick,8);
-        JoystickButton button_7 = new JoystickButton(leftJoystick, 7);       
-
-        button_8.whenPressed(new ToggleFieldOriented(m_robotDrive));
-    // position turn modules individually
-    // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
-    // ModulePosition.FRONT_LEFT));
-    // driver.A_button.whenPressed(new PositionTurnModule(m_robotDrive,
-    // ModulePosition.FRONT_RIGHT));
-    // driver.B_button.whenPressed(new PositionTurnModule(m_robotDrive,
-    // ModulePosition.BACK_LEFT));
-    // driver.Y_button.whenPressed(new PositionTurnModule(m_robotDrive,
-    // ModulePosition.BACK_RIGHT));
-
+    SmartDashboard.putData(autoChooser);
   }
+
+
 
   private void initializeAutoChooser() {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
