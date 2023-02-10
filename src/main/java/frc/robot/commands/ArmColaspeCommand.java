@@ -7,7 +7,7 @@ import frc.robot.subsystems.Arm;
 
 
 public class ArmColaspeCommand extends CommandBase{
-    CANSparkMax armMotor = new CANSparkMax(10, MotorType.kBrushless);
+    CANSparkMax armMotor = new CANSparkMax(11, MotorType.kBrushless);
     private boolean armExtended = false;
     Arm arm;
 
