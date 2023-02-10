@@ -44,6 +44,7 @@ public void intakeCube(){
 }
 
 public void intakeCone(){
+    
     if(intakeExtended == true){
         intakePower = -intakeOutputPower;
         intakeAmps = intakeCurrentLimit;
@@ -57,6 +58,7 @@ public void intakeCone(){
         intakePower = 0.0;
         intakeAmps = 0; 
     }
+    System.out.println(this.getClass().getName()+": intakeExtended: "+intakeExtended+ " intakePower: "+intakePower+" intakeAmps: "+ intakeAmps );
     setIntakeMotor(intakePower, intakeAmps);
 }
 

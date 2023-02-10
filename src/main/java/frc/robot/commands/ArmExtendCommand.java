@@ -14,10 +14,12 @@ public class ArmExtendCommand extends CommandBase {
       }
 
       public void execute() {
+            System.out.println("Executing " + this.getClass().getName());
             if (armExtended == true) {
                   arm.armExtend();
                   System.out.println("Can you see me?" + getClass());
             } else {
+                  System.out.println(this.getClass().getName()+": arm power "+armPower);
                   arm.setArmMotor(armPower);
             }
       }
