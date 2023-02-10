@@ -32,6 +32,8 @@ import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
+import frc.robot.commands.CompressorCommandExtend;
+import frc.robot.commands.CompressorCommandRetract;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
 
@@ -137,8 +139,8 @@ public class RobotContainer {
         JoystickButton leftBumper = new JoystickButton(leftJoystick, 7);
         JoystickButton rightBumper = new JoystickButton(leftJoystick, 8);
 
-      //X_button.onTrue(new CompressorCommandExtend(compressor));
-      //X_button.onFalse(new CompressorCommandRetract(compressor));
+      X_button.onTrue(new CompressorCommandExtend(compressor));
+      X_button.onFalse(new CompressorCommandRetract(compressor));
      // A_button.onTrue(new IntakeArmCommand(intakeArm));
       leftBumper.onTrue(new ArmExtendCommand(arm));
       leftBumper.onFalse(new ArmHoldCommand(arm));

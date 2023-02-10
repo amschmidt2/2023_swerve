@@ -4,8 +4,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class IntakeArm{
-private CANSparkMax intakeMotor = new CANSparkMax(99, MotorType.kBrushless); // 12
+public class IntakeArm extends SubsystemBase {
+private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
 private int intakeCurrentLimit = 25;
 private int intakeHoldCurrentLimit = 5;
 private double intakeOutputPower = 1.0;
