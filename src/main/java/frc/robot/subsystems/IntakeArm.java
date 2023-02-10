@@ -63,7 +63,7 @@ public class IntakeArm extends SubsystemBase {
     public void stopArmIntake(){
         intakePower = 0;
         intakeAmps = 0;  
-
+        setIntakeMotor(intakePower, intakeAmps);
 
 
     }
