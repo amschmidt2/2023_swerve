@@ -148,7 +148,10 @@ public class RobotContainer {
 
       X_button.onTrue(new CompressorCommandExtend(compressor));
       X_button.onFalse(new CompressorCommandRetract(compressor));
-      A_button.onTrue(new IntakeArmCommand(intakeArm));
+      A_button.onTrue(new IntakeArmCubeCommand(intakeArm));
+      A_button.onFalse(new IntakeArmStopCommand(intakeArm));
+      B_button.onTrue(new IntakeArmConeCommand(intakeArm));
+      B_button.onFalse(new IntakeArmStopCommand(intakeArm));
       leftBumper.onTrue(new ArmExtendCommand(arm));
       leftBumper.onFalse(new ArmHoldCommand(arm));
       rightBumper.onTrue(new ArmColaspeCommand(arm));
