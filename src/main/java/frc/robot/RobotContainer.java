@@ -30,12 +30,15 @@ import frc.robot.subsystems.Compressor;
 import frc.robot.commands.IntakeArmConeCommand;
 import frc.robot.commands.IntakeArmCubeCommand;
 import frc.robot.commands.IntakeArmStopCommand;
+
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
+
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
+//import frc.robot.commands.IntakeArmCommand;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
 
@@ -145,15 +148,11 @@ public class RobotContainer {
 
       X_button.onTrue(new CompressorCommandExtend(compressor));
       X_button.onFalse(new CompressorCommandRetract(compressor));
-      A_button.onTrue(new IntakeArmConeCommand(intakeArm));
-      A_button.onFalse(new IntakeArmStopCommand(intakeArm));
-      B_button.onTrue(new IntakeArmCubeCommand(intakeArm));
-      B_button.onFalse(new IntakeArmStopCommand(intakeArm));
+      A_button.onTrue(new IntakeArmCommand(intakeArm));
       leftBumper.onTrue(new ArmExtendCommand(arm));
       leftBumper.onFalse(new ArmHoldCommand(arm));
       rightBumper.onTrue(new ArmColaspeCommand(arm));
-      rightBumper.onFalse(new ArmHoldCommand(arm));
-       
+      rightBumper.onFalse(new ArmHoldCommand(arm)); 
         button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,

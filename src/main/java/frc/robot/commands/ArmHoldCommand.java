@@ -12,6 +12,7 @@ public class ArmHoldCommand extends CommandBase {
     }
 
     public void execute() {
+        System.out.println("Executing " + this.getClass().getName());
         arm.armHold();
     }
 

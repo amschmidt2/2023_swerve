@@ -19,7 +19,7 @@ public class CompressorCommandExtend extends CommandBase {
 
   // @Override
   public void execute() {
-    // System.out.println("Executing "+ this.getClass().getName());
+    System.out.println("Executing "+ this.getClass().getName());
     compressor.forward();
   }
 

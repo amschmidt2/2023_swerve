@@ -3,8 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Arm;
 
-
-public class ArmColaspeCommand extends CommandBase{
+public class ArmColaspeCommand extends CommandBase {
     private boolean armExtended = false;
     private double armPower = 0;
     Arm arm;
@@ -14,17 +13,14 @@ public class ArmColaspeCommand extends CommandBase{
         addRequirements(arm);
         this.arm = arm;
     }
-@Override
+    @Override
     public void execute(){
         arm.armColapse();
     
     }
 
-    public boolean isArmExtended(){
-        return armExtended; 
+    public boolean isArmExtended() {
+        return armExtended;
     }
 
-
-
-
-} // <-- keep brace 
+} // <-- keep brace
