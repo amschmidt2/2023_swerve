@@ -9,7 +9,7 @@ public class Arm extends SubsystemBase{
     //neo motor that is geared 75:1
     private CANSparkMax armMotor = new CANSparkMax(10, MotorType.kBrushless);
     //private int armCurrentLimit = 20;
-    private double armOutputPower = 0.4; 
+    private double armOutputPower = 0.2; 
     private boolean armExtended = false;
     private double armPower;
 
@@ -35,6 +35,11 @@ public class Arm extends SubsystemBase{
     public void armExtend(){
         armPower = -armOutputPower;
         setArmMotor(armPower);
+    }
+
+    public void armHold(){
+      armPower = 0;
+      setArmMotor(armPower);
     }
 
   // public void armColapse(){
