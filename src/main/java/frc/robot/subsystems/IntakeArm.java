@@ -67,4 +67,17 @@ public class IntakeArm extends SubsystemBase {
 
 
     }
+
+    public void extractCone(){
+        intakePower = intakeOutputPower;
+        intakeAmps = -intakeCurrentLimit;
+        setIntakeMotor(intakePower, intakeAmps);
+    }
+
+    public void extractCube(){
+        intakePower = -intakeOutputPower;
+        intakeAmps = -intakeCurrentLimit;
+        setIntakeMotor(intakePower, intakeAmps);
+    }
+
 }    // leave brace
