@@ -27,12 +27,9 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Compressor; 
 //import frc.robot.commands.CompressorCommandExtend;
 //import frc.robot.commands.CompressorCommandRetract;
-
 import frc.robot.commands.IntakeArmConeCommand;
 import frc.robot.commands.IntakeArmCubeCommand;
 import frc.robot.commands.IntakeArmStopCommand;
-import frc.robot.commands.IntakeArmConeExtractCommand;
-import frc.robot.commands.IntakeArmCubeExtractCommand;
 
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
@@ -148,31 +145,18 @@ public class RobotContainer {
         JoystickButton rightBumper = new JoystickButton(leftJoystick, 6);
         //JoystickButton Y_button = new JoystickButton(leftJoystick, 4);
         JoystickButton B_button = new JoystickButton(leftJoystick, 1);
-        JoystickButton ttt = new JoystickButton(leftJoystick, 7);
-        JoystickButton tinyLines = new JoystickButton(leftJoystick, 8);
 
       X_button.onTrue(new CompressorCommandExtend(compressor));
       X_button.onFalse(new CompressorCommandRetract(compressor));
-
       A_button.onTrue(new IntakeArmCubeCommand(intakeArm));
       A_button.onFalse(new IntakeArmStopCommand(intakeArm));
-
       B_button.onTrue(new IntakeArmConeCommand(intakeArm));
       B_button.onFalse(new IntakeArmStopCommand(intakeArm));
-
       leftBumper.onTrue(new ArmExtendCommand(arm));
       leftBumper.onFalse(new ArmHoldCommand(arm));
-
-      ttt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
-      ttt.onFalse(new IntakeArmStopCommand(intakeArm));
-
-      tinyLines.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
-      tinyLines.onFalse(new IntakeArmStopCommand(intakeArm));
-
       rightBumper.onTrue(new ArmColaspeCommand(arm));
       rightBumper.onFalse(new ArmHoldCommand(arm)); 
-
-      button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
+        button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));

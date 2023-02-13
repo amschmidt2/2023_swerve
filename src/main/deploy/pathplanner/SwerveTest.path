@@ -2,13 +2,13 @@
   "waypoints": [
     {
       "anchorPoint": {
-        "x": 1.8298457109734734,
-        "y": 2.089707769159128
+        "x": 1.9326182242108072,
+        "y": 4.944499803529522
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.9766493208200093,
-        "y": 3.18594791035736
+        "x": 3.771990662055444,
+        "y": 4.944499803529522
       },
       "holonomicAngle": 0.0,
       "isReversal": false,
@@ -24,19 +24,19 @@
     },
     {
       "anchorPoint": {
-        "x": 4.844506099268609,
-        "y": 4.544828918717667
+        "x": 7.0484055498025535,
+        "y": 4.601924759405074
       },
       "prevControl": {
-        "x": 3.9766493208200098,
-        "y": 4.544828918717667
+        "x": 6.180548771353954,
+        "y": 4.601924759405074
       },
       "nextControl": {
-        "x": 5.712362877717209,
-        "y": 4.544828918717667
+        "x": 6.180548771353954,
+        "y": 4.601924759405074
       },
       "holonomicAngle": -154.21267181718562,
-      "isReversal": false,
+      "isReversal": true,
       "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
@@ -49,12 +49,12 @@
     },
     {
       "anchorPoint": {
-        "x": 6.8200221870529205,
-        "y": 4.624763095680038
+        "x": 1.921199056073326,
+        "y": 4.499152246167741
       },
       "prevControl": {
-        "x": 8.532897407675154,
-        "y": 4.57337683906137
+        "x": 3.5769784360081545,
+        "y": 4.499152246167741
       },
       "nextControl": null,
       "holonomicAngle": 0,
@@ -73,5 +73,29 @@
   "maxVelocity": 8.0,
   "maxAcceleration": 5.0,
   "isReversed": null,
-  "markers": []
+  "markers": [
+    {
+      "position": 0.34909090909089324,
+      "names": [
+        "Arm",
+        "Conveyer",
+        "Arm_intake"
+      ]
+    },
+    {
+      "position": 1.687272727272642,
+      "names": [
+        "move",
+        "Conveyeroff",
+        "floorintake in"
+      ]
+    },
+    {
+      "position": 2.0,
+      "names": [
+        "score",
+        "arm"
+      ]
+    }
+  ]
 }
