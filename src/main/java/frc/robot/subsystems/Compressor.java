@@ -8,11 +8,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
+
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
-  DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.CTREPCM), 1, 2); //object
+  DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 0, 1); //object
  // DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
 
   public Compressor() {
@@ -36,6 +37,10 @@ public class Compressor extends SubsystemBase {
   public void forward() {
     leftDS.set(Value.kForward);
      // rightDS.set(Value.kForward);
+  }
+  public void off(){
+    leftDS.set(Value.kOff);
+
   }
 
 
