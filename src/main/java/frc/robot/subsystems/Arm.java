@@ -29,13 +29,13 @@ public class Arm extends SubsystemBase{
     @Override
     public void periodic() {
     // This method will be called once per scheduler run
-      sir_eyespy_coder = armMotor.getEncoder();
-      sir_eyespy_coder.setPosition(kPosition);
+     // sir_eyespy_coder = armMotor.getEncoder();
+     // sir_eyespy_coder.setPosition(kPosition);
     }
 
     public void setArmMotor(double percent){
         armMotor.set(percent);    
-        System.out.println("Can you see me " + sir_eyespy_coder.setPosition(kPosition));
+    //    System.out.println("Can you see me " + sir_eyespy_coder.setPosition(kPosition));
     }
 
     /* Spark Maxs Have reative encoders 
