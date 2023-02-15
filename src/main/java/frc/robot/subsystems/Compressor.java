@@ -40,6 +40,10 @@ public class Compressor extends SubsystemBase {
      // rightDS.set(Value.kForward);
   }
 
+  public void stop(){
+    leftDS.set(Value.kOff);
+  }
+
 
 } // <-- leave this bracket 
 

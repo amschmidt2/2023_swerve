@@ -24,10 +24,10 @@ import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
 //import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.Compressor; 
 //import frc.robot.commands.CompressorCommandExtend;
 //import frc.robot.commands.CompressorCommandRetract;
 
+import frc.robot.subsystems.IntakeArm;
 import frc.robot.commands.IntakeArmConeCommand;
 import frc.robot.commands.IntakeArmCubeCommand;
 import frc.robot.commands.IntakeArmStopCommand;
@@ -39,15 +39,20 @@ import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
 
+import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
-//import frc.robot.commands.IntakeArmCommand;
-import frc.robot.subsystems.IntakeArm;
+import frc.robot.commands.CompressorCommandStop;
 
 import frc.robot.subsystems.Conveyor; 
 import frc.robot.commands.ConveyorGoCommand;
 import frc.robot.commands.ConveyorReverseCommand;
 import frc.robot.commands.ConveyorStopCommand;
+
+import frc.robot.subsystems.FloorIntake;
+import frc.robot.commands.FloorIntakeCollectCommand;
+import frc.robot.commands.FloorIntakeFartCommand;
+import frc.robot.commands.FloorIntakeStopCommand;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -80,6 +85,7 @@ public class RobotContainer {
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
+  FloorIntake floorIntake = new FloorIntake();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -151,6 +157,7 @@ public class RobotContainer {
       JoystickButton d_Button_A = new JoystickButton(secondLeftJoystick, 2);
       JoystickButton d_Button_Y = new JoystickButton(secondLeftJoystick, 3);
       JoystickButton d_Button_B = new JoystickButton(secondLeftJoystick, 1);
+      JoystickButton d_rightBumper = new JoystickButton(secondLeftJoystick, 5);
         //JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
         
       // Gunners Buttons (lowerCase buttons)
@@ -185,16 +192,26 @@ public class RobotContainer {
       g_rightBumper.onFalse(new ArmHoldCommand(arm)); 
 
       //Drivers Commands 
-      d_Button_X.onTrue(new ToggleFieldOriented(m_robotDrive));
+      d_rightBumper.onTrue(new ToggleFieldOriented(m_robotDrive));
 
       d_Button_Y.onTrue(new ConveyorGoCommand(conveyor));
       d_Button_Y.onFalse(new ConveyorStopCommand(conveyor));
 
+      d_Button_B.onTrue(new FloorIntakeFartCommand(floorIntake));
+      d_Button_B.onFalse(new FloorIntakeStopCommand(floorIntake));
       d_Button_B.onTrue(new ConveyorReverseCommand(conveyor));
       d_Button_B.onFalse(new ConveyorStopCommand(conveyor));
 
+
       d_Button_A.onTrue(new CompressorCommandExtend(compressor));
-      d_Button_A.onFalse(new CompressorCommandRetract(compressor));
+      d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
+      d_Button_A.onFalse(new CompressorCommandStop(compressor));
+
+      d_Button_X.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_Button_X.onTrue(new CompressorCommandRetract(compressor));
+      d_Button_X.onFalse(new FloorIntakeStopCommand(floorIntake));
+      d_Button_X.onFalse(new CompressorCommandStop(compressor));
 
 
 
