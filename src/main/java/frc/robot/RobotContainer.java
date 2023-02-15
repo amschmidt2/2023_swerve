@@ -43,7 +43,11 @@ import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
 //import frc.robot.commands.IntakeArmCommand;
 import frc.robot.subsystems.IntakeArm;
+
 import frc.robot.subsystems.Conveyor; 
+import frc.robot.commands.ConveyorGoCommand;
+import frc.robot.commands.ConveyorReverseCommand;
+import frc.robot.commands.ConveyorStopCommand;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -59,15 +63,18 @@ public class RobotContainer {
 
   private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
-  // The driver's controller
-
+  // The gunners controller
+  private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
+  final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true);
   static Joystick leftJoystick = new Joystick(OIConstants.kDriverControllerPort);
   static Joystick rightJoystick = new Joystick(OIConstants.kDriverControllerPort);
 
-  private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
+  // The drivers controller
+  private XboxController m_DriverController = new XboxController(OIConstants.kCoDriverControllerPort);
+  final GamepadButtons driver = new GamepadButtons(m_DriverController, true);
+  static Joystick secondLeftJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
+  static Joystick secondRightJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
 
-  final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
-  //final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true); 
   
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
@@ -139,40 +146,58 @@ public class RobotContainer {
       //  () -> m_coDriverController.getRawAxis(3),
       //  false));
 
-
-        JoystickButton button_8 = new JoystickButton(leftJoystick,8);
+      // Drivers Buttons (Cap Buttons)
+      JoystickButton d_Button_X = new JoystickButton(secondLeftJoystick,4);
+      JoystickButton d_Button_A = new JoystickButton(secondLeftJoystick, 2);
+      JoystickButton d_Button_Y = new JoystickButton(secondLeftJoystick, 3);
+      JoystickButton d_Button_B = new JoystickButton(secondLeftJoystick, 1);
         //JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
-        JoystickButton X_button = new JoystickButton(leftJoystick, 4);
-        JoystickButton A_button = new JoystickButton(leftJoystick, 2);     
-        JoystickButton leftBumper = new JoystickButton(leftJoystick, 5);
-        JoystickButton rightBumper = new JoystickButton(leftJoystick, 6);
-        //JoystickButton Y_button = new JoystickButton(leftJoystick, 4);
-        JoystickButton B_button = new JoystickButton(leftJoystick, 1);
-        JoystickButton ttt = new JoystickButton(leftJoystick, 7);
-        JoystickButton tinyLines = new JoystickButton(leftJoystick, 8);
+        
+      // Gunners Buttons (lowerCase buttons)
+      JoystickButton g_Button_B = new JoystickButton(leftJoystick, 1);
+      JoystickButton g_Button_X = new JoystickButton(leftJoystick, 4);
+      JoystickButton g_Button_A = new JoystickButton(leftJoystick, 2);  
+      JoystickButton g_Button_Y = new JoystickButton(leftJoystick, 3);   
+      JoystickButton g_leftBumper = new JoystickButton(leftJoystick, 5);
+      JoystickButton g_rightBumper = new JoystickButton(leftJoystick, 6);
+      //JoystickButton Y_button = new JoystickButton(leftJoystick, 4);
+      
+      JoystickButton g_ttt = new JoystickButton(leftJoystick, 7);
+      JoystickButton g_tinyLines = new JoystickButton(leftJoystick, 8);
 
-      X_button.onTrue(new CompressorCommandExtend(compressor));
-      X_button.onFalse(new CompressorCommandRetract(compressor));
+      // Gunner Commands
+      g_Button_A.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_Button_A.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      A_button.onTrue(new IntakeArmCubeCommand(intakeArm));
-      A_button.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_Button_B.onTrue(new IntakeArmConeCommand(intakeArm));
+      g_Button_B.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      B_button.onTrue(new IntakeArmConeCommand(intakeArm));
-      B_button.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_leftBumper.onTrue(new ArmExtendCommand(arm));
+      g_leftBumper.onFalse(new ArmHoldCommand(arm));
 
-      leftBumper.onTrue(new ArmExtendCommand(arm));
-      leftBumper.onFalse(new ArmHoldCommand(arm));
+      g_ttt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
+      g_ttt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      ttt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
-      ttt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_tinyLines.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
+      g_tinyLines.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      tinyLines.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
-      tinyLines.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_rightBumper.onTrue(new ArmColaspeCommand(arm));
+      g_rightBumper.onFalse(new ArmHoldCommand(arm)); 
 
-      rightBumper.onTrue(new ArmColaspeCommand(arm));
-      rightBumper.onFalse(new ArmHoldCommand(arm)); 
+      //Drivers Commands 
+      d_Button_X.onTrue(new ToggleFieldOriented(m_robotDrive));
 
-      button_8.onTrue(new ToggleFieldOriented(m_robotDrive));
+      d_Button_Y.onTrue(new ConveyorGoCommand(conveyor));
+      d_Button_Y.onFalse(new ConveyorStopCommand(conveyor));
+
+      d_Button_B.onTrue(new ConveyorReverseCommand(conveyor));
+      d_Button_B.onFalse(new ConveyorStopCommand(conveyor));
+
+      d_Button_A.onTrue(new CompressorCommandExtend(compressor));
+      d_Button_A.onFalse(new CompressorCommandRetract(compressor));
+
+
+
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.FRONT_LEFT));

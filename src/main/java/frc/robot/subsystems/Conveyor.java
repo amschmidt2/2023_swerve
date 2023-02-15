@@ -1,20 +1,28 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-/*
-    Line Break in middle of Conner --> Once conner sees he has cube he tells Izzy to stop
-    Then he communicates with Amy 
-
-    1 Neo motor
-    Looking at both Izzy and Amy
-*/ 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Conveyor extends SubsystemBase{
 
-
+    private CANSparkMax conveyorMotor = new CANSparkMax(13, MotorType.kBrushless); 
+    private double speed = 0.4;
 
     public Conveyor(){
 
 
+    }
+
+    public void go(){
+        conveyorMotor.set(speed);
+    }
+
+    public void stop(){
+        conveyorMotor.set(0);
+    }
+
+    public void reverse(){
+        conveyorMotor.set(-speed);
     }
 
 
