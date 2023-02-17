@@ -8,6 +8,7 @@ public class ConveyorStopCommand extends CommandBase {
     Conveyor conveyor;
 
     public ConveyorStopCommand(Conveyor conveyor){
+        addRequirements(conveyor);
         this.conveyor = conveyor;
     }
 

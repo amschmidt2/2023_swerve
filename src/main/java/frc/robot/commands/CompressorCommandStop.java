@@ -6,6 +6,7 @@ public class CompressorCommandStop extends CommandBase{
     Compressor compressor;
 
     public CompressorCommandStop(Compressor compressor){
+        addRequirements(compressor);
         this.compressor = compressor;
     }
 

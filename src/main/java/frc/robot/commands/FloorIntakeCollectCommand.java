@@ -6,6 +6,7 @@ public class FloorIntakeCollectCommand extends CommandBase{
     FloorIntake floorIntake;
 
     public FloorIntakeCollectCommand(FloorIntake floorIntake){
+        addRequirements(floorIntake);
         this.floorIntake = floorIntake;
     }
 

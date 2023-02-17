@@ -153,10 +153,10 @@ public class RobotContainer {
       //  false));
 
       // Drivers Buttons (Cap Buttons)
-      JoystickButton d_Button_X = new JoystickButton(secondLeftJoystick,4);
-      JoystickButton d_Button_A = new JoystickButton(secondLeftJoystick, 2);
-      JoystickButton d_Button_Y = new JoystickButton(secondLeftJoystick, 3);
-      JoystickButton d_Button_B = new JoystickButton(secondLeftJoystick, 1);
+      JoystickButton d_Button_X = new JoystickButton(secondLeftJoystick,3);
+      JoystickButton d_Button_A = new JoystickButton(secondLeftJoystick, 1);
+      JoystickButton d_Button_Y = new JoystickButton(secondLeftJoystick, 4);
+      JoystickButton d_Button_B = new JoystickButton(secondLeftJoystick, 2);
       JoystickButton d_rightBumper = new JoystickButton(secondLeftJoystick, 5);
       JoystickButton d_leftBumper = new JoystickButton(secondLeftJoystick, 6);
       JoystickButton d_tinyLines = new JoystickButton(secondLeftJoystick, 7);
@@ -209,15 +209,16 @@ public class RobotContainer {
 
      // group maybe
       d_Button_A.onTrue(new CompressorCommandExtend(compressor));
+      d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
       d_Button_A.onFalse(new CompressorCommandStop(compressor));
+      d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       //d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
       //d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       // group maybe
-      d_leftBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
-
+      d_Button_X.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_Button_X.onFalse(new FloorIntakeStopCommand(floorIntake));
       d_Button_X.onTrue(new CompressorCommandRetract(compressor));
       d_Button_X.onFalse(new CompressorCommandStop(compressor));
 
