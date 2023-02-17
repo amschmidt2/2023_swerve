@@ -159,9 +159,6 @@ public class RobotContainer {
       JoystickButton d_Button_Y = new JoystickButton(secondLeftJoystick, 3);
       JoystickButton d_Button_B = new JoystickButton(secondLeftJoystick, 1);
       JoystickButton d_rightBumper = new JoystickButton(secondLeftJoystick, 5);
-      JoystickButton d_leftBumper = new JoystickButton(secondLeftJoystick, 6);
-      JoystickButton d_tinyLines = new JoystickButton(secondLeftJoystick, 7);
-
         //JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
         
       // Gunners Buttons (lowerCase buttons)
@@ -209,25 +206,20 @@ public class RobotContainer {
       d_Button_Y.onTrue(new ConveyorGoCommand(conveyor));
       d_Button_Y.onFalse(new ConveyorStopCommand(conveyor));
 
-      //group maybe
       d_Button_B.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_Button_B.onFalse(new FloorIntakeStopCommand(floorIntake));
-
       d_Button_B.onTrue(new ConveyorReverseCommand(conveyor));
       d_Button_B.onFalse(new ConveyorStopCommand(conveyor));
 
-     // group maybe
+
       d_Button_A.onTrue(new CompressorCommandExtend(compressor));
+      d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
       d_Button_A.onFalse(new CompressorCommandStop(compressor));
 
-      //d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      //d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
-
-      // group maybe
-      d_leftBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
-
+      d_Button_X.onTrue(new FloorIntakeCollectCommand(floorIntake));
       d_Button_X.onTrue(new CompressorCommandRetract(compressor));
+      d_Button_X.onFalse(new FloorIntakeStopCommand(floorIntake));
       d_Button_X.onFalse(new CompressorCommandStop(compressor));
 
 
