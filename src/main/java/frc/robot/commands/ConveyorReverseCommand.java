@@ -8,6 +8,7 @@ public class ConveyorReverseCommand extends CommandBase{
     Conveyor conveyor;
 
     public ConveyorReverseCommand(Conveyor conveyor){
+        addRequirements(conveyor);
         this.conveyor = conveyor; 
     }
 

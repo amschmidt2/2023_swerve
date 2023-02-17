@@ -7,6 +7,7 @@ public class ConveyorGoCommand extends CommandBase{
     Conveyor conveyor;
 
     public ConveyorGoCommand(Conveyor conveyor){
+        addRequirements(conveyor);
         this.conveyor = conveyor;
     }
 

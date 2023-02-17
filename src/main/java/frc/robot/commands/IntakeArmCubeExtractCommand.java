@@ -6,6 +6,7 @@ public class IntakeArmCubeExtractCommand extends CommandBase{
     IntakeArm intakeArm;
 
     public IntakeArmCubeExtractCommand(IntakeArm intakeArm){
+        addRequirements(intakeArm);
         this.intakeArm = intakeArm;
     }
 

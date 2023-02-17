@@ -19,13 +19,14 @@ public class Arm extends SubsystemBase{
     private boolean armExtended = false;
     private double armPower;
     private double kPosition = 0;
-    private SparkMaxPIDController m_pidController;
+    private SparkMaxPIDController m_pidController; // = new SparkMaxPIDController();
     RelativeEncoder sir_eyespy_coder; 
     private double kP, kI, kD, kF, kMaxOutput, kminOutput;
 
 
     public Arm(){
       //armMotor.setInverted(true);
+      //SparkMaxPIDController m_pidController = new SparkMaxPIDController();
       kP = .05; // speed? 
       kI = 0; // 
       kD = 0;
