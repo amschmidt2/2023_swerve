@@ -38,6 +38,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
+import frc.robot.commands.ArmToMidwayCommand;
 
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.CompressorCommandExtend;
@@ -174,6 +175,9 @@ public class RobotContainer {
       
       JoystickButton g_ttt = new JoystickButton(leftJoystick, 7);
       JoystickButton g_tinyLines = new JoystickButton(leftJoystick, 8);
+      JoystickButton g_NineButt = new JoystickButton(leftJoystick, 9);
+
+      // ******************************************************* 
 
       // Gunner Commands
       g_Button_A.onTrue(new IntakeArmCubeCommand(intakeArm));
@@ -193,6 +197,11 @@ public class RobotContainer {
 
       g_rightBumper.onTrue(new ArmColaspeCommand(arm));
       g_rightBumper.onFalse(new ArmHoldCommand(arm)); 
+
+      g_NineButt.onTrue(new ArmToMidwayCommand(arm));
+     
+      // ******************************************************* 
+      
 
       //Drivers Commands 
       d_rightBumper.onTrue(new ToggleFieldOriented(m_robotDrive));
