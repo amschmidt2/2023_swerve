@@ -38,7 +38,14 @@ import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
-import frc.robot.commands.ArmToMidwayCommand;
+
+import frc.robot.commands.armPositions.ArmConeFloorCommand;
+import frc.robot.commands.armPositions.ArmConeMidCommand;
+import frc.robot.commands.armPositions.ArmConeHighCommand;
+import frc.robot.commands.armPositions.ArmCubeConveyCommand;
+import frc.robot.commands.armPositions.ArmCubeFloorCommand;
+import frc.robot.commands.armPositions.ArmCubeMidCommand;
+import frc.robot.commands.armPositions.ArmCubeHighCommand;
 
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.CompressorCommandExtend;
@@ -195,7 +202,6 @@ public class RobotContainer {
       g_rightBumper.onTrue(new ArmColaspeCommand(arm));
       g_rightBumper.onFalse(new ArmHoldCommand(arm)); 
 
-      g_NineButt.onTrue(new ArmToMidwayCommand(arm));
      
       // ******************************************************* 
       

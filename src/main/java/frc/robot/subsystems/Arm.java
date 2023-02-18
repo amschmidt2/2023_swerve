@@ -3,8 +3,9 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
-import com.revrobotics.CANSparkMax.SoftLimitDirection; // old elle on monke had these limits
-// the limit was upsiedaise or wutever and it was the max limit. 
+
+import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import com.revrobotics.CANSparkMax.ControlType;
 //import com.revrobotics.CANSparkMax.ControlType.kPosition;
 
@@ -20,29 +21,15 @@ public class Arm extends SubsystemBase{
     private double armPower;
     private double kPosition = 0;
     private SparkMaxPIDController m_pidController; // = new SparkMaxPIDController();
-    RelativeEncoder sir_eyespy_coder; 
-    private double kP, kI, kD, kF, kMaxOutput, kminOutput;
+
+    RelativeEncoder sir_eyespy_coder;
+    ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, new TrapezoidProfile.Constraints(300, 150));
+
 
 
     public Arm(){
       //armMotor.setInverted(true);
-      //SparkMaxPIDController m_pidController = new SparkMaxPIDController();
-      kP = .05; // speed? 
-      kI = 0; // 
-      kD = 0;
-      kF = 0;
-      kMaxOutput = 1;
-      kminOutput = -1;
-
-      m_pidController.setP(kP);
-      m_pidController.setI(kI);
-      m_pidController.setD(kD);
-      m_pidController.setFF(kF); //armOutputPower
-      m_pidController.setOutputRange(kminOutput, kMaxOutput);
-
-      m_pidController.setReference(armOutputPower, CANSparkMax.ControlType.kPosition);
-
-
+      sir_eyespy_coder.setPosition(0);
     }
 
     @Override
@@ -69,13 +56,7 @@ public class Arm extends SubsystemBase{
      *  Add position on a slider in Dashboard or print 
      */
 
-    public void moveToMidway(){
-      m_pidController.setReference(armOutputPower, CANSparkMax.ControlType.kPosition, 18);
-      sir_eyespy_coder.getPosition(); //) == armMotor.getEncoder();
-    }
-
-
-
+  
     public void armColapse(){
         armPower = armOutputPower;
         setArmMotor(armPower);
@@ -92,27 +73,37 @@ public class Arm extends SubsystemBase{
       setArmMotor(armPower);
     }
 
-  // public void armColapse(){
-    //    if(armExtended == true){
-            //lowers arm
-      //      armPower = armOutputPower;
-        //}  
-       // else if(armExtended == false){
-            //raises arm
-         //   armPower = -armOutputPower;
-        //}  
-        //else{
-          //  armPower = 0.0;
-        //}
-        //setArmMotor(armPower);
-       //else{
-          //  armPower = 0.0;
-        //}
-        //setArmMotor(armPower);
-  // }    
-   
-  // public void armExtend(){
-       
-  // }
+    //Cone Position 
+    public void armHighCone(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 32));
+    }
+
+    public void armMidCone(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 18));
+    }
+
+    public void armFloorCone(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10));
+    }
+
+
+    //Cube Posistion
+    public void armHighCube(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 30));
+    }
+
+    public void armMidCube(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 18));
+    }
+
+    public void armFloorCube(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10));
+    }
+
+    public void armConveyCube(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1));
+    }
+
+  
         
 } // keep brace 
