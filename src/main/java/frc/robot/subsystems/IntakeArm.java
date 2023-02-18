@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class IntakeArm extends SubsystemBase {
-    private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
+    private CANSparkMax intakeMotor = new CANSparkMax(14, MotorType.kBrushless); // 12
     private int intakeCurrentLimit = 25;
     private int intakeHoldCurrentLimit = 5;
     private double intakeOutputPower = 1.0;
@@ -27,36 +27,14 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public void intakeCube(){
-    //   if(intakeExtended == true){
-            intakePower = intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cube;
-        // }
-        // else if(lastGamePiece == cube){
-        //     intakePower = intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit; 
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0;
-        // }
+        intakePower = intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
         setIntakeMotor(intakePower, intakeAmps);
     }
 
     public void intakeCone(){
-    //  if(intakeExtended == true){
-            intakePower = -intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cone;
-        // }
-        // else if(lastGamePiece == cone){
-        //     intakePower = -intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit;
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0; 
-        // }
+        intakePower = -intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
         setIntakeMotor(intakePower, intakeAmps);
     }
 
