@@ -21,22 +21,32 @@ public class Arm extends SubsystemBase{
     private double armPower;
     private double kPosition = 0;
     private SparkMaxPIDController m_pidController; // = new SparkMaxPIDController();
-
+    private double kDt = 0.02;
+    SparkMaxPIDController PID;
     RelativeEncoder sir_eyespy_coder;
-    ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, new TrapezoidProfile.Constraints(300, 150));
-
+    TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints(300, 150);
+    ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, m_Constraints, kDt);
 
 
     public Arm(){
       //armMotor.setInverted(true);
-      sir_eyespy_coder.setPosition(0);
+     // sir_eyespy_coder.setPosition(0);
+      armMotor.restoreFactoryDefaults();
+      sir_eyespy_coder = armMotor.getEncoder();
+      PID = armMotor.getPIDController();
     }
+
+    //@Override
+    // public void init(){
+    //   sir_eyespy_coder.setPositionConversionFactor(1.0 / 360.0 * 2.0 * Math.PI * 1.5);
+    // }
 
     @Override
     public void periodic() {
     // This method will be called once per scheduler run
      sir_eyespy_coder = armMotor.getEncoder();
      System.out.println(sir_eyespy_coder.getPosition());
+
      // sir_eyespy_coder.getPosition(kPosition);
     }
 
