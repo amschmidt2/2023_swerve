@@ -15,7 +15,7 @@ public class Arm extends SubsystemBase{
     //neo motor that is geared 75:1
     private CANSparkMax armMotor = new CANSparkMax(10, MotorType.kBrushless);
     //private int armCurrentLimit = 20;
-    private double armOutputPower = 0.2; // speed  
+    private double armOutputPower = 0.3; // speed  
     private boolean armExtended = false;
     private double armPower;
     private double kPosition = 0;

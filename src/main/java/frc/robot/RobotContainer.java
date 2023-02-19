@@ -205,45 +205,45 @@ public class RobotContainer {
       g_rightBumper.onFalse(new ArmHoldCommand(arm)); 
 
       //Drivers Commands 
-      d_tinyLines.onTrue(new ToggleFieldOriented(m_robotDrive));
+    //   d_tinyLines.onTrue(new ToggleFieldOriented(m_robotDrive));
 
-      //group (dirction --> Convy, out)
-      d_Button_Y.onTrue(new ConveyorGoCommand(conveyor));
-      d_Button_Y.onFalse(new ConveyorStopCommand(conveyor));
+    //   //group (dirction --> Convy, out)
+    //   d_Button_Y.onTrue(new ConveyorGoCommand(conveyor));
+    //   d_Button_Y.onFalse(new ConveyorStopCommand(conveyor));
 
-      //group (direction --> Floor, out /Convey, out) (Hitting Floor Goal)
-      d_Button_B.onTrue(new FloorIntakeFartCommand(floorIntake));
-      d_Button_B.onFalse(new FloorIntakeStopCommand(floorIntake));
+    //   //group (direction --> Floor, out /Convey, out) (Hitting Floor Goal)
+    //   d_Button_B.onTrue(new FloorIntakeFartCommand(floorIntake));
+    //   d_Button_B.onFalse(new FloorIntakeStopCommand(floorIntake));
 
-      d_Button_B.onTrue(new ConveyorReverseCommand(conveyor));
-      d_Button_B.onFalse(new ConveyorStopCommand(conveyor));
+    //   d_Button_B.onTrue(new ConveyorReverseCommand(conveyor));
+    //   d_Button_B.onFalse(new ConveyorStopCommand(conveyor));
 
-     // group (direction --> Floor & Comp, Out) (Collect)
-      d_Button_A.onTrue(new CompressorCommandExtend(compressor));
-      d_Button_A.onFalse(new CompressorCommandStop(compressor));
-      d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
+    //  // group (direction --> Floor & Comp, Out) (Collect)
+    //   d_Button_A.onTrue(new CompressorCommandExtend(compressor));
+    //   d_Button_A.onFalse(new CompressorCommandStop(compressor));
+    //   d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
+    //   d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       d_leftBumper.onTrue(new CompressorCommandExtend(compressor));
-      d_leftBumper.onFalse(new CompressorCommandStop(compressor));
-      d_leftBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_leftBumper.onFalse(new CompressorCommandRetract(compressor));
+      d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
-      d_rightBumper.onTrue(new CompressorCommandRetract(compressor));
-      d_rightBumper.onFalse(new CompressorCommandStop(compressor));
-      d_rightBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_rightBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
+     // d_rightBumper.onTrue(new CompressorCommandRetract(compressor));
+     // d_rightBumper.onFalse(new CompressorCommandStop(compressor));
+     // d_rightBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
+     // d_rightBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       //d_Button_A.onTrue(new FloorIntakeCollectCommand(floorIntake));
       //d_Button_A.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       // group (direction --> Floor, In / Comp, In / Convey, In)
-      d_Button_X.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_Button_X.onFalse(new FloorIntakeStopCommand(floorIntake));
-      d_Button_X.onTrue(new CompressorCommandRetract(compressor));
-      d_Button_X.onFalse(new CompressorCommandStop(compressor));
-      d_Button_X.onTrue(new ConveyorGoCommand(conveyor));
-      d_Button_X.onFalse(new ConveyorReverseCommand(conveyor));
+      // d_Button_X.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      // d_Button_X.onFalse(new FloorIntakeStopCommand(floorIntake));
+      // d_Button_X.onTrue(new CompressorCommandRetract(compressor));
+      // d_Button_X.onFalse(new CompressorCommandStop(compressor));
+      // d_Button_X.onTrue(new ConveyorGoCommand(conveyor));
+      // d_Button_X.onFalse(new ConveyorReverseCommand(conveyor));
 
 
 
