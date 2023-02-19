@@ -20,7 +20,7 @@ public class Compressor extends SubsystemBase {
   public Compressor() {
     //this.name = name;
     
-    leftDS.set(Value.kReverse);
+   // leftDS.set(Value.kReverse);
    // rightDS.set(Value.kReverse);
   }
 
