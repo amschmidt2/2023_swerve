@@ -85,41 +85,41 @@ public class Arm extends SubsystemBase{
 
     //Cone Position 
     public void armHighCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 32));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); //32
     }
 
     public void armMidCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 18));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15));// 18
     }
 
     public void armFloorCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10)); // 10
     }
 
     public void armHumanCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 31));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));// 31
     }
 
 
     //Cube Posistion
     public void armHighCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 30));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); // 30
     }
 
     public void armMidCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 18));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15)); // 18
     }
 
     public void armFloorCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 8)); // 10
     }
 
     public void armConveyCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1)); // -1
     }
 
     public void armHumanCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),28));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),30)); // 28
     }
 
   

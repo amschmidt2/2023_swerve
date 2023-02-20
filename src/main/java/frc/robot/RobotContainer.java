@@ -133,9 +133,9 @@ public class RobotContainer {
         m_robotDrive.setDefaultCommand(
           new SetSwerveDrive(
             m_robotDrive,
-            () -> leftJoystick.getRawAxis(0),
-            () -> rightJoystick.getRawAxis(4),
-            () -> rightJoystick.getRawAxis(5)
+            () -> -leftJoystick.getRawAxis(5),  // 0
+            () -> -rightJoystick.getRawAxis(4), //4
+            () -> -rightJoystick.getRawAxis(0)  //5
             )
           );
           
@@ -236,6 +236,8 @@ public class RobotContainer {
       g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
       g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
       g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
+      g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
+      g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
      
       // ******************************************************* 
@@ -245,12 +247,13 @@ public class RobotContainer {
       d_Button_X.onTrue(new ToggleFieldOriented(m_robotDrive));
 
       d_leftBumper.onTrue(new CompressorCommandExtend(compressor));
-      d_leftBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      d_leftBumper.onFalse(new CompressorCommandRetract(compressor));
+      d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
-      d_rightBumper.onTrue(new CompressorCommandRetract(compressor));
-      d_rightBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      d_rightBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
+      // d_rightBumper.onTrue(new CompressorCommandRetract(compressor));
+      // d_rightBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
+      // d_rightBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
 
       // ***********************************************************
