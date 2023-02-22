@@ -34,8 +34,9 @@ public class SetSwerveDrive extends CommandBase {
     addRequirements(swerveDriveSubsystem);
   }
 
-  public SetSwerveDrive(DriveSubsystem m_robotDrive, double d, double e, double f) {
-  }
+  // public SetSwerveDrive(DriveSubsystem m_robotDrive, double d, double e, double f) {
+
+  // }
 
   // Called when the command is initially scheduled.
   @Override

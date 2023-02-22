@@ -32,6 +32,7 @@ public class FollowPathWithEvents extends CommandBase {
       Command pathFollowingCommand,
       List<PathPlannerTrajectory.EventMarker> pathMarkers,
       Map<String, Command> eventMap) {
+        
     this.pathFollowingCommand = pathFollowingCommand;
     this.pathMarkers = pathMarkers;
     this.eventMap = eventMap;

@@ -104,7 +104,7 @@ public class RobotContainer {
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
-  SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, 0.02, 0.02, 0.02);
+  SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, null, null, null);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -311,24 +311,24 @@ public class RobotContainer {
   private void configureAutoCommands() {
     ProfiledPIDController thetaController =
         new ProfiledPIDController(
-            AutoConstants.P_THETA_CONTROLLER,
+            AutoConstants.kPThetaController,
             0,
             0,
-            AutoConstants.THETA_CONTROLLER_CONSTRAINTS,
-            LOOP_PERIOD_SECS);
+            AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
-PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
+    PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
             "Blue0(1)",
-            AutoConstants.MAX_SPEED_METERS_PER_SECOND,
-            AutoConstants.MAX_ACCELERATION_METERS_PER_SECOND_SQUARED);
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
 
     PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
             "Blue0(2)",
-            AutoConstants.MAX_SPEED_METERS_PER_SECOND,
-            AutoConstants.MAX_ACCELERATION_METERS_PER_SECOND_SQUARED);
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAccelerationMetersPerSecondSquared);
 
-    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(autoBlue01Path, thetaController, setSwerveDrive, true));
+    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
 
   }
+
 }
