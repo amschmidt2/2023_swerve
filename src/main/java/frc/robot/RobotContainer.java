@@ -4,6 +4,11 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.PathPlanner;
+import com.pathplanner.lib.PathPlannerTrajectory;
+import com.pathplanner.lib.Commands.FollowPathWithEvents;
+
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -12,7 +17,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.DriveConstants.ModulePosition;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ToggleFieldOriented;
 // import frc.robot.commands.auto.DriveForward;
@@ -71,6 +78,7 @@ import frc.robot.commands.FloorIntakeStopCommand;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
   // The robot's subsystems
   final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
@@ -96,6 +104,7 @@ public class RobotContainer {
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
+  SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, 0.02, 0.02, 0.02);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -273,7 +282,7 @@ public class RobotContainer {
 
   private void initializeAutoChooser() {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
-    m_autoChooser.addOption("Test", object);
+    m_autoChooser.addOption("Test", autoTest);
     // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
     // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
 
@@ -299,4 +308,27 @@ public class RobotContainer {
     return m_autoChooser.getSelected();
   }
 
+  private void configureAutoCommands() {
+    ProfiledPIDController thetaController =
+        new ProfiledPIDController(
+            AutoConstants.P_THETA_CONTROLLER,
+            0,
+            0,
+            AutoConstants.THETA_CONTROLLER_CONSTRAINTS,
+            LOOP_PERIOD_SECS);
+    thetaController.enableContinuousInput(-Math.PI, Math.PI);
+
+PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
+            "Blue0(1)",
+            AutoConstants.MAX_SPEED_METERS_PER_SECOND,
+            AutoConstants.MAX_ACCELERATION_METERS_PER_SECOND_SQUARED);
+
+    PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
+            "Blue0(2)",
+            AutoConstants.MAX_SPEED_METERS_PER_SECOND,
+            AutoConstants.MAX_ACCELERATION_METERS_PER_SECOND_SQUARED);
+
+    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(autoBlue01Path, thetaController, setSwerveDrive, true));
+
+  }
 }
