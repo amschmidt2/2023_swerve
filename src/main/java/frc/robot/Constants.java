@@ -6,6 +6,8 @@ package frc.robot;
 
 import java.util.Map;
 
+import com.pathplanner.lib.auto.PIDConstants;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -213,4 +215,5 @@ public final class Constants {
     // Units.radiansToDegrees(kMaxAngularSpeedRadiansPerSecond),
     // Units.radiansToDegrees(kMaxAngularSpeedRadiansPerSecondSquared));
   }
+  
 }
