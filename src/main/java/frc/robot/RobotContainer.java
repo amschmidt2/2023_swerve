@@ -208,10 +208,13 @@ public class RobotContainer {
       // Gunner Commands
       // Cone Outputs
       g_OneButt.onTrue(new ArmConeHighCommand(arm));
+      g_OneButt.onFalse(new ArmHoldCommand(arm));
 
       g_FiveButt.onTrue(new ArmConeMidCommand(arm));
+      g_FiveButt.onFalse(new ArmHoldCommand(arm));
 
       g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
+      g_NineButt.onFalse(new ArmHoldCommand(arm));
 
       g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
       g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
@@ -222,13 +225,17 @@ public class RobotContainer {
 
       // Cube Outputs
       g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
+      g_TwoButt.onFalse(new ArmHoldCommand(arm));
 
       g_SixButt.onTrue(new ArmCubeMidCommand(arm));
+      g_SixButt.onFalse(new ArmHoldCommand(arm));
 
       g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
+      g_TenButt.onFalse(new ArmHoldCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_FourButt.onFalse(new ArmHoldCommand(arm));
 
       g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
       g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
