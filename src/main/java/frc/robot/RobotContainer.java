@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import java.util.HashMap;
+
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.Commands.FollowPathWithEvents;
@@ -85,6 +87,7 @@ public class RobotContainer {
   public final FieldSim m_fieldSim = new FieldSim(m_robotDrive);
 
   private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
+  HashMap<String, Command> eventMap = new HashMap<>();
 
   // The gunners controller
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
@@ -281,6 +284,28 @@ public class RobotContainer {
   }
 
   private void initializeAutoChooser() {
+
+    ProfiledPIDController thetaController =
+        new ProfiledPIDController(
+            AutoConstants.kPThetaController,
+            0,
+            0,
+            AutoConstants.kThetaControllerConstraints);
+    thetaController.enableContinuousInput(-Math.PI, Math.PI);
+
+    PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
+            "Blue0(1)",
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
+
+    PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
+            "Blue0(2)",
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+
+    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
+
+
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
     m_autoChooser.addOption("Test", autoTest);
     // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
@@ -306,29 +331,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return m_autoChooser.getSelected();
-  }
-
-  private void configureAutoCommands() {
-    ProfiledPIDController thetaController =
-        new ProfiledPIDController(
-            AutoConstants.kPThetaController,
-            0,
-            0,
-            AutoConstants.kThetaControllerConstraints);
-    thetaController.enableContinuousInput(-Math.PI, Math.PI);
-
-    PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
-            "Blue0(1)",
-            AutoConstants.kMaxSpeedMetersPerSecond,
-            AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
-
-    PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
-            "Blue0(2)",
-            AutoConstants.kMaxSpeedMetersPerSecond,
-            AutoConstants.kMaxAccelerationMetersPerSecondSquared);
-
-    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
-
   }
 
 }
