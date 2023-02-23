@@ -294,19 +294,19 @@ public class RobotContainer {
             AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
-    PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
-            "Blue0(1)",
+    PathPlannerTrajectory testPathTwo = PathPlanner.loadPath(
+            "Testpathtwo",
             AutoConstants.kMaxSpeedMetersPerSecond,
             AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
 
-    PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
-            "Blue0(2)",
-            AutoConstants.kMaxSpeedMetersPerSecond,
-            AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+    // PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
+    //         "Blue0(2)",
+    //         AutoConstants.kMaxSpeedMetersPerSecond,
+    //         AutoConstants.kMaxAccelerationMetersPerSecondSquared);
             
     
    // Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
-    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, Collections.emptyList(), Collections.emptyMap()));
+    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(getPathFollowingCommand(testPathTwo), Collections.emptyList(), Collections.emptyMap()));
 
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
     m_autoChooser.addOption("Test", autoTest);
@@ -315,6 +315,10 @@ public class RobotContainer {
 
     SmartDashboard.putData("Auto Selector", m_autoChooser);
 
+  }
+
+  private Command getPathFollowingCommand(PathPlannerTrajectory testPathTwo) {
+    return null;
   }
 
   public void simulationPeriodic() {
