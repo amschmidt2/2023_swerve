@@ -64,6 +64,8 @@ import frc.robot.commands.FloorIntakeCollectCommand;
 import frc.robot.commands.FloorIntakeFartCommand;
 import frc.robot.commands.FloorIntakeStopCommand;
 
+import frc.robot.subsystems.LimeLight;
+
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -96,6 +98,7 @@ public class RobotContainer {
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
+  LimeLight limelight = new LimeLight();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -109,6 +112,7 @@ public class RobotContainer {
 
     m_fieldSim.initSim();
     initializeAutoChooser();
+    limelight.calculate();
     // sc.showAll();
     // Configure default commands
   // m_robotDrive.setDefaultCommand(
