@@ -90,6 +90,10 @@ public class Arm extends SubsystemBase{
     public void armConveyCube(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1));
     }
+
+    public void armHumanCube(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),30)); // 28
+    }
   
         
 } // keep brace 
