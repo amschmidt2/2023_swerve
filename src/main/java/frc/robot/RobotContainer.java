@@ -311,7 +311,7 @@ public class RobotContainer {
 
    // This trajectory can then be passed to a path follower such as a PPSwerveControllerCommand
    // Or the path can be sampled at a given point in time for custom path following
-   PathPlannerTrajectory examplePath = PathPlanner.loadPath("Example Path", new PathConstraints(4, 3));
+   PathPlannerTrajectory examplePath = PathPlanner.loadPath("Test Path", new PathConstraints(1, 1));
    // Sample the state of the path at 1.2 seconds 
    PathPlannerState exampleState = (PathPlannerState) examplePath.sample(1.2);
 
