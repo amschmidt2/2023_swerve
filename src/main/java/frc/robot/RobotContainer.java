@@ -57,8 +57,6 @@ import frc.robot.commands.armPositions.ArmCubeHighCommand;
 
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
-import frc.robot.commands.ConveyorGoCommand;
-import frc.robot.commands.ConveyorStopCommand;
 //import frc.robot.commands.IntakeArmCommand;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor; 
