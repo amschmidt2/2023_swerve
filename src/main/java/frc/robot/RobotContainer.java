@@ -220,37 +220,44 @@ public class RobotContainer {
        
       // Gunner Commands
       // Cone Outputs
-      g_OneButt.onTrue(new ArmConeHighCommand(arm));
+      g_SevenButt.onTrue(new ArmConeHighCommand(arm));
+      g_SevenButt.onFalse(new ArmHoldCommand(arm));
 
-      g_FiveButt.onTrue(new ArmConeMidCommand(arm));
+      g_EightButt.onTrue(new ArmConeMidCommand(arm));
+      g_EightButt.onFalse(new ArmHoldCommand(arm));
 
       g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
+      g_NineButt.onFalse(new ArmHoldCommand(arm));
 
-      g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
-      g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
-      g_ThreeButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_TenButt.onTrue(new ArmHumanConeCommand(arm));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
+      g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_SevenButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
-      g_SevenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
+      g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
       // Cube Outputs
-      g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
+      g_OneButt.onTrue(new ArmCubeHighCommand(arm));
+      g_OneButt.onFalse(new ArmHoldCommand(arm));
 
-      g_SixButt.onTrue(new ArmCubeMidCommand(arm));
+      g_TwoButt.onTrue(new ArmCubeMidCommand(arm));
+      g_TwoButt.onFalse(new ArmHoldCommand(arm));
 
-      g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
+      g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
+      g_ThreeButt.onFalse(new ArmHoldCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_FourButt.onFalse(new ArmHoldCommand(arm));
 
-      g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
-      g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_FiveButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
+      g_FiveButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
-      g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
-      g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
-      g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
-      g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_SixButt.onTrue(new ArmCubeConveyCommand(arm));
+      g_SixButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_SixButt.onTrue(new ConveyorGoCommand(conveyor));
+      g_SixButt.onFalse(new ConveyorStopCommand(conveyor));
+      g_SixButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
      
       // ******************************************************* 
