@@ -72,7 +72,12 @@ public class RobotContainer {
   static Joystick leftJoystick = new Joystick(OIConstants.kDriverControllerPort);
   static Joystick rightJoystick = new Joystick(OIConstants.kDriverControllerPort);
 
+
+  // The gunners controller
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
+  final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true);
+  static Joystick secondLeftJoystick = new Joystick(OIConstants.kDriverControllerPort);
+  static Joystick secondRightJoystick = new Joystick(OIConstants.kDriverControllerPort);
 
   final GamepadButtons driver = new GamepadButtons(m_coDriverController, true);
   //final GamepadButtons gunner = new GamepadButtons(m_coDriverController, true); 
