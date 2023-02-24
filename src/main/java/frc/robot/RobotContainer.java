@@ -210,6 +210,41 @@ public class RobotContainer {
     JoystickButton g_TenButt = new JoystickButton(secondLeftJoystick, 10);
     JoystickButton g_ElevButt = new JoystickButton(secondLeftJoystick, 11);
     JoystickButton g_TwelButt = new JoystickButton(secondLeftJoystick, 12);
+
+    // Gunner Commands
+      // Cone Outputs
+      g_OneButt.onTrue(new ArmConeHighCommand(arm));
+
+      g_FiveButt.onTrue(new ArmConeMidCommand(arm));
+
+      g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
+
+      g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
+      g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
+      g_ThreeButt.onFalse(new IntakeArmStopCommand(intakeArm));
+
+      g_SevenButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
+      g_SevenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+
+      // Cube Outputs
+      g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
+
+      g_SixButt.onTrue(new ArmCubeMidCommand(arm));
+
+      g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
+
+      g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+
+      g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
+      g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
+
+      g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
+      g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
+      g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
+      g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      
   }
 
   private void initializeAutoChooser() {
