@@ -39,6 +39,7 @@ import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import frc.robot.commands.armPositions.ArmConeFloorCommand;
 import frc.robot.commands.armPositions.ArmConeMidCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
@@ -49,6 +50,8 @@ import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 
+=======
+>>>>>>> parent of 410e4b3 (Got code for positions :))
 =======
 >>>>>>> parent of 410e4b3 (Got code for positions :))
 

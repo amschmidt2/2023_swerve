@@ -44,6 +44,7 @@ public class Arm extends SubsystemBase{
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // make sure you reset your robot to 0 every time you refreash it, this way it does not 
     // over extend, also you might want a linebreak sensor that tells you when the arm is fully down
 
@@ -87,6 +88,8 @@ public class Arm extends SubsystemBase{
     }
   
 =======
+=======
+>>>>>>> parent of 410e4b3 (Got code for positions :))
   // public void armColapse(){
     //    if(armExtended == true){
             //lowers arm
@@ -109,6 +112,9 @@ public class Arm extends SubsystemBase{
   // public void armExtend(){
        
   // }
+<<<<<<< HEAD
+>>>>>>> parent of 410e4b3 (Got code for positions :))
+=======
 >>>>>>> parent of 410e4b3 (Got code for positions :))
         
 } // keep brace 
