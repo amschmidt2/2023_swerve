@@ -4,6 +4,14 @@
 
 package frc.robot;
 
+import java.util.Collections;
+import java.util.HashMap;
+
+import com.pathplanner.lib.PathPlanner;
+import com.pathplanner.lib.PathPlannerTrajectory;
+//import com.pathplanner.lib.Commands.FollowPathWithEvents;
+
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -12,7 +20,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.DriveConstants.ModulePosition;
+//import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ToggleFieldOriented;
 // import frc.robot.commands.auto.DriveForward;
@@ -64,8 +74,6 @@ import frc.robot.commands.FloorIntakeCollectCommand;
 import frc.robot.commands.FloorIntakeFartCommand;
 import frc.robot.commands.FloorIntakeStopCommand;
 
-import frc.robot.subsystems.LimeLight;
-
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -73,12 +81,14 @@ import frc.robot.subsystems.LimeLight;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
   // The robot's subsystems
   final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   public final FieldSim m_fieldSim = new FieldSim(m_robotDrive);
 
   private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
+  HashMap<String, Command> eventMap = new HashMap<>();
 
   // The gunners controller
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
@@ -98,7 +108,7 @@ public class RobotContainer {
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
-  LimeLight limelight = new LimeLight();
+  SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, null, null, null);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -111,8 +121,7 @@ public class RobotContainer {
     // Configure the button bindings
 
     m_fieldSim.initSim();
-    initializeAutoChooser();
-    limelight.calculate();
+   // initializeAutoChooser();
     // sc.showAll();
     // Configure default commands
   // m_robotDrive.setDefaultCommand(
@@ -212,13 +221,10 @@ public class RobotContainer {
       // Gunner Commands
       // Cone Outputs
       g_OneButt.onTrue(new ArmConeHighCommand(arm));
-      g_OneButt.onFalse(new ArmHoldCommand(arm));
 
       g_FiveButt.onTrue(new ArmConeMidCommand(arm));
-      g_FiveButt.onFalse(new ArmHoldCommand(arm));
 
       g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
-      g_NineButt.onFalse(new ArmHoldCommand(arm));
 
       g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
       g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
@@ -229,17 +235,13 @@ public class RobotContainer {
 
       // Cube Outputs
       g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
-      g_TwoButt.onFalse(new ArmHoldCommand(arm));
 
       g_SixButt.onTrue(new ArmCubeMidCommand(arm));
-      g_SixButt.onFalse(new ArmHoldCommand(arm));
 
       g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
-      g_TenButt.onFalse(new ArmHoldCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
-      g_FourButt.onFalse(new ArmHoldCommand(arm));
 
       g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
       g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
@@ -282,14 +284,38 @@ public class RobotContainer {
 
   }
 
-  private void initializeAutoChooser() {
-    m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
+ /*  private void initializeAutoChooser() {
+
+    ProfiledPIDController thetaController =
+        new ProfiledPIDController(
+            AutoConstants.kPThetaController,
+            0,
+            0,
+            AutoConstants.kThetaControllerConstraints);
+    thetaController.enableContinuousInput(-Math.PI, Math.PI);
+
+    PathPlannerTrajectory autotest = PathPlanner.loadPath(
+            "Blue0(1)",
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
+
+    PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
+            "Blue0(2)",
+            AutoConstants.kMaxSpeedMetersPerSecond,
+            AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+            
+    */
+   // Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
+  //  Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, Collections.emptyList(), Collections.emptyMap()));
+
+   // m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
+   // m_autoChooser.addOption("Test", autoTest);
     // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
     // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
 
-    SmartDashboard.putData("Auto Selector", m_autoChooser);
+    //SmartDashboard.putData("Auto Selector", m_autoChooser);
 
-  }
+ // }
 
   public void simulationPeriodic() {
     m_fieldSim.periodic();
