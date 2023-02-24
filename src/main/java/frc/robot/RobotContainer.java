@@ -4,12 +4,12 @@
 
 package frc.robot;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
-import com.pathplanner.lib.Commands.FollowPathWithEvents;
+import com.pathplanner.lib.PathPlannerTrajectory.PathPlannerState;
+import com.pathplanner.lib.commands.FollowPathWithEvents;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.Joystick;
@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -88,7 +89,6 @@ public class RobotContainer {
   public final FieldSim m_fieldSim = new FieldSim(m_robotDrive);
 
   private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
-  HashMap<String, Command> eventMap = new HashMap<>();
 
   // The gunners controller
   private XboxController m_coDriverController = new XboxController(OIConstants.kCoDriverControllerPort);
@@ -109,6 +109,7 @@ public class RobotContainer {
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
   SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, null, null, null);
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -285,41 +286,43 @@ public class RobotContainer {
   }
 
   private void initializeAutoChooser() {
+    /*
+     *  FollowPathWithEvents
+     */
 
-    ProfiledPIDController thetaController =
-        new ProfiledPIDController(
-            AutoConstants.kPThetaController,
-            0,
-            0,
-            AutoConstants.kThetaControllerConstraints);
-    thetaController.enableContinuousInput(-Math.PI, Math.PI);
-
-    PathPlannerTrajectory testPathTwo = PathPlanner.loadPath(
-            "Testpathtwo",
-            AutoConstants.kMaxSpeedMetersPerSecond,
-            AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
-
-    // PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
-    //         "Blue0(2)",
-    //         AutoConstants.kMaxSpeedMetersPerSecond,
-    //         AutoConstants.kMaxAccelerationMetersPerSecondSquared);
-            
+    //PathPlannerTrajectory examplePath = PathPlanner.loadPath("Example Path", new PathConstrains(4, 3));
+    // // This is just an example event map. It would be better to have a constant, global event map
+    // // in your code that will be used by all path following commands.
+    // HashMap<String, Command> eventMap = new HashMap<>();
+    // eventMap.put("marker1", new PrintCommand("Passed marker 1"));
+    // eventMap.put("intakeDown", new IntakeDown());
     
-   // Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, null, null));
-    Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(getPathFollowingCommand(testPathTwo), Collections.emptyList(), Collections.emptyMap()));
+    // FollowPathWithEvents command = new FollowPathWithEvents(
+    //     getPathFollowingCommand(examplePath),
+    //     examplePath.getMarkers(),
+    //     eventMap
+    // );
 
-    m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
-    m_autoChooser.addOption("Test", autoTest);
-    // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
-    // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
+   /*
+      BASIC PATH 
+    */ 
+   // This will load the file "Example Path.path" and generate it with a max velocity of 4 m/s and a max acceleration of 3 m/s^2
 
-    SmartDashboard.putData("Auto Selector", m_autoChooser);
+   // This trajectory can then be passed to a path follower such as a PPSwerveControllerCommand
+   // Or the path can be sampled at a given point in time for custom path following
+   PathPlannerTrajectory examplePath = PathPlanner.loadPath("Example Path", new PathConstrains(4, 3));
+   // Sample the state of the path at 1.2 seconds 
+   PathPlannerState exampleState = (PathPlannerState) examplePath.sample(1.2);
+
+   // Print the velocity at the sampled time
+   System.out.println(exampleState.velocityMetersPerSecond);
 
   }
-
-  private Command getPathFollowingCommand(PathPlannerTrajectory testPathTwo) {
-    return null;
-  }
+  
+  // look at
+  // private Command getPathFollowingCommand(PathPlannerTrajectory testPathTwo) {
+  //   return null;
+  // }
 
   public void simulationPeriodic() {
     m_fieldSim.periodic();
