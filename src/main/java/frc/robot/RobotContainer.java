@@ -191,6 +191,20 @@ public class RobotContainer {
     // driver.Y_button.whenPressed(new PositionTurnModule(m_robotDrive,
     // ModulePosition.BACK_RIGHT));
 
+
+    // Gunners Buttons (lowerCase buttons)
+    JoystickButton g_OneButt = new JoystickButton(secondLeftJoystick, 1);
+    JoystickButton g_TwoButt = new JoystickButton(secondLeftJoystick, 2);
+    JoystickButton g_ThreeButt = new JoystickButton(secondLeftJoystick, 3);
+    JoystickButton g_FourButt = new JoystickButton(secondLeftJoystick, 4);
+    JoystickButton g_FiveButt = new JoystickButton(secondLeftJoystick, 5);
+    JoystickButton g_SixButt = new JoystickButton(secondLeftJoystick, 6);
+    JoystickButton g_SevenButt = new JoystickButton(secondLeftJoystick, 7);
+    JoystickButton g_EightButt = new JoystickButton(secondLeftJoystick, 8);
+    JoystickButton g_NineButt = new JoystickButton(secondLeftJoystick, 9);
+    JoystickButton g_TenButt = new JoystickButton(secondLeftJoystick, 10);
+    JoystickButton g_ElevButt = new JoystickButton(secondLeftJoystick, 11);
+    JoystickButton g_TwelButt = new JoystickButton(secondLeftJoystick, 12);
   }
 
   private void initializeAutoChooser() {
