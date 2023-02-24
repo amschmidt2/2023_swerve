@@ -69,6 +69,10 @@ public class Arm extends SubsystemBase{
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10));
     }
 
+    public void armHumanCone(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));// 31
+    }
+
 
     //Cube Posistion
     public void armHighCube(){
