@@ -17,18 +17,18 @@ public class Conveyor extends SubsystemBase{
     public Conveyor(){
 
 
-    }
+    // }
 
-    public void go(){
-        conveyorMotor.set(speed);
-    }
+    // public void go(){
+    //     conveyorMotor.set(speed);
+    // }
 
-    public void stop(){
-        conveyorMotor.set(0);
-    }
+    // public void stop(){
+    //     conveyorMotor.set(0);
+    // }
 
-    public void reverse(){
-        conveyorMotor.set(-speed);
+    // public void reverse(){
+    //     conveyorMotor.set(-speed);
     }
 
 

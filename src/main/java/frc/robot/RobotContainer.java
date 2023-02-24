@@ -38,28 +38,17 @@ import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
 import frc.robot.commands.ArmExtendCommand;
 import frc.robot.commands.ArmHoldCommand;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of f55a7d6 (save)
-import frc.robot.commands.armPositions.ArmConeFloorCommand;
-import frc.robot.commands.armPositions.ArmConeMidCommand;
-import frc.robot.commands.armPositions.ArmConeHighCommand;
-import frc.robot.commands.armPositions.ArmCubeConveyCommand;
-import frc.robot.commands.armPositions.ArmCubeFloorCommand;
-import frc.robot.commands.armPositions.ArmCubeMidCommand;
-import frc.robot.commands.armPositions.ArmHumanConeCommand;
-import frc.robot.commands.armPositions.ArmHumanCubeCommand;
-import frc.robot.commands.armPositions.ArmCubeHighCommand;
 
-<<<<<<< HEAD
-=======
->>>>>>> parent of 410e4b3 (Got code for positions :))
-=======
->>>>>>> parent of 410e4b3 (Got code for positions :))
-=======
->>>>>>> parent of f55a7d6 (save)
+// import frc.robot.commands.armPositions.ArmConeFloorCommand;
+// import frc.robot.commands.armPositions.ArmConeMidCommand;
+// import frc.robot.commands.armPositions.ArmConeHighCommand;
+// import frc.robot.commands.armPositions.ArmCubeConveyCommand;
+// import frc.robot.commands.armPositions.ArmCubeFloorCommand;
+// import frc.robot.commands.armPositions.ArmCubeMidCommand;
+// import frc.robot.commands.armPositions.ArmHumanConeCommand;
+// import frc.robot.commands.armPositions.ArmHumanCubeCommand;
+// import frc.robot.commands.armPositions.ArmCubeHighCommand;
+
 
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
@@ -211,53 +200,53 @@ public class RobotContainer {
     // ModulePosition.BACK_RIGHT));
 
 
-    // Gunners Buttons (lowerCase buttons)
-    JoystickButton g_OneButt = new JoystickButton(secondLeftJoystick, 1);
-    JoystickButton g_TwoButt = new JoystickButton(secondLeftJoystick, 2);
-    JoystickButton g_ThreeButt = new JoystickButton(secondLeftJoystick, 3);
-    JoystickButton g_FourButt = new JoystickButton(secondLeftJoystick, 4);
-    JoystickButton g_FiveButt = new JoystickButton(secondLeftJoystick, 5);
-    JoystickButton g_SixButt = new JoystickButton(secondLeftJoystick, 6);
-    JoystickButton g_SevenButt = new JoystickButton(secondLeftJoystick, 7);
-    JoystickButton g_EightButt = new JoystickButton(secondLeftJoystick, 8);
-    JoystickButton g_NineButt = new JoystickButton(secondLeftJoystick, 9);
-    JoystickButton g_TenButt = new JoystickButton(secondLeftJoystick, 10);
-    JoystickButton g_ElevButt = new JoystickButton(secondLeftJoystick, 11);
-    JoystickButton g_TwelButt = new JoystickButton(secondLeftJoystick, 12);
+    // // Gunners Buttons (lowerCase buttons)
+    // JoystickButton g_OneButt = new JoystickButton(secondLeftJoystick, 1);
+    // JoystickButton g_TwoButt = new JoystickButton(secondLeftJoystick, 2);
+    // JoystickButton g_ThreeButt = new JoystickButton(secondLeftJoystick, 3);
+    // JoystickButton g_FourButt = new JoystickButton(secondLeftJoystick, 4);
+    // JoystickButton g_FiveButt = new JoystickButton(secondLeftJoystick, 5);
+    // JoystickButton g_SixButt = new JoystickButton(secondLeftJoystick, 6);
+    // JoystickButton g_SevenButt = new JoystickButton(secondLeftJoystick, 7);
+    // JoystickButton g_EightButt = new JoystickButton(secondLeftJoystick, 8);
+    // JoystickButton g_NineButt = new JoystickButton(secondLeftJoystick, 9);
+    // JoystickButton g_TenButt = new JoystickButton(secondLeftJoystick, 10);
+    // JoystickButton g_ElevButt = new JoystickButton(secondLeftJoystick, 11);
+    // JoystickButton g_TwelButt = new JoystickButton(secondLeftJoystick, 12);
 
-    // Gunner Commands
-      // Cone Outputs
-      g_OneButt.onTrue(new ArmConeHighCommand(arm));
+  //   // Gunner Commands
+  //     // Cone Outputs
+  //     g_OneButt.onTrue(new ArmConeHighCommand(arm));
 
-      g_FiveButt.onTrue(new ArmConeMidCommand(arm));
+  //     g_FiveButt.onTrue(new ArmConeMidCommand(arm));
 
-      g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
+  //     g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
 
-      g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
-      g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
-      g_ThreeButt.onFalse(new IntakeArmStopCommand(intakeArm));
+  //     g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
+  //     g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
+  //     g_ThreeButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_SevenButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
-      g_SevenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+  //     g_SevenButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
+  //     g_SevenButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      // Cube Outputs
-      g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
+  //     // Cube Outputs
+  //     g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
 
-      g_SixButt.onTrue(new ArmCubeMidCommand(arm));
+  //     g_SixButt.onTrue(new ArmCubeMidCommand(arm));
 
-      g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
+  //     g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
 
-      g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
-      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+  //     g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+  //     g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
 
-      g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
-      g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
+  //     g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
+  //     g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
-      g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
-      g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
-      g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
-      g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
+  //     g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
+  //     g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+  //     g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
+  //     g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
+  //     g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
       
   }
 
