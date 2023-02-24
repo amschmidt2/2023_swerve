@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
-  DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 15); //object
+  DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH),15, 14); //object
   DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 0, 1); //object
   DigitalInput coolio = new DigitalInput(0); //Need to be updated
 
