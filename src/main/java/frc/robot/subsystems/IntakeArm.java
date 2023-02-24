@@ -8,7 +8,7 @@ public class IntakeArm extends SubsystemBase {
     private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
     private int intakeCurrentLimit = 25;
     private int intakeHoldCurrentLimit = 5;
-    private double intakeOutputPower = 0.8;
+    private double intakeOutputPower = 0.6;
     private double intakeHoldPower = 0.07;
 
     private boolean intakeExtended = false; 

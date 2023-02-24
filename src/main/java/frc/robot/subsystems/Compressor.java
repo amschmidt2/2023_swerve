@@ -16,7 +16,7 @@ public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
   DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 15); //object
   DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 1, 0); //object
-  DigitalInput coolio = new DigitalInput(0); //Need to be updated
+  DigitalInput lineBreak = new DigitalInput(0); //Need to be updated
 
   // DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
   // if onTrue is being pressed for like break. 
@@ -48,6 +48,19 @@ public class Compressor extends SubsystemBase {
     rightDS.set(Value.kOff);
   }
 
+  public void lineForward(){
+    if(lineBreak.isAnalogTrigger() == true){
+      leftDS.set(Value.kForward);
+      rightDS.set(Value.kForward);
+    }
+  }
+
+  public void lineReverse(){
+    if(lineBreak.isAnalogTrigger() == false){
+      leftDS.set(Value.kReverse);
+      rightDS.set(Value.kReverse);
+    }
+  }
 
 } // <-- leave this bracket 
 

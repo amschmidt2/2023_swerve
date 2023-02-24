@@ -248,6 +248,7 @@ public class RobotContainer {
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
       g_FourButt.onFalse(new ArmHoldCommand(arm));
 
       g_FiveButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
