@@ -1,7 +1,13 @@
 package frc.robot.subsystems;
+import java.beans.Encoder;
+
+import com.ctre.phoenix.motorcontrol.StickyFaults;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -12,16 +18,20 @@ public class Arm extends SubsystemBase{
     private double armOutputPower = 0.4; // speed  
     private boolean armExtended = false;
     private double armPower;
+    RelativeEncoder sir_eyespy_coder;
+    ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, new TrapezoidProfile.Constraints(300, 150));
 
 
     public Arm(){
         //armMotor.setInverted(true);
+        sir_eyespy_coder.setPosition(0);
     }
 
     @Override
     public void periodic() {
     // This method will be called once per scheduler run
     }
+
 
     public void setArmMotor(double percent){
         armMotor.set(percent);    
@@ -45,6 +55,9 @@ public class Arm extends SubsystemBase{
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of f55a7d6 (save)
     // make sure you reset your robot to 0 every time you refreash it, this way it does not 
     // over extend, also you might want a linebreak sensor that tells you when the arm is fully down
 
@@ -87,6 +100,7 @@ public class Arm extends SubsystemBase{
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),30)); // 28
     }
   
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 410e4b3 (Got code for positions :))
@@ -116,5 +130,7 @@ public class Arm extends SubsystemBase{
 >>>>>>> parent of 410e4b3 (Got code for positions :))
 =======
 >>>>>>> parent of 410e4b3 (Got code for positions :))
+=======
+>>>>>>> parent of f55a7d6 (save)
         
 } // keep brace 
