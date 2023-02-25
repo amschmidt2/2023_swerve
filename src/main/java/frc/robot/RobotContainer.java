@@ -240,7 +240,7 @@ public class RobotContainer {
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmColaspeCommand(arm));
+      g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
       g_TwelButt.onFalse(new ArmHoldCommand(arm));
 
       // Cube Outputs
