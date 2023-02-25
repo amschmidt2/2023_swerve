@@ -1,22 +1,18 @@
-package frc.robot.commands;
+package frc.robot.commands.conveyor;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Conveyor;
 
-
-public class ConveyorStopCommand extends CommandBase {
+public class ConveyorGoCommand extends CommandBase{
     Conveyor conveyor;
 
-    public ConveyorStopCommand(Conveyor conveyor){
+    public ConveyorGoCommand(Conveyor conveyor){
         addRequirements(conveyor);
         this.conveyor = conveyor;
     }
 
     public void execute(){
-        conveyor.stop();
+        conveyor.go();
     }
-
-
-
 
 } // <-- kep brace 

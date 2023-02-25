@@ -25,24 +25,23 @@ import frc.robot.Constants.DriveConstants.ModulePosition;
 //import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ToggleFieldOriented;
-// import frc.robot.commands.auto.DriveForward;
-// import frc.robot.commands.auto.FiveBallAuto;
 import frc.robot.commands.swerve.JogDriveModule;
 import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
-//import subsystems here
-import frc.robot.subsystems.DriveSubsystem;
-//import frc.robot.commands.CompressorCommandExtend;
-//import frc.robot.commands.CompressorCommandRetract;
+// import frc.robot.commands.auto.DriveForward;
+// import frc.robot.commands.auto.FiveBallAuto;
 
+import frc.robot.subsystems.DriveSubsystem;
+
+//import subsystems here
 import frc.robot.subsystems.IntakeArm;
-import frc.robot.commands.IntakeArmConeCommand;
-import frc.robot.commands.IntakeArmCubeCommand;
-import frc.robot.commands.IntakeArmStopCommand;
-import frc.robot.commands.IntakeArmConeExtractCommand;
-import frc.robot.commands.IntakeArmCubeExtractCommand;
+import frc.robot.commands.IntakeArm.IntakeArmConeCommand;
+import frc.robot.commands.IntakeArm.IntakeArmConeExtractCommand;
+import frc.robot.commands.IntakeArm.IntakeArmCubeCommand;
+import frc.robot.commands.IntakeArm.IntakeArmCubeExtractCommand;
+import frc.robot.commands.IntakeArm.IntakeArmStopCommand;
 
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.ArmColaspeCommand;
@@ -58,21 +57,26 @@ import frc.robot.commands.armPositions.ArmCubeMidCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
+import frc.robot.commands.armPositions.ArmCollaspeCommand;
 
-import frc.robot.subsystems.Compressor; 
-import frc.robot.commands.CompressorCommandExtend;
-import frc.robot.commands.CompressorCommandRetract;
-import frc.robot.commands.CompressorCommandStop;
+import frc.robot.subsystems.Compressor;
+import frc.robot.commands.compressor.CompressorCommandExtend;
+import frc.robot.commands.compressor.CompressorCommandRetract;
+import frc.robot.commands.compressor.LinebreakTrueCommand;
+import frc.robot.commands.compressor.LinebreakFalseCommand;
 
-import frc.robot.subsystems.Conveyor; 
-import frc.robot.commands.ConveyorGoCommand;
-import frc.robot.commands.ConveyorReverseCommand;
-import frc.robot.commands.ConveyorStopCommand;
+import frc.robot.subsystems.Conveyor;
+import frc.robot.commands.compressor.CompressorCommandStop;
+import frc.robot.commands.conveyor.ConveyorGoCommand;
+import frc.robot.commands.conveyor.ConveyorReverseCommand;
+import frc.robot.commands.conveyor.ConveyorStopCommand;
 
 import frc.robot.subsystems.FloorIntake;
-import frc.robot.commands.FloorIntakeCollectCommand;
-import frc.robot.commands.FloorIntakeFartCommand;
-import frc.robot.commands.FloorIntakeStopCommand;
+import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
+import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
+import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
+
+
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -235,6 +239,9 @@ public class RobotContainer {
 
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
+
+      g_TwelButt.onTrue(new ArmColaspeCommand(arm));
+      g_TwelButt.onFalse(new ArmHoldCommand(arm));
 
       // Cube Outputs
       g_OneButt.onTrue(new ArmCubeHighCommand(arm));

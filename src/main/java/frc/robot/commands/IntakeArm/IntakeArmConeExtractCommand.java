@@ -1,18 +1,21 @@
-package frc.robot.commands;
+package frc.robot.commands.IntakeArm;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.IntakeArm;
 
-public class IntakeArmCubeExtractCommand extends CommandBase{
+public class IntakeArmConeExtractCommand extends CommandBase{
     IntakeArm intakeArm;
 
-    public IntakeArmCubeExtractCommand(IntakeArm intakeArm){
+    public IntakeArmConeExtractCommand(IntakeArm intakeArm){
         addRequirements(intakeArm);
         this.intakeArm = intakeArm;
+
     }
 
     public void execute(){
-        intakeArm.extractCube();
+        intakeArm.extractCone();
     }
+
+
 
 
 } // <-- keep brace 
