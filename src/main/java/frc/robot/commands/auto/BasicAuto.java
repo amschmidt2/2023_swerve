@@ -10,7 +10,6 @@ import frc.robot.commands.swerve.SetSwerveOdometry;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class BasicAuto extends SequentialCommandGroup {
-   //DriveSubsystem swerveDrive;
     public BasicAuto(DriveSubsystem swerveDrive){
         PathPlannerTrajectory trajectory = PathPlanner.loadPath("Test Path.path", Units.feetToMeters(2),
         Units.feetToMeters(2), false);
