@@ -44,19 +44,18 @@ import frc.robot.commands.IntakeArm.IntakeArmCubeExtractCommand;
 import frc.robot.commands.IntakeArm.IntakeArmStopCommand;
 
 import frc.robot.subsystems.Arm;
-import frc.robot.commands.ArmColaspeCommand;
-import frc.robot.commands.ArmExtendCommand;
-import frc.robot.commands.ArmHoldCommand;
-
 import frc.robot.commands.armPositions.ArmConeFloorCommand;
 import frc.robot.commands.armPositions.ArmConeMidCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.commands.armPositions.ArmCubeConveyCommand;
 import frc.robot.commands.armPositions.ArmCubeFloorCommand;
 import frc.robot.commands.armPositions.ArmCubeMidCommand;
+import frc.robot.commands.armPositions.ArmExtendCommand;
+import frc.robot.commands.armPositions.ArmHoldCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
+import frc.robot.commands.armPositions.ArmColaspeCommand;
 import frc.robot.commands.armPositions.ArmCollaspeCommand;
 
 import frc.robot.subsystems.Compressor;
@@ -241,7 +240,7 @@ public class RobotContainer {
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmColaspeCommand(arm));
+      g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
       g_TwelButt.onFalse(new ArmHoldCommand(arm));
 
       // Cube Outputs
@@ -277,6 +276,8 @@ public class RobotContainer {
 
       d_leftBumper.onTrue(new CompressorCommandExtend(compressor));
       d_leftBumper.onFalse(new CompressorCommandRetract(compressor));
+      d_leftBumper.onTrue(new ArmColaspeCommand(arm));
+      d_leftBumper.onFalse(new ArmHoldCommand(arm));
       d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 

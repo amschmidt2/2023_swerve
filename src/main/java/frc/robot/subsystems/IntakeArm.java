@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 
 public class IntakeArm extends SubsystemBase {
@@ -17,6 +18,8 @@ public class IntakeArm extends SubsystemBase {
     private int lastGamePiece;
     private double intakePower;
     private int intakeAmps;
+    DigitalInput lineBreak = new DigitalInput(1); //Might need to change  
+
 
     public IntakeArm(){
 
@@ -27,36 +30,16 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public void intakeCube(){
-    //   if(intakeExtended == true){
-            intakePower = intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cube;
-        // }
-        // else if(lastGamePiece == cube){
-        //     intakePower = intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit; 
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0;
-        // }
+        intakePower = intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
+        lastGamePiece = cube;
         setIntakeMotor(intakePower, intakeAmps);
     }
 
     public void intakeCone(){
-    //  if(intakeExtended == true){
-            intakePower = -intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cone;
-        // }
-        // else if(lastGamePiece == cone){
-        //     intakePower = -intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit;
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0; 
-        // }
+        intakePower = -intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
+        lastGamePiece = cone;
         setIntakeMotor(intakePower, intakeAmps);
     }
 
@@ -64,8 +47,6 @@ public class IntakeArm extends SubsystemBase {
         intakePower = 0;
         intakeAmps = 0;  
         setIntakeMotor(intakePower, intakeAmps);
-
-
     }
 
     public void extractCone(){
