@@ -96,6 +96,10 @@ public class DriveSubsystem extends SubsystemBase {
       DriveConstants.kD_Theta,
       Constants.TrapezoidConstants.kThetaControllerConstraints);
 
+  private PIDController m_rotationController = new PIDController(
+      DriveConstants.kP_Theta, 0, DriveConstants.kD_Theta
+  );
+
   private final SwerveDrivePoseEstimator m_odometry;
   SwerveModulePosition[] mpos;
 
@@ -283,6 +287,10 @@ public class DriveSubsystem extends SubsystemBase {
 
   public ProfiledPIDController getThetaPidController() {
     return m_turnController;
+  }
+
+  public PIDController getRotationController() {
+    return m_rotationController;
   }
 
   public double getX() {
