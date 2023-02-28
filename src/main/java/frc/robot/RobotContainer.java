@@ -234,13 +234,14 @@ public class RobotContainer {
       g_NineButt.onFalse(new ArmHoldCommand(arm));
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
+      g_TenButt.onFalse(new ArmHoldCommand(arm));
       g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
+      g_TwelButt.onTrue(new ArmColaspeCommand(arm));
       g_TwelButt.onFalse(new ArmHoldCommand(arm));
 
       // Cube Outputs
