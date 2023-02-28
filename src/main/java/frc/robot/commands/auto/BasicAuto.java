@@ -10,14 +10,14 @@ import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SetSwerveOdometry;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class BasicAuto extends SequentialCommandGroup {
+public class BasicAuto extends SequentialCommandGroup{
    //DriveSubsystem swerveDrive;
-    public BasicAuto(DriveSubsystem swerveDriver){
+    public BasicAuto(DriveSubsystem swerveDrive){
         PathPlannerTrajectory trajectory = PathPlanner.loadPath("BasicAuto", Units.feetToMeters(2), 
         Units.feetToMeters(2), false);
-        PPSwerveControllerCommand testing = new PPSwerveControllerCommand(trajectory, null, null, null, null, null, null);
+        //PPSwerveControllerCommand testing = new PPSwerveControllerCommand(trajectory, null, null, null, null, null, null);
 
-
+        
         // PPSwerveControllerCommand command = new PPSwerveControllerCommand(
         //     trajectory,
         //     swerveDrive::getPoseMeters,
@@ -27,10 +27,10 @@ public class BasicAuto extends SequentialCommandGroup {
         //     swerveDrive.getThetaPidController(),
         //     swerveDrive::setSwerveModuleStatesAuto,
         //     swerveDrive);
-        // addCommands(
-        //     new SetSwerveOdometry(swerveDrive, trajectory.getInitialPose()),
-        //     command,
-        //     new SetSwerveIdleMode(swerveDrive, false)
-        //         .andThen(() -> swerveDrive.drive(0, 0, 0, false)));
+        addCommands(
+            new SetSwerveOdometry(swerveDrive, trajectory.getInitialPose()),
+            command,
+            new SetSwerveIdleMode(swerveDrive, false)
+                .andThen(() -> swerveDrive.drive(0, 0, 0, false)));
     }
 } // <-- keep brace

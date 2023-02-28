@@ -60,7 +60,7 @@ import frc.robot.commands.armPositions.ArmCubeMidCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
-
+import frc.robot.commands.auto.BasicAuto;
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.CompressorCommandExtend;
 import frc.robot.commands.CompressorCommandRetract;
@@ -287,37 +287,10 @@ public class RobotContainer {
   }
 
   private void initializeAutoChooser() {
-    /*
-     *  FollowPathWithEvents
-     */
+    m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
+    m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive));
 
-    //PathPlannerTrajectory examplePath = PathPlanner.loadPath("Example Path", new PathConstrains(4, 3));
-    // // This is just an example event map. It would be better to have a constant, global event map
-    // // in your code that will be used by all path following commands.
-    // HashMap<String, Command> eventMap = new HashMap<>();
-    // eventMap.put("marker1", new PrintCommand("Passed marker 1"));
-    // eventMap.put("intakeDown", new IntakeDown());
-    
-    // FollowPathWithEvents command = new FollowPathWithEvents(
-    //     getPathFollowingCommand(examplePath),
-    //     examplePath.getMarkers(),
-    //     eventMap
-    // );
-
-   /*
-      BASIC PATH 
-    */ 
-   // This will load the file "Example Path.path" and generate it with a max velocity of 4 m/s and a max acceleration of 3 m/s^2
-
-   // This trajectory can then be passed to a path follower such as a PPSwerveControllerCommand
-   // Or the path can be sampled at a given point in time for custom path following
-   PathPlannerTrajectory examplePath = PathPlanner.loadPath("Test Path", new PathConstraints(1, 1));
-   // Sample the state of the path at 1.2 seconds 
-   PathPlannerState exampleState = (PathPlannerState) examplePath.sample(1.2);
-
-   // Print the velocity at the sampled time
-   System.out.println(exampleState.velocityMetersPerSecond);
-
+    SmartDashboard.putData("Basic Auto", m_autoChooser);
   }
   
   // look at
