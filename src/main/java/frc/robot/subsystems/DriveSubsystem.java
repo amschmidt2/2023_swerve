@@ -109,7 +109,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private final SwerveDrivePoseEstimator m_odometry;
   SwerveModulePosition[] mpos;
-
+  SwerveModuleSparkMax[] smods;
   private boolean showOnShuffleboard = true;
 
   private SimDouble m_simAngle;// navx sim
@@ -122,10 +122,15 @@ public class DriveSubsystem extends SubsystemBase {
 
    public boolean m_fieldOriented;
 
+  private SwerveModuleSparkMax[] emptySwerveModuleArray = new SwerveModuleSparkMax[0]; // for less garbage when building ordered maps
+
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
     SwerveModulePosition[] mpos = new SwerveModulePosition[4];
     mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos);
+    // Should the above line be:
+    // mpos = ModuleMap.orderedValuesList(m_swerveModules).stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos); ?
+    smods = ModuleMap.orderedValues(m_swerveModules, emptySwerveModuleArray);
     m_odometry = new SwerveDrivePoseEstimator(kSwerveKinematics, getHeadingRotation2d(), mpos, new Pose2d());
 
     m_gyro.reset();
@@ -214,9 +219,6 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public void setModuleStates(SwerveModuleState[] states) {
-    
-    // This needs looking at.  There might need to be some mapping, as I'm not sure of the incoming state ordering
-      SwerveModuleSparkMax[] smods = m_swerveModules.values().toArray(new SwerveModuleSparkMax[1]);
       for(int i =0;i<states.length;i++) {
         smods[i].setDesiredState(states[i], true);
       }
