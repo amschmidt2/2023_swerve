@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 import com.pathplanner.lib.PathConstraints;
@@ -11,8 +12,11 @@ import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.PathPlannerTrajectory.PathPlannerState;
 import com.pathplanner.lib.commands.FollowPathWithEvents;
+import com.pathplanner.lib.PathPoint;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -291,6 +295,41 @@ public class RobotContainer {
     m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive));
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);
+    ProfiledPIDController thetaController =
+        new ProfiledPIDController(
+            AutoConstants.kPThetaController,
+            0,
+            0,
+            AutoConstants.kThetaControllerConstraints);
+    thetaController.enableContinuousInput(-Math.PI, Math.PI);
+
+    // PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
+    //         "Blue0(1)",
+    //         AutoConstants.kMaxSpeedMetersPerSecond,
+    //         AutoConstants.kMaxAngularSpeedRadiansPerSecondSquared);
+
+    // PathPlannerTrajectory autoBlue02Path = PathPlanner.loadPath(
+    //         "Blue0(2)",
+    //         AutoConstants.kMaxSpeedMetersPerSecond,
+    //         AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+
+    // Command autoTest = new SequentialCommandGroup(new FollowPathWithEvents(setSwerveDrive, Collections.emptyList(), Collections.emptyMap()));
+
+    PathPlannerTrajectory traj1 = PathPlanner.generatePath(
+      new PathConstraints(4, 3), 
+      new PathPoint(new Translation2d(1.0, 1.0), Rotation2d.fromDegrees(0)), // position, heading
+      new PathPoint(new Translation2d(3.0, 3.0), Rotation2d.fromDegrees(45)) // position, heading
+    );
+    Command followCommand = m_robotDrive.followTrajectoryCommand(traj1, true);
+
+
+    m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
+    m_autoChooser.addOption("Test", followCommand);
+    // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
+    // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
+
+    SmartDashboard.putData("Auto Selector", m_autoChooser);
+
   }
   
   // look at
