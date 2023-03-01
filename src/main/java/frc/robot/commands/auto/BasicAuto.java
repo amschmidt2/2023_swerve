@@ -11,7 +11,7 @@ import frc.robot.subsystems.DriveSubsystem;
 
 public class BasicAuto extends SequentialCommandGroup {
     public BasicAuto(DriveSubsystem swerveDrive){
-        PathPlannerTrajectory trajectory = PathPlanner.loadPath("Test Path.path", Units.feetToMeters(2),
+        PathPlannerTrajectory trajectory = PathPlanner.loadPath("BasicAuto.path", Units.feetToMeters(2),
         Units.feetToMeters(2), false);
 
         PPSwerveControllerCommand command = new PPSwerveControllerCommand(
