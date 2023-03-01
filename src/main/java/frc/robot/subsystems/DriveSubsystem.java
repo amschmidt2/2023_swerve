@@ -126,10 +126,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    SwerveModulePosition[] mpos = new SwerveModulePosition[4];
-
-    // Should the above line be:
-    // mpos = ModuleMap.orderedValuesList(m_swerveModules).stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos); ?
+    SwerveModulePosition[] mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(emptySmp);
     smods = ModuleMap.orderedValues(m_swerveModules, emptySwerveModuleArray);
     m_odometry = new SwerveDrivePoseEstimator(kSwerveKinematics, getHeadingRotation2d(), mpos, new Pose2d());
 
