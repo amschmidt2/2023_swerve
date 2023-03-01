@@ -122,6 +122,7 @@ public class DriveSubsystem extends SubsystemBase {
    public boolean m_fieldOriented;
 
   private SwerveModuleSparkMax[] emptySwerveModuleArray = new SwerveModuleSparkMax[0]; // for less garbage when building ordered maps
+  SwerveModulePosition[] emptySmp = new SwerveModulePosition[0];
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
@@ -257,7 +258,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void setOdometry(Pose2d pose) {
-    SwerveModulePosition[] mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos);
+    SwerveModulePosition[] mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(emptySmp);
     m_odometry.resetPosition(pose.getRotation(), mpos, pose);
     m_gyro.reset();
 
