@@ -108,7 +108,6 @@ public class DriveSubsystem extends SubsystemBase {
   );
 
   private final SwerveDrivePoseEstimator m_odometry;
-  SwerveModulePosition[] mpos;
   SwerveModuleSparkMax[] smods;
   private boolean showOnShuffleboard = true;
 
@@ -127,7 +126,7 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
     SwerveModulePosition[] mpos = new SwerveModulePosition[4];
-    mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos);
+
     // Should the above line be:
     // mpos = ModuleMap.orderedValuesList(m_swerveModules).stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos); ?
     smods = ModuleMap.orderedValues(m_swerveModules, emptySwerveModuleArray);
@@ -258,6 +257,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void setOdometry(Pose2d pose) {
+    SwerveModulePosition[] mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(mpos);
     m_odometry.resetPosition(pose.getRotation(), mpos, pose);
     m_gyro.reset();
 
