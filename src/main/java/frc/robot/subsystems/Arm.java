@@ -85,7 +85,7 @@ public class Arm extends SubsystemBase{
 
     //Cone Position 
     public void armHighCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 32));//40 //32
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40));//40 
     }
 
     public void armMidCone(){

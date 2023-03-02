@@ -18,8 +18,8 @@ public class LimeLight extends SubsystemBase{
 
     public void calculate(){
         vogue();
-        SmartDashboard.putNumber("Limelight_Vision0", le_angles[0]);
-        SmartDashboard.putNumber("Limelight_Vision1", le_angles[1]);
+       // SmartDashboard.putNumber("Limelight_Vision0", le_angles[0]);
+       // SmartDashboard.putNumber("Limelight_Vision1", le_angles[1]);
     }
 
     public void vogue(){
