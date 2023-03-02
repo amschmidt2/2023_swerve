@@ -123,7 +123,7 @@ public class DriveSubsystem extends SubsystemBase {
 
     setIdleMode(true);
 
-    m_fieldOriented=false;
+    m_fieldOriented=true;
 
     if (RobotBase.isSimulation()) {
 
