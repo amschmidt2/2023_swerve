@@ -177,6 +177,9 @@ public class DriveSubsystem extends SubsystemBase {
     // Update the odometry in the periodic block
     updateOdometry();
     SmartDashboard.putNumber("Yaw",-m_gyro.getYaw());
+    SmartDashboard.putNumber("pose x:", getPoseMeters().getX());
+SmartDashboard.putNumber("pose y:", getPoseMeters().getY());
+
 
   }
 
