@@ -11,7 +11,7 @@ public class LinebreakFalseCommand extends CommandBase {
     }
 
     public void execute(){
-        compressor.lineForward();
+     //   compressor.lineForward();
     }
 
 }

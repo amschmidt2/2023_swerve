@@ -18,7 +18,7 @@ public class IntakeArm extends SubsystemBase {
     private int lastGamePiece;
     private double intakePower;
     private int intakeAmps;
-    DigitalInput lineBreak = new DigitalInput(1); //Might need to change  
+   // DigitalInput lineBreak = new DigitalInput(1); //Might need to change  
 
 
     public IntakeArm(){

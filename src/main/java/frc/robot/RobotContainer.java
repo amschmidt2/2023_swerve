@@ -44,6 +44,8 @@ import frc.robot.commands.IntakeArm.IntakeArmCubeExtractCommand;
 import frc.robot.commands.IntakeArm.IntakeArmStopCommand;
 
 import frc.robot.subsystems.Arm;
+import edu.wpi.first.wpilibj.DigitalInput;
+
 import frc.robot.commands.armPositions.ArmConeFloorCommand;
 import frc.robot.commands.armPositions.ArmConeMidCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
@@ -105,7 +107,8 @@ public class RobotContainer {
   static Joystick leftJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
   static Joystick rightJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
 
-  
+  public DigitalInput FloorlineBreak = new DigitalInput(0); 
+  public DigitalInput ArmLineBreak = new DigitalInput(3);
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
@@ -331,6 +334,33 @@ public class RobotContainer {
     // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
 
     //SmartDashboard.putData("Auto Selector", m_autoChooser);
+    public boolean FLB_sight(){
+      if(FloorlineBreak.get() == true){
+        System.out.println("I see nothing");
+        return true;
+      }
+      else{
+        System.out.println("CUBE!!");
+        return false;
+      }
+    }
+  
+    public boolean AILB_sight(){
+      if(ArmLineBreak.get() == true){
+        System.out.println("I see nothing NOTHING");
+        return true;
+      }
+      else{
+        System.out.println(" UP CUBE!");
+        return false;
+      }
+    }
+  
+  
+  
+  
+  
+  
 
  // }
 

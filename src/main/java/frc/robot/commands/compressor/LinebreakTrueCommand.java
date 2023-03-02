@@ -11,7 +11,7 @@ public class LinebreakTrueCommand extends CommandBase {
     }
 
     public void execute(){
-        compressor.lineReverse();
+     //   compressor.lineReverse();
     }
 
 } // <-- keep brace 
