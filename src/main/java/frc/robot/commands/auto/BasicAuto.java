@@ -3,7 +3,6 @@ import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SetSwerveOdometry;
@@ -11,8 +10,8 @@ import frc.robot.subsystems.DriveSubsystem;
 
 public class BasicAuto extends SequentialCommandGroup {
     public BasicAuto(DriveSubsystem swerveDrive){
-        PathPlannerTrajectory trajectory = PathPlanner.loadPath("BasicAuto", Units.feetToMeters(2),
-        Units.feetToMeters(2), false);
+        PathPlannerTrajectory trajectory = PathPlanner.loadPath("BasicAuto", 4,
+        3, false);
 
         PPSwerveControllerCommand command = new PPSwerveControllerCommand(
             trajectory,
