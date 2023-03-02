@@ -96,21 +96,21 @@ public final class Constants {
     public static final double kvVoltSecondsPerMeter = 0.8;
     public static final double kaVoltSecondsSquaredPerMeter = 0.15;
 
-    public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxSpeedMetersPerSecond = 4.4196;
 
-    public static final double kMaxRotationRadiansPerSecond = Math.PI;
-    public static final double kMaxRotationRadiansPerSecondSquared = Math.PI;
+    public static final double kMaxRotationRadiansPerSecond = 4.4196;
+    public static final double kMaxRotationRadiansPerSecondSquared = 4;
 
-    public static final double kP_X = .2;
+    public static final double kP_X = 5;
     public static final double kD_X = 0;
-    public static final double kP_Y = .2;
+    public static final double kP_Y = 5;
     public static final double kD_Y = 0;
-    public static final double kP_Theta = 8;
+    public static final double kP_Theta = 5;
     public static final double kD_Theta = 0;
     public static double kTranslationSlew = 1.55;
     public static double kRotationSlew = 3.00;
     public static double kControllerDeadband = .05;
-    public static double kControllerRotDeadband = .1;
+    public static double kControllerRotDeadband = .05;
     
     public static double kVoltCompensation=12.6;
 

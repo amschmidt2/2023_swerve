@@ -158,16 +158,16 @@ public class DriveSubsystem extends SubsystemBase {
                 getHeadingRotation2d(),
                 ModuleMap.orderedValues(getModulePositions(), new SwerveModulePosition[0]));
               
-              // m_odometry.update(gyroAngle, modulePositions)
+              // m_odometry.update(gyroAngle, modulePositions);
            }
          }),
          new PPSwerveControllerCommand(
              traj, 
              this::getPoseMeters, // Pose supplier
              kSwerveKinematics, // SwerveDriveKinematics
-             new PIDController(0, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-             new PIDController(0, 0, 0), // Y controller (usually the same values as X controller)
-             new PIDController(0, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+             new PIDController(8, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+             new PIDController(8, 0, 0), // Y controller (usually the same values as X controller)
+             new PIDController(8, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
              this::setModuleStates, // Module states consumer
             //  true, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
              this // Requires this drive subsystem
@@ -226,6 +226,9 @@ public class DriveSubsystem extends SubsystemBase {
     // Update the odometry in the periodic block
     updateOdometry();
     SmartDashboard.putNumber("Yaw",-m_gyro.getYaw());
+    SmartDashboard.putNumber("pose x:", getPoseMeters().getX());
+    SmartDashboard.putNumber("pose y:", getPoseMeters().getY());
+    
 
   }
 

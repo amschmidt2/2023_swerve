@@ -123,9 +123,9 @@ public class SwerveModuleSparkMax extends SubsystemBase {
 
     m_driveMotor.restoreFactoryDefaults();
 
-    m_turningMotor.setSmartCurrentLimit(20);
+    m_turningMotor.setSmartCurrentLimit(30);
 
-    m_driveMotor.setSmartCurrentLimit(20);
+    m_driveMotor.setSmartCurrentLimit(30);
 
     m_driveMotor.enableVoltageCompensation(DriveConstants.kVoltCompensation);
 
