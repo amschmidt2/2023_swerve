@@ -224,16 +224,16 @@ public class RobotContainer {
       // Gunner Commands
       // Cone Outputs
       g_SevenButt.onTrue(new ArmConeHighCommand(arm));
-      g_SevenButt.onFalse(new ArmHoldCommand(arm));
+      g_SevenButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_EightButt.onTrue(new ArmConeMidCommand(arm));
-      g_EightButt.onFalse(new ArmHoldCommand(arm));
+      g_EightButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
-      g_NineButt.onFalse(new ArmHoldCommand(arm));
+      g_NineButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
-      g_TenButt.onFalse(new ArmHoldCommand(arm));
+      g_TenButt.onFalse(new ArmCollaspeCommand(arm));
       g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
@@ -241,22 +241,22 @@ public class RobotContainer {
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
       g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
-      g_TwelButt.onFalse(new ArmHoldCommand(arm));
+      g_TwelButt.onFalse(new ArmCollaspeCommand(arm));
 
       // Cube Outputs
       g_OneButt.onTrue(new ArmCubeHighCommand(arm));
-      g_OneButt.onFalse(new ArmHoldCommand(arm));
+      g_OneButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_TwoButt.onTrue(new ArmCubeMidCommand(arm));
-      g_TwoButt.onFalse(new ArmHoldCommand(arm));
+      g_TwoButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
-      g_ThreeButt.onFalse(new ArmHoldCommand(arm));
+      g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
       g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
-      g_FourButt.onFalse(new ArmHoldCommand(arm));
+      g_FourButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_FiveButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
       g_FiveButt.onFalse(new IntakeArmStopCommand(intakeArm));
