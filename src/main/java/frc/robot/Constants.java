@@ -94,9 +94,9 @@ public final class Constants {
     public static final double kvVoltSecondsPerMeter = 0.8;
     public static final double kaVoltSecondsSquaredPerMeter = 0.15;
 
-    public static final double kMaxSpeedMetersPerSecond = 4.55;
+    public static final double kMaxSpeedMetersPerSecond = 4;// max of 4.55 starting at 3 
 
-    public static final double kMaxRotationRadiansPerSecond = 3.14;
+    public static final double kMaxRotationRadiansPerSecond = 3.5;// starting 3.14 attempt 4.0 moved back down
     public static final double kMaxRotationRadiansPerSecondSquared = 3.14;
 
     public static final double kP_X = 0.2;
