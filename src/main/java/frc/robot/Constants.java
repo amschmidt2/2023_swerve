@@ -41,7 +41,7 @@ public final class Constants {
     public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 2;//6
     public static final int BACK_LEFT_MODULE_STEER_MOTOR = 1;//5
     public static final int BACK_LEFT_MODULE_STEER_CANCODER = 30;//32
-    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 21.8;//21.8   //52.4
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 37;//21.8   //52.4
 
     public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 4;//8
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 3;//7
@@ -96,8 +96,8 @@ public final class Constants {
 
     public static final double kMaxSpeedMetersPerSecond = 4.55;
 
-    public static final double kMaxRotationRadiansPerSecond = 4;
-    public static final double kMaxRotationRadiansPerSecondSquared = 4;
+    public static final double kMaxRotationRadiansPerSecond = 3.14;
+    public static final double kMaxRotationRadiansPerSecondSquared = 3.14;
 
     public static final double kP_X = 0.2;
     public static final double kD_X = 0;
