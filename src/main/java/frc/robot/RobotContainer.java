@@ -125,8 +125,10 @@ public class RobotContainer {
     Pref.addMissing();
     SmartDashboard.putData("Scheduler", CommandScheduler.getInstance());
     // Configure the button bindings
-
+    
     m_fieldSim.initSim();
+
+
    // initializeAutoChooser();
     // sc.showAll();
     // Configure default commands
@@ -237,8 +239,9 @@ public class RobotContainer {
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
       g_TenButt.onFalse(new ArmCollaspeCommand(arm));
-      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+    
 
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
@@ -256,7 +259,7 @@ public class RobotContainer {
       g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
       g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+      g_FourButt.onTrue(new ArmHumanCubeCommand(arm).until(ArmLineBreak :: get));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
       g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
       g_FourButt.onFalse(new ArmCollaspeCommand(arm));
