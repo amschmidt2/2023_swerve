@@ -43,7 +43,7 @@ public final class Constants {
     public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 2;//6
     public static final int BACK_LEFT_MODULE_STEER_MOTOR = 1;//5
     public static final int BACK_LEFT_MODULE_STEER_CANCODER = 30;//32
-    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 21.8;//52.4
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 37;//52.4
 
     public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 4;//8
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 3;//7
@@ -144,9 +144,9 @@ public final class Constants {
     // ModuleConfiguration MK4I_L1
     public static final double kWheelDiameterMeters = Units.inchesToMeters(4);
 
-    public static double mk4iL1DriveGearRatio = 1 / ((14.0 / 50.0) * (27.0 / 17.0) * (15.0 / 45.0));// 8.14 .122807
+    public static double mk4iL1DriveGearRatio = 1/ ((14.0 / 50.0) * (27.0 / 17.0) * (15.0 / 45.0));// 8.14 .122807
 
-    public static double mk4iL1TurnGearRatio = 1 / ((14.0 / 50.0) * (10.0 / 60.0));// 21.43 1/.046667
+    public static double mk4iL1TurnGearRatio = 1/((14.0 / 50.0) * (10.0 / 60.0));// 21.43 1/.046667
 
     public static final double kDriveMetersPerEncRev =
 
