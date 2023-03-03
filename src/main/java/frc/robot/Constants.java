@@ -190,9 +190,9 @@ public final class Constants {
 
   public static final class TrapezoidConstants {
     
-    public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxSpeedMetersPerSecond = 3.8;
 
-    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 3.8;
 
     // public static final double kMaxAngularSpeedDegreesPerSecond = 800;
 
