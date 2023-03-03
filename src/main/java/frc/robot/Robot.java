@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
 
     m_robotContainer.m_robotDrive.throttleValue = m_robotContainer.getThrottle();
     m_robotContainer.AILB_sight();
-    m_robotContainer.FLB_sight();
+   // m_robotContainer.FLB_sight();
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

@@ -239,7 +239,7 @@ public class RobotContainer {
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
       g_TenButt.onFalse(new ArmCollaspeCommand(arm));
-      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
     
 
@@ -259,8 +259,8 @@ public class RobotContainer {
       g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
       g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_FourButt.onTrue(new ArmHumanCubeCommand(arm).until(ArmLineBreak :: get));
-      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
       g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
       g_FourButt.onFalse(new ArmCollaspeCommand(arm));
 
