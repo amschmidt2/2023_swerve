@@ -275,7 +275,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
   }
 
   public SwerveModulePosition getPosition() {
-    return new SwerveModulePosition(m_driveEncoder.getPositionConversionFactor()* m_driveEncoder.getPosition(), getHeadingRotation2d());
+    return new SwerveModulePosition(m_driveEncoder.getPosition(), getHeadingRotation2d());
   }
 
   public SwerveModuleState getState() {
