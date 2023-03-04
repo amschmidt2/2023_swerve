@@ -239,7 +239,8 @@ public class RobotContainer {
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
       g_TenButt.onFalse(new ArmCollaspeCommand(arm));
-      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
+      //g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
     
 
@@ -260,7 +261,8 @@ public class RobotContainer {
       g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
-      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
+      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+     // g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
       g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
       g_FourButt.onFalse(new ArmCollaspeCommand(arm));
 
@@ -282,7 +284,7 @@ public class RobotContainer {
 
       d_leftBumper.onTrue(new CompressorCommandExtend(compressor));
       d_leftBumper.onFalse(new CompressorCommandRetract(compressor));
-      d_leftBumper.onTrue(new ArmColaspeCommand(arm));
+      d_leftBumper.onTrue(new ArmCollaspeCommand(arm));
       d_leftBumper.onFalse(new ArmHoldCommand(arm));
       d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
