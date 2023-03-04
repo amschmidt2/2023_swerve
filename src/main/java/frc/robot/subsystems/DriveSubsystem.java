@@ -229,25 +229,29 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("pose x:", getPoseMeters().getX());
     SmartDashboard.putNumber("pose y:", getPoseMeters().getY());
     SmartDashboard.putNumber("Mod_1", smods[0].m_driveEncoder.getPosition());
+    SmartDashboard.putNumber("Mod_2", smods[1].m_driveEncoder.getPosition());
     
 
   }
 
   public void updateOdometry() {
-    m_odometry.update(
-        getHeadingRotation2d(),
-        ModuleMap.orderedValues(getModulePositions(), new SwerveModulePosition[0]));
-
-    for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) {
-      Translation2d modulePositionFromChassis = DriveConstants.kModuleTranslations
-          .get(module.getModulePosition())
-          .rotateBy(getHeadingRotation2d())
-          .plus(getPoseMeters().getTranslation());
-      module.setModulePose(
-          new Pose2d(
-              modulePositionFromChassis,
-              module.getHeadingRotation2d().plus(getHeadingRotation2d())));
-    }
+    // m_odometry.update(
+    //     getHeadingRotation2d(),
+    //     ModuleMap.orderedValues(getModulePositions(), new SwerveModulePosition[0]));
+    SwerveModulePosition[] mpos = m_swerveModules.values().stream().map(module -> module.getPosition()).collect(Collectors.toList()).toArray(emptySmp);
+    m_odometry.update(getHeadingRotation2d(), mpos);
+    SmartDashboard.putNumber("FL_pos", mpos[0].distanceMeters);
+    SmartDashboard.putNumber("BL_pos", mpos[2].distanceMeters);
+    // for (SwerveModuleSparkMax module : ModuleMap.orderedValuesList(m_swerveModules)) {
+    //   Translation2d modulePositionFromChassis = DriveConstants.kModuleTranslations
+    //       .get(module.getModulePosition())
+    //       .rotateBy(getHeadingRotation2d())
+    //       .plus(getPoseMeters().getTranslation());
+    //   module.setModulePose(
+    //       new Pose2d(
+    //           modulePositionFromChassis,
+    //           module.getHeadingRotation2d().plus(getHeadingRotation2d())));
+    // }
   }
 
   public Pose2d getPoseMeters() {
