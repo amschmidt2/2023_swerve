@@ -77,6 +77,10 @@ import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 
+//Auto Imports
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+
 
 
 /*
@@ -109,6 +113,15 @@ public class RobotContainer {
 
   public DigitalInput FloorlineBreak = new DigitalInput(0); 
   public DigitalInput ArmLineBreak = new DigitalInput(3);
+
+  //Change Auto Here
+  private static final String kDefaultAuto = "Default";
+  private static final String kCustomAuto = "My Auto";
+  private String m_autoSelected;
+  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  Timer timmy = new Timer();
+  SpyLord archie = new SpyLord("archie");
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
@@ -362,6 +375,53 @@ public class RobotContainer {
     }
   
   
+  public class SpyLord{
+    private String auto [][] = {
+      {"Arm High Cube", "None"}
+    };
+
+
+    private String name;
+    private int autonomous_counter = 0;
+    private double lil_sam = 0;
+    private String[][] spyroom;
+
+    public SpyLord(String name){
+      this.name = name;
+      this.spyroom = auto; // Auto names go here
+    }
+
+    public void start(){
+      timmy.reset();
+      timmy.start();
+      briefcase(spyroom[0][0]);
+      lil_sam = lil_sam + Double.parseDouble(spyroom[0][2]);
+    }
+
+    public void check(){
+      if(timmy.get() > lil_sam){
+        briefcase(spyroom[autonomous_counter][1]);
+        autonomous_counter++;
+        briefcase(spyroom[autonomous_counter][0]);
+        lil_sam = lil_sam + Double.parseDouble(spyroom[autonomous_counter][2]);
+      }
+    }
+
+
+    private void briefcase(String task){
+      System.out.println(task);
+      switch(task){
+        case "Arm High Cube":
+        System.out.println("High Cube");
+        new ArmCubeHighCommand(arm);
+        break;
+        case "None":
+          System.out.println("Nothing");
+          break;
+      }
+    }
+
+  } // <-- keep brace
   
   
   
