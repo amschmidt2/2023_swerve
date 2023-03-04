@@ -20,5 +20,10 @@ public class IntakeArmCubeCommand extends CommandBase {
         return intakeExtended;
     }
 
+    @Override
+    public void end(boolean interrupted){
+        intakeArm.stopArmIntake();
+    }
+
 
 }// <-- keep brace

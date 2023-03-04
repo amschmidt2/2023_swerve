@@ -239,8 +239,13 @@ public class RobotContainer {
 
       g_TenButt.onTrue(new ArmHumanConeCommand(arm));
       g_TenButt.onFalse(new ArmCollaspeCommand(arm));
+<<<<<<< HEAD
       g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
       //g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
+=======
+     // g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
+>>>>>>> 164fa9663f21ad97067f562b3764e91afe847f37
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
     
 
@@ -261,8 +266,13 @@ public class RobotContainer {
       g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+<<<<<<< HEAD
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
      // g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get).andThen(new IntakeArmStopCommand(intakeArm)));
+=======
+     // g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get));
+      g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+>>>>>>> 164fa9663f21ad97067f562b3764e91afe847f37
       g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
       g_FourButt.onFalse(new ArmCollaspeCommand(arm));
 

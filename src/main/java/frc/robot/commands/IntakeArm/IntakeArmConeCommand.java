@@ -19,4 +19,9 @@ public class IntakeArmConeCommand extends CommandBase{
   public boolean isIntakeExtended() {
     return intakeExtended;
   }
+
+  @Override
+  public void end(boolean interrupted){
+    intakeArm.stopArmIntake();
+  }
   }
