@@ -30,25 +30,25 @@ public final class Constants {
 
   public static final class CanConstants {
 
-    public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 8;//4
-    public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 7;//3
-    public static final int FRONT_LEFT_MODULE_STEER_CANCODER = 33;//31
-    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 72.3;// -Math.toRadians(0.0);// 309.8
+    public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 4;//8
+    public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 3;//7
+    public static final int FRONT_LEFT_MODULE_STEER_CANCODER = 22;//33
+    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 177.1; //72.3
 
-    public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 6;//2
-    public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 5;//1
-    public static final int FRONT_RIGHT_MODULE_STEER_CANCODER = 32;//30
-    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = 52.4;//-Math.toRadians(-42); 21.8
+    public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 6;//6
+    public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 5;//5
+    public static final int FRONT_RIGHT_MODULE_STEER_CANCODER = 23;//32
+    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = 190.4;//52.4
 
-    public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 2;//6
-    public static final int BACK_LEFT_MODULE_STEER_MOTOR = 1;//5
-    public static final int BACK_LEFT_MODULE_STEER_CANCODER = 30;//32
-    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 37;//52.4
+    public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 2;//2
+    public static final int BACK_LEFT_MODULE_STEER_MOTOR = 1;//1
+    public static final int BACK_LEFT_MODULE_STEER_CANCODER = 21;//30
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 84.1;//37
 
-    public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 4;//8
-    public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 3;//7
-    public static final int BACK_RIGHT_MODULE_STEER_CANCODER = 31;// 33
-    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = 309.8;//-Math.toRadians(-105) 72.3
+    public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 8;//4
+    public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 7;//3
+    public static final int BACK_RIGHT_MODULE_STEER_CANCODER = 24;// 31
+    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = 5.1;//309.8
 
   }
 
@@ -64,9 +64,9 @@ public final class Constants {
     public static final boolean kFrontRightDriveMotorReversed = true;
     public static final boolean kBackRightDriveMotorReversed = true;
 
-    public static final double kTrackWidth = Units.inchesToMeters(20.75);
+    public static final double kTrackWidth = Units.inchesToMeters(17.25);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(20.75);
+    public static final double kWheelBase = Units.inchesToMeters(24);
 
     public enum ModulePosition {
       FRONT_LEFT,
@@ -96,7 +96,7 @@ public final class Constants {
     public static final double kvVoltSecondsPerMeter = 0.8;
     public static final double kaVoltSecondsSquaredPerMeter = 0.15;
 
-    public static final double kMaxSpeedMetersPerSecond = 4.4196;
+    public static final double kMaxSpeedMetersPerSecond = 3;
 
     public static final double kMaxRotationRadiansPerSecond = 4.4196;
     public static final double kMaxRotationRadiansPerSecondSquared = 4;
