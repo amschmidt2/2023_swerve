@@ -14,6 +14,8 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.EventImportance;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -78,10 +80,8 @@ import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 
 //Auto Imports
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-
-
+//import frc.robot.subsystems.Auto;
+import frc.robot.commands.auto.FirstAuto;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -115,19 +115,19 @@ public class RobotContainer {
   public DigitalInput ArmLineBreak = new DigitalInput(3);
 
   //Change Auto Here
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  // private static final String kDefaultAuto = "Default";
+  // private static final String kCustomAuto = "My Auto";
+  // private String m_autoSelected;
+  // private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  Timer timmy = new Timer();
-  SpyLord archie = new SpyLord("archie");
+  //Auto archie = new Auto("archie");
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
   SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, null, null, null);
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -141,7 +141,37 @@ public class RobotContainer {
     
     m_fieldSim.initSim();
 
+    Command m_firstAuto = new FirstAuto(m_robotDrive, arm, compressor, floorIntake, conveyor, intakeArm);
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+    Shuffleboard.getTab("Autonomous").add(m_chooser);
+
+    m_chooser.setDefaultOption("First Auto", m_firstAuto);
+
+
+    //
+    CommandScheduler.getInstance()
+      .onCommandInitialize(
+        command ->
+            Shuffleboard.addEventMarker(
+              "Command initialized", command.getName(), EventImportance.kNormal));
+    CommandScheduler.getInstance()
+      .onCommandExecute(
+        command ->
+          Shuffleboard.addEventMarker(
+            "Command executed", command.getName(), EventImportance.kNormal));
+   CommandScheduler.getInstance()
+      .onCommandFinish(
+        command ->
+          Shuffleboard.addEventMarker(
+            "Command finished", command.getName(), EventImportance.kNormal));
+    CommandScheduler.getInstance()
+      .onCommandInterrupt(
+        command ->
+          Shuffleboard.addEventMarker(
+              "Command interrupted", command.getName(), EventImportance.kNormal));  
+    
+    
    // initializeAutoChooser();
     // sc.showAll();
     // Configure default commands
@@ -375,53 +405,7 @@ public class RobotContainer {
     }
   
   
-  public class SpyLord{
-    private String auto [][] = {
-      {"Arm High Cube", "None"}
-    };
-
-
-    private String name;
-    private int autonomous_counter = 0;
-    private double lil_sam = 0;
-    private String[][] spyroom;
-
-    public SpyLord(String name){
-      this.name = name;
-      this.spyroom = auto; // Auto names go here
-    }
-
-    public void start(){
-      timmy.reset();
-      timmy.start();
-      briefcase(spyroom[0][0]);
-      lil_sam = lil_sam + Double.parseDouble(spyroom[0][2]);
-    }
-
-    public void check(){
-      if(timmy.get() > lil_sam){
-        briefcase(spyroom[autonomous_counter][1]);
-        autonomous_counter++;
-        briefcase(spyroom[autonomous_counter][0]);
-        lil_sam = lil_sam + Double.parseDouble(spyroom[autonomous_counter][2]);
-      }
-    }
-
-
-    private void briefcase(String task){
-      System.out.println(task);
-      switch(task){
-        case "Arm High Cube":
-        System.out.println("High Cube");
-        new ArmCubeHighCommand(arm);
-        break;
-        case "None":
-          System.out.println("Nothing");
-          break;
-      }
-    }
-
-  } // <-- keep brace
+  
   
   
   
