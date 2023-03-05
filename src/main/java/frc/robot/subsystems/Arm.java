@@ -25,7 +25,7 @@ public class Arm extends SubsystemBase{
     SparkMaxPIDController PID;
     RelativeEncoder sir_eyespy_coder;
     TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints(300, 150);
-    ProfiledPIDController controller = new ProfiledPIDController(0.05, 0, 0, m_Constraints, kDt);
+    ProfiledPIDController controller = new ProfiledPIDController(0.07, 0, 0, m_Constraints, kDt);
 
 
     public Arm(){
@@ -85,7 +85,7 @@ public class Arm extends SubsystemBase{
 
     //Cone Position 
     public void armHighCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40));//40 
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));//40 
     }
 
     public void armMidCone(){
@@ -107,7 +107,7 @@ public class Arm extends SubsystemBase{
 
     //Cube Posistion
     public void armHighCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40));//40 // 30
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));//40 // 30
     }
 
     public void armMidCube(){
