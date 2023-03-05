@@ -292,7 +292,7 @@ public class RobotContainer {
 
   private void initializeAutoChooser() {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
-    m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive));
+    m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =

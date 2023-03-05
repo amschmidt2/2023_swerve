@@ -92,6 +92,14 @@ public class Arm extends SubsystemBase{
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15));// 18
     }
 
+    public boolean isAtHighSetpoint(){
+      System.out.println("======="+sir_eyespy_coder.getPosition());
+      if(sir_eyespy_coder.getPosition() > 31){
+        return true;
+      }
+      return false;
+    }
+
     public void armFloorCone(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10)); // 10
     }

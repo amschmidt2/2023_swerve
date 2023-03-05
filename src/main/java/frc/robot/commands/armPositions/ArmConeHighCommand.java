@@ -14,5 +14,7 @@ public class ArmConeHighCommand extends CommandBase{
         arm.armHighCone();
     }
 
-    
+    public boolean isFinished(){
+        return arm.isAtHighSetpoint(); 
+    }
 } // <-- keep brace
