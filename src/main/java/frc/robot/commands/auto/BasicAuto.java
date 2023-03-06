@@ -4,7 +4,7 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.IntakeArmConeExtractCommand;
+import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SetSwerveOdometry;

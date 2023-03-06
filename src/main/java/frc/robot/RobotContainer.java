@@ -44,16 +44,16 @@ import frc.robot.subsystems.DriveSubsystem;
 //import frc.robot.commands.CompressorCommandRetract;
 
 import frc.robot.subsystems.IntakeArm;
-import frc.robot.commands.IntakeArmConeCommand;
-import frc.robot.commands.IntakeArmCubeCommand;
-import frc.robot.commands.IntakeArmStopCommand;
-import frc.robot.commands.IntakeArmConeExtractCommand;
-import frc.robot.commands.IntakeArmCubeExtractCommand;
+import frc.robot.commands.armIntake.IntakeArmConeCommand;
+import frc.robot.commands.armIntake.IntakeArmCubeCommand;
+import frc.robot.commands.armIntake.IntakeArmStopCommand;
+import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
+import frc.robot.commands.armIntake.IntakeArmCubeExtractCommand;
 
 import frc.robot.subsystems.Arm;
-import frc.robot.commands.ArmColaspeCommand;
-import frc.robot.commands.ArmExtendCommand;
-import frc.robot.commands.ArmHoldCommand;
+import frc.robot.commands.armPositions.ArmColaspeCommand;
+import frc.robot.commands.armPositions.ArmExtendCommand;
+import frc.robot.commands.armPositions.ArmHoldCommand;
 
 import frc.robot.commands.armPositions.ArmConeFloorCommand;
 import frc.robot.commands.armPositions.ArmConeMidCommand;
@@ -65,20 +65,21 @@ import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
 import frc.robot.commands.auto.BasicAuto;
+import frc.robot.commands.auto.HighCube;
 import frc.robot.subsystems.Compressor; 
-import frc.robot.commands.CompressorCommandExtend;
-import frc.robot.commands.CompressorCommandRetract;
-import frc.robot.commands.CompressorCommandStop;
+import frc.robot.commands.compressor.CompressorCommandExtend;
+import frc.robot.commands.compressor.CompressorCommandRetract;
+import frc.robot.commands.compressor.CompressorCommandStop;
 
 import frc.robot.subsystems.Conveyor; 
-import frc.robot.commands.ConveyorGoCommand;
-import frc.robot.commands.ConveyorReverseCommand;
-import frc.robot.commands.ConveyorStopCommand;
+import frc.robot.commands.conveyor.ConveyorGoCommand;
+import frc.robot.commands.conveyor.ConveyorReverseCommand;
+import frc.robot.commands.conveyor.ConveyorStopCommand;
 
 import frc.robot.subsystems.FloorIntake;
-import frc.robot.commands.FloorIntakeCollectCommand;
-import frc.robot.commands.FloorIntakeFartCommand;
-import frc.robot.commands.FloorIntakeStopCommand;
+import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
+import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
+import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -293,6 +294,7 @@ public class RobotContainer {
   private void initializeAutoChooser() {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
     m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =
