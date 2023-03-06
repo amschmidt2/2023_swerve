@@ -14,4 +14,7 @@ public class ArmConeFloorCommand extends CommandBase {
         arm.armFloorCone();
     }
     
+    public boolean isFinished(){
+        return arm.isAtFloorSetpoint();
+    }
 }

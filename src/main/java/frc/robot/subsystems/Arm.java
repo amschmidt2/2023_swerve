@@ -83,13 +83,13 @@ public class Arm extends SubsystemBase{
       setArmMotor(armPower);
     }
 
+
+    //************************************************************************************
+
+
     //Cone Position 
     public void armHighCone(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); //32
-    }
-
-    public void armMidCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15));// 18
     }
 
     public boolean isAtHighSetpoint(){
@@ -100,27 +100,74 @@ public class Arm extends SubsystemBase{
       return false;
     }
 
+    public void armMidCone(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15));// 18
+    }
+
+    public boolean isAtMidSetpoint(){
+     // System.out.println("====="+sir_eyespy_coder.getPosition());
+      if(sir_eyespy_coder.getPosition() > 15){ //find new setpoint
+        return true;
+      }
+      return false;
+      
+    }
+
     public void armFloorCone(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 10)); // 10
+    }
+
+    public boolean isAtFloorSetpoint(){
+      // System.out.println("====="+sir_eyespy_coder.getPosition());
+      if(sir_eyespy_coder.getPosition() > 10){
+        return true;
+      }
+      return false; 
     }
 
     public void armHumanCone(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));// 31
     }
 
+    //************************************************************************************
 
     //Cube Posistion
     public void armHighCube(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); // 30
     }
 
+    public boolean isCubeHighSetpoint(){
+      // System.out.println("====="+sir_eyespy_coder.getPosition());
+      if(sir_eyespy_coder.getPosition() > 32){
+        return true;
+      }
+      return false;
+    }
+
     public void armMidCube(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15)); // 18
+    }
+
+    public boolean isCubeMidSetpoint(){
+      // System.out.println("====="+sir_eyespy_coder.getPosition());
+      if(sir_eyespy_coder.getPosition() > 13){
+        return true;
+      }
+      return false;
     }
 
     public void armFloorCube(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 8)); // 10
     }
+
+    public boolean isCubeFloorSetpoint(){
+     // System.out.println("====="+sir_eyespy_coder.getPosition()); 
+      if(sir_eyespy_coder.getPosition() > 10){
+        return true; 
+      }
+      return false;
+    }
+   
 
     public void armConveyCube(){
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1)); // -1

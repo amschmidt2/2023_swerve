@@ -14,5 +14,9 @@ public class ArmCubeHighCommand extends CommandBase{
     public void execute(){
         arm.armHighCube();
     }
+
+    public boolean isFinished(){
+        return arm.isCubeHighSetpoint();
+    }
     
 }

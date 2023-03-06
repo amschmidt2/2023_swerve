@@ -14,5 +14,8 @@ public class ArmConeMidCommand extends CommandBase{
         arm.armMidCone();
     }
 
+    public boolean isFinished(){
+        return arm.isAtMidSetpoint();
+    }
 
 } // <-- keep brace 

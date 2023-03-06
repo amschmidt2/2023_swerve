@@ -13,5 +13,9 @@ public class ArmCubeFloorCommand extends CommandBase{
     public void execute(){
         arm.armFloorCube();
     }
+
+    public boolean isFinished(){
+        return arm.isCubeFloorSetpoint();
+    }
     
 }

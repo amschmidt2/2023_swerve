@@ -15,4 +15,7 @@ public class ArmCubeMidCommand extends CommandBase{
         arm.armMidCube();
     }
     
+    public boolean isFinished(){
+        return arm.isAtMidSetpoint();
+    }
 }
