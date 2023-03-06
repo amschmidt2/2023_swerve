@@ -9,6 +9,7 @@ import frc.robot.commands.armPositions.ArmColaspeCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
+import frc.robot.subsystems.SwerveModuleSparkMax;
 
 public class twoCube extends SequentialCommandGroup{
 
@@ -16,7 +17,7 @@ public class twoCube extends SequentialCommandGroup{
         addCommands(
         new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
 
-        new ArmColaspeCommand(arm).andThen(new SwerveDriveOdometry())
+        new ArmColaspeCommand(arm).andThen(new m_driveEncoder())
 
 
         );
