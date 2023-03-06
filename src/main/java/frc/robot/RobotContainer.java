@@ -66,6 +66,7 @@ import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.HighCube;
+import frc.robot.commands.auto.OneEach;
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.compressor.CompressorCommandExtend;
 import frc.robot.commands.compressor.CompressorCommandRetract;
@@ -295,6 +296,7 @@ public class RobotContainer {
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
     m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One of Each", new OneEach(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =
