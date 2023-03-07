@@ -15,6 +15,9 @@ public class IntakeArmConeExtractCommand extends CommandBase{
         intakeArm.extractCone();
     }
 
+    public boolean isFinished(){
+        return intakeArm.isExtractingCone();
+    }
 
 
 

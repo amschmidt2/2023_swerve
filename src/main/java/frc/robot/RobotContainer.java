@@ -64,9 +64,15 @@ import frc.robot.commands.armPositions.ArmCubeMidCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
+
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.OneEach;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
+import frc.robot.commands.auto.BlueAuto.RightAuto.BR_HighCone;
+import frc.robot.commands.auto.RedAuto.LeftAuto.RL_HighCone;
+import frc.robot.commands.auto.RedAuto.RightAuto.RR_HighCone;
+
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.compressor.CompressorCommandExtend;
 import frc.robot.commands.compressor.CompressorCommandRetract;
@@ -297,6 +303,21 @@ public class RobotContainer {
     m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("One of Each", new OneEach(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
+
+    //Blue Auto 
+    m_autoChooser.setDefaultOption("Blue Left Auto", new WaitCommand(0));
+    m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
+  
+    m_autoChooser.setDefaultOption("Blue Right Auto", new WaitCommand(0));
+    m_autoChooser.addOption("High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
+
+    //Red Auto
+    m_autoChooser.setDefaultOption("Red Right Auto", new WaitCommand(0));
+    m_autoChooser.addOption("High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
+
+    m_autoChooser.setDefaultOption("Red Left Auto", new WaitCommand(0));
+    m_autoChooser.addOption("High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
+
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =

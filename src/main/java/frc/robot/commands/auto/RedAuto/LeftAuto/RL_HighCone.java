@@ -1,0 +1,27 @@
+package frc.robot.commands.auto.RedAuto.LeftAuto;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
+import frc.robot.commands.armIntake.IntakeArmStopCommand;
+import frc.robot.commands.armPositions.ArmConeHighCommand;
+import frc.robot.commands.armPositions.ArmGoDown;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.IntakeArm;
+import frc.robot.subsystems.DriveSubsystem;
+
+
+
+public class RL_HighCone extends SequentialCommandGroup {
+    
+public RL_HighCone(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm){
+    addCommands(
+    new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
+
+    new IntakeArmStopCommand(intakeArm).andThen(new ArmGoDown(arm))
+
+    );
+
+
+}
+
+
+} // <--

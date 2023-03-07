@@ -2,10 +2,11 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import com.revrobotics.RelativeEncoder; 
 
 public class IntakeArm extends SubsystemBase {
     private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
+    RelativeEncoder jr_spyeye_coder;
     private int intakeCurrentLimit = 25;
     private int intakeHoldCurrentLimit = 5;
     private double intakeOutputPower = 1.0;
@@ -64,15 +65,23 @@ public class IntakeArm extends SubsystemBase {
         intakePower = 0;
         intakeAmps = 0;  
         setIntakeMotor(intakePower, intakeAmps);
-
-
     }
+
+
 
     public void extractCone(){
         intakePower = intakeOutputPower;
         intakeAmps = -intakeCurrentLimit;
         setIntakeMotor(intakePower, intakeAmps);
     }
+
+    public boolean isExtractingCone(){
+        if(jr_spyeye_coder.getPosition() > 21){
+            return true;
+        }
+        return false;
+    }
+
 
     public void extractCube(){
         intakePower = -intakeOutputPower;

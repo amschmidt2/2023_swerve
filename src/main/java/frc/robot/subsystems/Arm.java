@@ -177,6 +177,10 @@ public class Arm extends SubsystemBase{
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),30)); // 28
     }
 
+    public void goDown(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),0));
+    }
+
   
         
 } // keep brace 
