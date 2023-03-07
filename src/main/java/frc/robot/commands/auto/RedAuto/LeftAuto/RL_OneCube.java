@@ -1,4 +1,4 @@
-package frc.robot.commands.auto.BlueAuto.LeftAuto;
+package frc.robot.commands.auto.RedAuto.LeftAuto;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
@@ -20,14 +20,9 @@ import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Compressor;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FloorIntake;
- /*
- * throttle goes straight or back
- * strafe goes left rigth
- */
 
-public class BL_OneCube extends SequentialCommandGroup{
-    
-    public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
+public class RL_OneCube extends SequentialCommandGroup {
+    public RL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
         addCommands(
             //Arm goes to high and drops cube
             new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
@@ -57,10 +52,8 @@ public class BL_OneCube extends SequentialCommandGroup{
             // ~Fin~
 
         );
-
-
-
     }
 
 
-} //<--
+
+} // <-- 

@@ -43,6 +43,7 @@ import frc.robot.subsystems.DriveSubsystem;
 //import frc.robot.commands.CompressorCommandExtend;
 //import frc.robot.commands.CompressorCommandRetract;
 
+//IntakeArm Imports 
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.commands.armIntake.IntakeArmConeCommand;
 import frc.robot.commands.armIntake.IntakeArmCubeCommand;
@@ -50,6 +51,7 @@ import frc.robot.commands.armIntake.IntakeArmStopCommand;
 import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
 import frc.robot.commands.armIntake.IntakeArmCubeExtractCommand;
 
+//Arm Imports
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.armPositions.ArmColaspeCommand;
 import frc.robot.commands.armPositions.ArmExtendCommand;
@@ -65,24 +67,34 @@ import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
 
+//Auto
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.OneEach;
+  //Blue Auto Imports
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
 import frc.robot.commands.auto.BlueAuto.RightAuto.BR_HighCone;
+import frc.robot.commands.auto.BlueAuto.RightAuto.BR_OneCube;
+  //Red Auto Imports
 import frc.robot.commands.auto.RedAuto.LeftAuto.RL_HighCone;
+import frc.robot.commands.auto.RedAuto.LeftAuto.RL_OneCube;
 import frc.robot.commands.auto.RedAuto.RightAuto.RR_HighCone;
+import frc.robot.commands.auto.RedAuto.RightAuto.RR_OneCube;
 
+//Compressor Imports
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.compressor.CompressorCommandExtend;
 import frc.robot.commands.compressor.CompressorCommandRetract;
 import frc.robot.commands.compressor.CompressorCommandStop;
 
+//Conveyor Imports
 import frc.robot.subsystems.Conveyor; 
 import frc.robot.commands.conveyor.ConveyorGoCommand;
 import frc.robot.commands.conveyor.ConveyorReverseCommand;
 import frc.robot.commands.conveyor.ConveyorStopCommand;
 
+//FloorIntake Imports
 import frc.robot.subsystems.FloorIntake;
 import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
@@ -307,16 +319,20 @@ public class RobotContainer {
     //Blue Auto 
     m_autoChooser.setDefaultOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
   
     m_autoChooser.setDefaultOption("Blue Right Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One Cube", new BR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
     //Red Auto
     m_autoChooser.setDefaultOption("Red Right Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One Cube", new RR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
     m_autoChooser.setDefaultOption("Red Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One Cube", new RL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);

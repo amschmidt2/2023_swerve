@@ -1,4 +1,4 @@
-package frc.robot.commands.auto.BlueAuto.LeftAuto;
+package frc.robot.commands.auto.BlueAuto.RightAuto;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
@@ -20,14 +20,11 @@ import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Compressor;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FloorIntake;
- /*
- * throttle goes straight or back
- * strafe goes left rigth
- */
 
-public class BL_OneCube extends SequentialCommandGroup{
+
+public class BR_OneCube extends SequentialCommandGroup {
     
-    public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
+    public BR_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
         addCommands(
             //Arm goes to high and drops cube
             new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
@@ -47,8 +44,8 @@ public class BL_OneCube extends SequentialCommandGroup{
             //Robot Moves Forward
             new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0.5, 0, 0, false)).     
             andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
-            //Robot Moves Right
-            new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0, 0.3, 0, false)).
+            //Robot Moves Left
+            new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0, -0.3, 0, false)).
             andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
             //Cube High 
             new ArmCubeHighCommand(arm).andThen(new IntakeArmCubeExtractCommand(intakeArm)),
@@ -59,8 +56,10 @@ public class BL_OneCube extends SequentialCommandGroup{
         );
 
 
-
     }
 
 
-} //<--
+
+
+
+} // <-- 
