@@ -18,6 +18,7 @@ public class IntakeArm extends SubsystemBase {
     private int lastGamePiece;
     private double intakePower;
     private int intakeAmps;
+    private int counter = 0;
 
     public IntakeArm(){
         intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
@@ -70,8 +71,12 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public boolean isArmIntakeStop(){
+        double position = jr_spyeye_coder.getPosition();
+        if (counter++ % 10 == 0) {
+            System.out.println("Intake arm position: " + position);
+        }
         double threshold = 0.01;
-        return Math.abs(jr_spyeye_coder.getPosition()) < threshold;
+        return Math.abs(position) < threshold;
     }
 
 
