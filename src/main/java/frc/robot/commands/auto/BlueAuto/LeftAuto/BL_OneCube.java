@@ -31,7 +31,7 @@ public class BL_OneCube extends SequentialCommandGroup{
         addCommands(
             //Arm goes to high and drops cube
             new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
-            //IntakeArm stops and Arm drops
+            //IntakeArm stops and Arm drops, this goes at end
             new IntakeArmStopCommand(intakeArm).andThen(new ArmGoDown(arm)),
             //Robot Moves back
             new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(-0.5, 0, 0, false)),

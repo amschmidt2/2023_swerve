@@ -318,21 +318,21 @@ public class RobotContainer {
 
     //Blue Auto 
     m_autoChooser.setDefaultOption("Blue Left Auto", new WaitCommand(0));
-    m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("BL_High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
   
     m_autoChooser.setDefaultOption("Blue Right Auto", new WaitCommand(0));
-    m_autoChooser.addOption("High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One Cube", new BR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("BR_High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("BR_One Cube", new BR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
     //Red Auto
     m_autoChooser.setDefaultOption("Red Right Auto", new WaitCommand(0));
-    m_autoChooser.addOption("High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One Cube", new RR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("RR_High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("RR_One Cube", new RR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
     m_autoChooser.setDefaultOption("Red Left Auto", new WaitCommand(0));
-    m_autoChooser.addOption("High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One Cube", new RL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("RL_High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("RL_One Cube", new RL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
 
     SmartDashboard.putData("Basic Auto", m_autoChooser);

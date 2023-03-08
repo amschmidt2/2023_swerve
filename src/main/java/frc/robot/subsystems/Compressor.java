@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.InvertType;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -12,8 +14,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
-  DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 13); //object
-  DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 0, 1); //object
+  DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 15); //object
+  DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 1, 0); //object
 
   // DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
 
@@ -27,7 +29,6 @@ public class Compressor extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
   }
 
   public void reverse() {

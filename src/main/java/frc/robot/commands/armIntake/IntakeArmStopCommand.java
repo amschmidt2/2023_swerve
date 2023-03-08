@@ -15,6 +15,10 @@ public class IntakeArmStopCommand extends CommandBase{
         intakeArm.stopArmIntake();
     }
 
+    public boolean isFinished(){
+        return intakeArm.isArmIntakeStop();
+    }
+
 
 
 

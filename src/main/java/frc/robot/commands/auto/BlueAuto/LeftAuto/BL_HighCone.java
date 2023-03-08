@@ -9,13 +9,11 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeArm;
 
 public class BL_HighCone extends SequentialCommandGroup {
-    
     public BL_HighCone(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm){
         addCommands(
-            new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
-
-            new IntakeArmStopCommand(intakeArm).andThen(new ArmGoDown(arm))
-
+            new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)).
+       
+            andThen(new ArmGoDown(arm)).andThen(new IntakeArmStopCommand(intakeArm))
         );
     }
 

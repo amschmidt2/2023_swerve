@@ -14,5 +14,9 @@ public class ArmGoDown extends CommandBase {
         arm.goDown();
     }
 
+    public boolean isFinished(){
+        return arm.isArmDown();
+    }
+
 
 }

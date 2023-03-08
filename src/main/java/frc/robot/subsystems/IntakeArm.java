@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.RelativeEncoder; 
 
 public class IntakeArm extends SubsystemBase {
-    private CANSparkMax intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
+    private CANSparkMax intakeMotor;
     RelativeEncoder jr_spyeye_coder;
     private int intakeCurrentLimit = 25;
     private int intakeHoldCurrentLimit = 5;
@@ -20,6 +20,8 @@ public class IntakeArm extends SubsystemBase {
     private int intakeAmps;
 
     public IntakeArm(){
+        intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
+        jr_spyeye_coder = intakeMotor.getEncoder();
 
     }
 
@@ -65,6 +67,13 @@ public class IntakeArm extends SubsystemBase {
         intakePower = 0;
         intakeAmps = 0;  
         setIntakeMotor(intakePower, intakeAmps);
+    }
+
+    public boolean isArmIntakeStop(){
+        if(jr_spyeye_coder.getPosition() == 0){
+            return true;
+        }
+        return false;
     }
 
 

@@ -45,7 +45,7 @@ public class Arm extends SubsystemBase{
     public void periodic() {
     // This method will be called once per scheduler run
      sir_eyespy_coder = armMotor.getEncoder();
-     System.out.println(sir_eyespy_coder.getPosition());
+     //System.out.println(sir_eyespy_coder.getPosition());
 
      // sir_eyespy_coder.getPosition(kPosition);
     }
@@ -93,7 +93,7 @@ public class Arm extends SubsystemBase{
     }
 
     public boolean isAtHighSetpoint(){
-      System.out.println("======="+sir_eyespy_coder.getPosition());
+     // System.out.println("======="+sir_eyespy_coder.getPosition());
       if(sir_eyespy_coder.getPosition() > 31){
         return true;
       }
@@ -178,7 +178,14 @@ public class Arm extends SubsystemBase{
     }
 
     public void goDown(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),0));
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),-1));
+    }
+
+    public boolean isArmDown(){
+      if(sir_eyespy_coder.getPosition() < 0.2){
+        return true;
+      }
+      return false;
     }
 
   
