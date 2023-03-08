@@ -30,10 +30,10 @@ public class MoveSwervePos extends LoggingCommandBase {
     public boolean isFinished(){
         System.out.println(this.getClass().getName() + " poseX "+m_drive.getPoseMeters().getX());
         System.out.println(this.getClass().getName() + " poseY "+m_drive.getPoseMeters().getY());
-        boolean finished = m_drive.getPoseMeters().getX() < 25;
+        boolean finished = m_drive.getPoseMeters().getX() > 25;
         if (finished) {
             System.out.println(this.getClass().getName() + " is finished");
         }
         return finished;
     }
-} // <--
+} 
