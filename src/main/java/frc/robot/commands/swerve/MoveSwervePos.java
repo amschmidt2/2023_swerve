@@ -15,17 +15,18 @@ public class MoveSwervePos extends LoggingCommandBase {
         addRequirements(m_drive);
     }
 
+    
     @Override
     public void execute(){
         m_drive.drive(5, 0, 0, false);
     }
 
     @Override
-    public void initialize() {
+    public void initialize(){
         super.initialize();
-        m_drive.setOdometry(new Pose2d(new Translation2d(0.0, 0.0), new Rotation2d()));
+        m_drive.setOdometry(new Pose2d(new Translation2d(0.0,0.0),new Rotation2d()));
     }
-    
+
     public boolean isFinished(){
         System.out.println(this.getClass().getName() + " poseX "+m_drive.getPoseMeters().getX());
         System.out.println(this.getClass().getName() + " poseY "+m_drive.getPoseMeters().getY());
