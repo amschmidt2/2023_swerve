@@ -36,13 +36,20 @@ public class Compressor extends SubsystemBase {
     rightDS.set(Value.kReverse);
   }
 
+  public boolean isReverse(){
+    if(leftDS.getRevChannel() == 0){ //&& rightDS.getRevChannel() == 0){
+      return true;
+    }
+    return false; 
+  }
+
   public void forward() {
     leftDS.set(Value.kForward);
     rightDS.set(Value.kForward);
   }
 
   public boolean isForward(){
-    if(leftDS.getFwdChannel() == 1){
+    if(leftDS.getFwdChannel() == 1){ //&& rightDS.getFwdChannel() == 1){
       return true;
     }
     return false;

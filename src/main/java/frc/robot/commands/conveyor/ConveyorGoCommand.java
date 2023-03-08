@@ -15,4 +15,8 @@ public class ConveyorGoCommand extends CommandBase{
         conveyor.go();
     }
 
+    public boolean isFinished(){
+        return conveyor.conveyGo();
+    }
+
 } // <-- kep brace 

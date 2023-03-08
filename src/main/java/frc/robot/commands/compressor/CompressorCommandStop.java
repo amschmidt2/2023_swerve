@@ -14,5 +14,9 @@ public class CompressorCommandStop extends CommandBase{
         compressor.stop();
     }
 
+    public boolean isFinished(){
+        return true; 
+    }
+
 
 } // <-- keep brace 

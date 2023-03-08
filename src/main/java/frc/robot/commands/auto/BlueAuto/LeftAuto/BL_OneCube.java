@@ -45,6 +45,8 @@ public class BL_OneCube extends SequentialCommandGroup {
 
     public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
         floorIntake.eyespy_coder.setPosition(0); 
+        conveyor.sirSpyeye_coder.setPosition(0);
+
 
         addCommands(
 
@@ -58,9 +60,9 @@ public class BL_OneCube extends SequentialCommandGroup {
 
             andThen(new CompressorCommandRetract(compressor)).andThen(new FloorIntakeStopCommand(floorIntake)).
 
-            andThen(new ConveyorGoCommand(conveyor)).andThen(new IntakeArmCubeCommand(intakeArm)).
+            andThen(new ConveyorGoCommand(conveyor)).alongWith(new IntakeArmCubeCommand(intakeArm)).
 
-            andThen(new IntakeArmStopCommand(intakeArm))
+            andThen(new ConveyorStopCommand(conveyor)).alongWith(new IntakeArmStopCommand(intakeArm))
 
         );
 

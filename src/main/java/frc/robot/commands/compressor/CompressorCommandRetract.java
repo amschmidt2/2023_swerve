@@ -21,4 +21,8 @@ public class CompressorCommandRetract extends CommandBase {
     System.out.println("Executing " + this.getClass().getName());
     compressor.reverse();
   }
+
+  public boolean isFinished(){
+    return compressor.isReverse();
+  }
 } // <-- leave this bracket
