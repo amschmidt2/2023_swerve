@@ -14,6 +14,11 @@ public class ArmGoDown extends CommandBase {
         arm.goDown();
     }
 
+    @Override
+    public void initialize() {
+        System.out.println("Constructing the "+this.getClass().getName());
+    }
+
     public boolean isFinished(){
         return arm.isArmDown();
     }

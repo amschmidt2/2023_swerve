@@ -15,6 +15,11 @@ public class IntakeArmStopCommand extends CommandBase{
         intakeArm.stopArmIntake();
     }
 
+    @Override
+    public void initialize() {
+        System.out.println("Constructing the "+this.getClass().getName());
+    }
+
     public boolean isFinished(){
         return intakeArm.isArmIntakeStop();
     }
