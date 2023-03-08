@@ -60,9 +60,9 @@ public class BL_OneCube extends SequentialCommandGroup {
 
             andThen(new CompressorCommandRetract(compressor)).andThen(new FloorIntakeStopCommand(floorIntake)).
 
-            andThen(new ConveyorGoCommand(conveyor)).alongWith(new IntakeArmCubeCommand(intakeArm)).
+            andThen(new ConveyorGoCommand(conveyor)).andThen(new IntakeArmCubeCommand(intakeArm)).
 
-            andThen(new ConveyorStopCommand(conveyor)).alongWith(new IntakeArmStopCommand(intakeArm))
+            andThen(new ConveyorStopCommand(conveyor)).andThen(new IntakeArmStopCommand(intakeArm))
 
         );
 
