@@ -41,7 +41,7 @@ public class BL_OneCube extends SequentialCommandGroup {
      * 8. Get to Cube station
      */
 
-    public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
+    public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm){ //, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
         addCommands(
 
             new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)).

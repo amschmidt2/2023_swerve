@@ -317,25 +317,25 @@ public class RobotContainer {
     m_autoChooser.addOption("One of Each", new OneEach(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
 
     //Blue Auto 
-    m_autoChooser.setDefaultOption("Blue Left Auto", new WaitCommand(0));
+    m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("BL_High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm));//, compressor, conveyor, floorIntake));
   
-    m_autoChooser.setDefaultOption("Blue Right Auto", new WaitCommand(0));
+    m_autoChooser.addOption("Blue Right Auto", new WaitCommand(0));
     m_autoChooser.addOption("BR_High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("BR_One Cube", new BR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
     //Red Auto
-    m_autoChooser.setDefaultOption("Red Right Auto", new WaitCommand(0));
+    m_autoChooser.addOption("Red Right Auto", new WaitCommand(0));
     m_autoChooser.addOption("RR_High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("RR_One Cube", new RR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
-    m_autoChooser.setDefaultOption("Red Left Auto", new WaitCommand(0));
+    m_autoChooser.addOption("Red Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("RL_High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("RL_One Cube", new RL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
 
 
-    SmartDashboard.putData("Basic Auto", m_autoChooser);
+   // SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =
         new ProfiledPIDController(
             AutoConstants.kPThetaController,
@@ -364,7 +364,7 @@ public class RobotContainer {
     Command followCommand = m_robotDrive.followTrajectoryCommand(traj1, true);
 
 
-    m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
+    m_autoChooser.addOption("Do Nothing", new WaitCommand(0));
     m_autoChooser.addOption("Test", followCommand);
     // m_autoChooser.addOption("Drive Forward", new DriveForward(m_robotDrive));
     // m_autoChooser.addOption("5 Ball Auto", new FiveBallAuto(m_robotDrive));
