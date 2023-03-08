@@ -15,6 +15,11 @@ public class IntakeArmConeExtractCommand extends LoggingCommandBase {
         intakeArm.extractCone();
     }
 
+    @Override
+    public void initialize() {
+        intakeArm.resetPosition();
+    }
+
     public boolean isFinished(){
         boolean finished = intakeArm.isExtractingCone();
         if (finished) {
