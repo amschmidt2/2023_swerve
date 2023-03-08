@@ -48,21 +48,15 @@ public class BL_OneCube extends SequentialCommandGroup {
 
             andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)).
 
+            andThen(new CompressorCommandExtend(compressor)).andThen(new FloorIntakeCollectCommand(floorIntake)),
+
             andThen(new MoveSwervePos(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
 
-            andThen(new CompressorCommandExtend(compressor)).andThen(new FloorIntakeCollectCommand(floorIntake))
+            andThen(new CompressorCommandRetract(compressor)).andThen(new FloorIntakeStopCommand(floorIntake)).
 
-            // new CompressorCommandExtend(compressor).andThen(new FloorIntakeCollectCommand(floorIntake)).
-            // andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
-            // new CompressorCommandRetract(compressor).andThen(new FloorIntakeStopCommand(floorIntake)),
-            // new ConveyorGoCommand(conveyor).andThen(new IntakeArmCubeCommand(intakeArm)),
-            // new ConveyorStopCommand(conveyor).andThen(new IntakeArmStopCommand(intakeArm)),
-            // new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0.5, 0, 0, false)).     
-            // andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
-            // new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0, 0.3, 0, false)).
-            // andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
-            // new ArmCubeHighCommand(arm).andThen(new IntakeArmCubeExtractCommand(intakeArm)),
-            // new IntakeArmStopCommand(intakeArm).andThen(new ArmGoDown(arm))
+            andThen(new ConveyorGoCommand(conveyor)).andThen(new IntakeArmCubeCommand(intakeArm)).
+
+            andThen(new IntakeArmStopCommand(intakeArm))
 
         );
 

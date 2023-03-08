@@ -31,36 +31,24 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public void intakeCube(){
-    //   if(intakeExtended == true){
-            intakePower = intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cube;
-        // }
-        // else if(lastGamePiece == cube){
-        //     intakePower = intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit; 
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0;
-        // }
+        intakePower = intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
+        lastGamePiece = cube;
         setIntakeMotor(intakePower, intakeAmps);
     }
 
+    public boolean isIntakeingCube(){
+        double position = jr_spyeye_coder.getPosition();
+        if(position > 22){
+            return true;
+        }
+        return false;
+    }
+
     public void intakeCone(){
-    //  if(intakeExtended == true){
-            intakePower = -intakeOutputPower;
-            intakeAmps = intakeCurrentLimit;
-            lastGamePiece = cone;
-        // }
-        // else if(lastGamePiece == cone){
-        //     intakePower = -intakeHoldPower;
-        //     intakeAmps = intakeHoldCurrentLimit;
-        // }
-        // else{
-        //     intakePower = 0.0;
-        //     intakeAmps = 0; 
-        // }
+        intakePower = -intakeOutputPower;
+        intakeAmps = intakeCurrentLimit;
+        lastGamePiece = cone;
         setIntakeMotor(intakePower, intakeAmps);
     }
 

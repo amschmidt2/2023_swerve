@@ -6,13 +6,14 @@ import com.revrobotics.RelativeEncoder;
 
 
 public class FloorIntake extends SubsystemBase {
-    private CANSparkMax floorMotor = new CANSparkMax(12, MotorType.kBrushless);
+    private CANSparkMax floorMotor;
     private double superSpeed = 0.4;
     RelativeEncoder sir_eyespy_coder;
     private int counter = 0;
    
     public FloorIntake(){
-
+        floorMotor = new CANSparkMax(12, MotorType.kBrushless);
+        sir_eyespy_coder = floorMotor.getEncoder();
     }
 
     public void collectCube(){
@@ -21,8 +22,10 @@ public class FloorIntake extends SubsystemBase {
 
     public boolean isCollectingCube(){
         double position = sir_eyespy_coder.getPosition();
-       double threshold = 0.01;
-       return Math.abs(position) < threshold;
+        if(position > 30){
+            return true;
+        }
+        return false;
     }
 
     public void fartCube(){

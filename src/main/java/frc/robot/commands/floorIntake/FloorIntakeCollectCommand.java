@@ -14,5 +14,9 @@ public class FloorIntakeCollectCommand extends CommandBase{
         floorIntake.collectCube();
     }
 
+    public boolean isFinished(){
+        return floorIntake.isCollectingCube();
+    }
+
 
 } // <-- keep brace 

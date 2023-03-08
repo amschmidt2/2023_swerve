@@ -20,5 +20,9 @@ public class IntakeArmCubeCommand extends CommandBase {
         return intakeExtended;
     }
 
+    public boolean isFinished(){
+        return intakeArm.isIntakeingCube();
+    }
+
 
 }// <-- keep brace
