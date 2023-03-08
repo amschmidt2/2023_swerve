@@ -69,6 +69,7 @@ import frc.robot.commands.armPositions.ArmHumanCubeCommand;
 
 //Auto
 import frc.robot.commands.auto.BasicAuto;
+import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.OneEach;
   //Blue Auto Imports
@@ -315,6 +316,7 @@ public class RobotContainer {
     m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("One of Each", new OneEach(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
+    m_autoChooser.addOption("Auto Distance", new DistanceAuto(m_robotDrive));
 
     //Blue Auto 
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
