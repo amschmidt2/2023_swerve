@@ -70,10 +70,8 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public boolean isArmIntakeStop(){
-        if(jr_spyeye_coder.getPosition() == 0){
-            return true;
-        }
-        return false;
+        double threshold = 0.01;
+        return Math.abs(jr_spyeye_coder.getPosition()) < threshold;
     }
 
 
