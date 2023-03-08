@@ -1,8 +1,8 @@
 package frc.robot.commands.armIntake;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.IntakeArm;
 
-public class IntakeArmConeExtractCommand extends CommandBase{
+public class IntakeArmConeExtractCommand extends LoggingCommandBase {
     IntakeArm intakeArm;
 
     public IntakeArmConeExtractCommand(IntakeArm intakeArm){

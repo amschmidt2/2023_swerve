@@ -1,8 +1,8 @@
 package frc.robot.commands.armPositions;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.Arm;
 
-public class ArmGoDown extends CommandBase {
+public class ArmGoDown extends LoggingCommandBase {
     Arm arm;
 
     public ArmGoDown(Arm arm){

@@ -1,8 +1,8 @@
 package frc.robot.commands.swerve;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class MoveSwervePos extends CommandBase{
+public class MoveSwervePos extends LoggingCommandBase {
    
     private DriveSubsystem m_drive;
 
