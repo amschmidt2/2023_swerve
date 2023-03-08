@@ -92,7 +92,11 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public boolean isExtractingCone(){
-        if(jr_spyeye_coder.getPosition() > 21){
+        double position = jr_spyeye_coder.getPosition();
+        if (counter++ % 10 == 0) {
+            System.out.println("isExtractingCone position: " + position);
+        }
+        if(position > 21){
             return true;
         }
         return false;
