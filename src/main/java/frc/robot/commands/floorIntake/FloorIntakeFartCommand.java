@@ -14,4 +14,8 @@ public class FloorIntakeFartCommand extends CommandBase {
         floorIntake.fartCube();
     }
 
+    public boolean isFinished(){
+        return floorIntake.isMunchCube();
+    }
+
 } // <-- keep brace 

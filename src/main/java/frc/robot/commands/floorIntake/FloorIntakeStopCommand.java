@@ -14,5 +14,9 @@ public class FloorIntakeStopCommand extends CommandBase{
         floorIntake.stopFloorIntake();
     }
 
+    public boolean isFinished(){
+        return true; 
+    }
+
 
 } // <-- keep brace

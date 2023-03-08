@@ -22,7 +22,7 @@ public class Conveyor extends SubsystemBase{
 
     public boolean conveyGo(){
         double position = sir_spyeye_coder.getPosition();
-        if(position > 50){
+        if(position > 40){
             return true;
         }
         return false;
