@@ -23,4 +23,8 @@ public class CompressorCommandExtend extends CommandBase {
     compressor.forward();
   }
 
+  public boolean isFinished(){
+    return compressor.isForward();
+  }
+
 } // <-- leave this bracket

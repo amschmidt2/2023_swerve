@@ -319,7 +319,7 @@ public class RobotContainer {
     //Blue Auto 
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("BL_High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm));//, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
   
     m_autoChooser.addOption("Blue Right Auto", new WaitCommand(0));
     m_autoChooser.addOption("BR_High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));

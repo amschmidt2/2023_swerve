@@ -41,6 +41,13 @@ public class Compressor extends SubsystemBase {
     rightDS.set(Value.kForward);
   }
 
+  public boolean isForward(){
+    if(leftDS.getFwdChannel() == 1){
+      return true;
+    }
+    return false;
+  }
+
   public void stop(){
     leftDS.set(Value.kOff);
     rightDS.set(Value.kOff);
