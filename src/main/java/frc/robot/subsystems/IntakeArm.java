@@ -64,6 +64,10 @@ public class IntakeArm extends SubsystemBase {
         setIntakeMotor(intakePower, intakeAmps);
     }
 
+    public void resetPosition() {
+        jr_spyeye_coder.setPosition(0.0);
+    }
+
     public void stopArmIntake(){
         intakePower = 0;
         intakeAmps = 0;  
