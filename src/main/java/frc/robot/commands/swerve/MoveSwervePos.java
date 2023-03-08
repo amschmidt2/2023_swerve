@@ -18,7 +18,7 @@ public class MoveSwervePos extends LoggingCommandBase {
     
     @Override
     public void execute(){
-        m_drive.drive(5, 0, 0, false);
+        m_drive.drive(1, 0, 0, false); //5 
     }
 
     @Override
@@ -30,7 +30,7 @@ public class MoveSwervePos extends LoggingCommandBase {
     public boolean isFinished(){
         System.out.println(this.getClass().getName() + " poseX "+m_drive.getPoseMeters().getX());
         System.out.println(this.getClass().getName() + " poseY "+m_drive.getPoseMeters().getY());
-        boolean finished = m_drive.getPoseMeters().getX() < 25;
+        boolean finished = m_drive.getPoseMeters().getX() > 0.1;
         if (finished) {
             System.out.println(this.getClass().getName() + " is finished");
         }

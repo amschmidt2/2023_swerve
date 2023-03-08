@@ -48,7 +48,7 @@ public class BL_OneCube extends SequentialCommandGroup {
 
             andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)).
 
-            andThen(new MoveSwervePos(swerveDrive))
+            andThen(new MoveSwervePos(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
 
             // new CompressorCommandExtend(compressor).andThen(new FloorIntakeCollectCommand(floorIntake)).
             // andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false))),
