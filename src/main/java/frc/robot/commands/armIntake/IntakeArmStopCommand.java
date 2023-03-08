@@ -1,9 +1,9 @@
 package frc.robot.commands.armIntake;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.IntakeArm;
 
-public class IntakeArmStopCommand extends CommandBase{
+public class IntakeArmStopCommand extends LoggingCommandBase {
     IntakeArm intakeArm;
 
     public IntakeArmStopCommand(IntakeArm intakeArm){
