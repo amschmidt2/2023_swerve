@@ -15,12 +15,6 @@ public class IntakeArmStopCommand extends LoggingCommandBase {
         intakeArm.stopArmIntake();
     }
 
-    @Override
-    public void initialize() {
-        super.initialize();
-        intakeArm.stopArmIntake();
-    }
-
     public boolean isFinished(){
         return true;
     }
