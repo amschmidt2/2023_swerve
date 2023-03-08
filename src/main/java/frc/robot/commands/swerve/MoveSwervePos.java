@@ -18,17 +18,10 @@ public class MoveSwervePos extends LoggingCommandBase {
     }
     
     public boolean isFinished(){
-        if(m_drive.getPoseMeters().getX() < 1){
-            return true;
+        boolean finished = m_drive.getPoseMeters().getX() < 1;
+        if (finished) {
+            System.out.println(this.getClass().getName() + " is finished");
         }
-        return false;
+        return finished;
     }
-
-
-
-
-
-
-
-
 } // <--

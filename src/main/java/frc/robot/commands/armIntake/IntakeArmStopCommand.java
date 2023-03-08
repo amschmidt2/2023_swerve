@@ -16,10 +16,10 @@ public class IntakeArmStopCommand extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        return intakeArm.isArmIntakeStop();
+        boolean finished = intakeArm.isArmIntakeStop();
+        if (finished) {
+            System.out.println(this.getClass().getName() + " is finished");
+        }
+        return finished;
     }
-
-
-
-
 } // <-- keep brace

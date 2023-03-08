@@ -15,8 +15,10 @@ public class ArmGoDown extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        return arm.isArmDown();
+        boolean finished = arm.isArmDown();
+        if (finished) {
+            System.out.println(this.getClass().getName() + " is finished");
+        }
+        return finished;
     }
-
-
 }

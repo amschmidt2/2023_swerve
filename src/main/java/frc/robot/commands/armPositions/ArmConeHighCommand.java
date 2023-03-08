@@ -15,6 +15,10 @@ public class ArmConeHighCommand extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        return arm.isAtHighSetpoint(); 
+        boolean finished = arm.isAtHighSetpoint();
+        if (finished) {
+            System.out.println(this.getClass().getName() + " is finished");
+        }
+        return finished;
     }
 } // <-- keep brace

@@ -16,9 +16,10 @@ public class IntakeArmConeExtractCommand extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        return intakeArm.isExtractingCone();
+        boolean finished = intakeArm.isExtractingCone();
+        if (finished) {
+            System.out.println(this.getClass().getName() + " is finished");
+        }
+        return finished;
     }
-
-
-
-} // <-- keep brace 
+} // <-- keep brace
