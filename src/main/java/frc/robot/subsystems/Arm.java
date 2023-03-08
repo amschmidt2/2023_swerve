@@ -183,10 +183,6 @@ public class Arm extends SubsystemBase{
     }
 
     public boolean isArmDown(){
-      double position = sir_eyespy_coder.getPosition();
-      if (counter++ % 10 == 0) {
-          System.out.println("Intake arm position: " + position);
-      }
       if(sir_eyespy_coder.getPosition() < 0.2){
         return true;
       }
