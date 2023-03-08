@@ -26,7 +26,6 @@ public class Arm extends SubsystemBase{
     RelativeEncoder sir_eyespy_coder;
     TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints(300, 150);
     ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, m_Constraints, kDt);
-    private int counter = 0;
 
 
     public Arm(){
