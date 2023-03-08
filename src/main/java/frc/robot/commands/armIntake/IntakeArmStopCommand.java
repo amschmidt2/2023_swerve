@@ -15,11 +15,14 @@ public class IntakeArmStopCommand extends LoggingCommandBase {
         intakeArm.stopArmIntake();
     }
 
-    public boolean isFinished(){
-        boolean finished = intakeArm.isArmIntakeStop();
-        if (finished) {
-            System.out.println(this.getClass().getName() + " is finished");
-        }
-        return finished;
+    @Override
+    public void initialize() {
+        super.initialize();
+        intakeArm.stopArmIntake();
     }
-} // <-- keep brace
+
+    public boolean isFinished(){
+        return true;
+    }
+} //
+ 
