@@ -16,9 +16,11 @@ import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 import frc.robot.commands.swerve.MoveSwervePos;
+import frc.robot.commands.swerve.QuickStrafe;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SetSwerveOdometry;
+import frc.robot.commands.swerve.MoveSwerveBackPos;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.Conveyor;
@@ -42,11 +44,9 @@ public class BL_OneCube extends SequentialCommandGroup {
      * 8. Get to Cube station
      */
 
-
     public BL_OneCube(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm, Compressor compressor, Conveyor conveyor, FloorIntake floorIntake){
         floorIntake.eyespy_coder.setPosition(0); 
         conveyor.sirSpyeye_coder.setPosition(0);
-
 
         addCommands(
 
@@ -60,9 +60,12 @@ public class BL_OneCube extends SequentialCommandGroup {
 
             andThen(new CompressorCommandRetract(compressor)).andThen(new FloorIntakeStopCommand(floorIntake)).
 
-            andThen(new ConveyorGoCommand(conveyor)).andThen(new IntakeArmCubeCommand(intakeArm)).
+            andThen(new MoveSwerveBackPos(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
+            
+            andThen(new QuickStrafe(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
+            // andThen(new ConveyorGoCommand(conveyor)).andThen(new IntakeArmCubeCommand(intakeArm)).
 
-            andThen(new ConveyorStopCommand(conveyor)).andThen(new IntakeArmStopCommand(intakeArm))
+            // andThen(new ConveyorStopCommand(conveyor)).andThen(new IntakeArmStopCommand(intakeArm))
 
         );
 

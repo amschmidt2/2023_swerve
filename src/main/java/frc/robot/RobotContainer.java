@@ -66,22 +66,16 @@ import frc.robot.commands.armPositions.ArmCubeMidCommand;
 import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmHumanConeCommand;
 import frc.robot.commands.armPositions.ArmHumanCubeCommand;
+import frc.robot.commands.armPositions.ArmCollaspeCommand;
 
 //Auto
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
-import frc.robot.commands.auto.OneEach;
-  //Blue Auto Imports
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
-import frc.robot.commands.auto.BlueAuto.RightAuto.BR_HighCone;
-import frc.robot.commands.auto.BlueAuto.RightAuto.BR_OneCube;
-  //Red Auto Imports
-import frc.robot.commands.auto.RedAuto.LeftAuto.RL_HighCone;
-import frc.robot.commands.auto.RedAuto.LeftAuto.RL_OneCube;
-import frc.robot.commands.auto.RedAuto.RightAuto.RR_HighCone;
-import frc.robot.commands.auto.RedAuto.RightAuto.RR_OneCube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Community;
 
 //Compressor Imports
 import frc.robot.subsystems.Compressor; 
@@ -128,7 +122,7 @@ public class RobotContainer {
   static Joystick leftJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
   static Joystick rightJoystick = new Joystick(OIConstants.kCoDriverControllerPort);
 
-  
+      
   Compressor compressor = new Compressor();
   Arm arm = new Arm();
   Conveyor conveyor = new Conveyor();
@@ -244,40 +238,52 @@ public class RobotContainer {
        * 
        */
 
-       
-      // Gunner Commands
-      // Cone Outputs
-      g_OneButt.onTrue(new ArmConeHighCommand(arm));
+       g_SevenButt.onTrue(new ArmConeHighCommand(arm));
+      g_SevenButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_FiveButt.onTrue(new ArmConeMidCommand(arm));
+      g_EightButt.onTrue(new ArmConeMidCommand(arm));
+      g_EightButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_NineButt.onTrue(new ArmConeFloorCommand(arm)); 
+      g_NineButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_ThreeButt.onTrue(new ArmHumanConeCommand(arm));
-      g_ThreeButt.onTrue(new IntakeArmConeCommand(intakeArm));
-      g_ThreeButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_TenButt.onTrue(new ArmHumanConeCommand(arm));
+      g_TenButt.onFalse(new ArmCollaspeCommand(arm));
+     // g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get));
+      g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
+      g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+    
 
-      g_SevenButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
-      g_SevenButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
+      g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
+
+      g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
+      g_TwelButt.onFalse(new ArmCollaspeCommand(arm));
 
       // Cube Outputs
-      g_TwoButt.onTrue(new ArmCubeHighCommand(arm));
+      g_OneButt.onTrue(new ArmCubeHighCommand(arm));
+      g_OneButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_SixButt.onTrue(new ArmCubeMidCommand(arm));
+      g_TwoButt.onTrue(new ArmCubeMidCommand(arm));
+      g_TwoButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_TenButt.onTrue(new ArmCubeFloorCommand(arm));
+      g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
+      g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
       g_FourButt.onTrue(new ArmHumanCubeCommand(arm));
+     // g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm).until(ArmLineBreak :: get));
       g_FourButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_FourButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_FourButt.onFalse(new ArmCollaspeCommand(arm));
 
-      g_EightButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
-      g_EightButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_FiveButt.onTrue(new IntakeArmCubeExtractCommand(intakeArm));
+      g_FiveButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmCubeConveyCommand(arm));
-      g_TwelButt.onTrue(new IntakeArmCubeCommand(intakeArm));
-      g_TwelButt.onTrue(new ConveyorGoCommand(conveyor));
-      g_TwelButt.onFalse(new ConveyorStopCommand(conveyor));
-      g_TwelButt.onFalse(new IntakeArmStopCommand(intakeArm));
+      g_SixButt.onTrue(new ArmCubeConveyCommand(arm));
+      g_SixButt.onTrue(new IntakeArmCubeCommand(intakeArm));
+      g_SixButt.onTrue(new ConveyorGoCommand(conveyor));
+      g_SixButt.onFalse(new ConveyorStopCommand(conveyor));
+      g_SixButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
      
       // ******************************************************* 
@@ -288,16 +294,15 @@ public class RobotContainer {
 
       d_leftBumper.onTrue(new CompressorCommandExtend(compressor));
       d_leftBumper.onFalse(new CompressorCommandRetract(compressor));
+      d_leftBumper.onTrue(new ArmCollaspeCommand(arm));
+      d_leftBumper.onFalse(new ArmHoldCommand(arm));
       d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
-      // d_rightBumper.onTrue(new CompressorCommandRetract(compressor));
-      // d_rightBumper.onTrue(new FloorIntakeCollectCommand(floorIntake));
-      // d_rightBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
 
-      // ***********************************************************
 
+   
 
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_robotDrive,
@@ -311,31 +316,20 @@ public class RobotContainer {
 
   }
 
-  private void initializeAutoChooser() {
+  private void initializeAutoChooser() { 
     m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
-    m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One of Each", new OneEach(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
-    m_autoChooser.addOption("Auto Distance", new DistanceAuto(m_robotDrive));
+    // m_autoChooser.addOption("BasicAuto", new BasicAuto(m_robotDrive, arm, intakeArm));
+    // m_autoChooser.addOption("High Cube", new HighCube(m_robotDrive, arm, intakeArm));
+    // m_autoChooser.addOption("Auto Distance", new DistanceAuto(m_robotDrive));
 
     //Blue Auto 
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("BL_High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
-  
-    m_autoChooser.addOption("Blue Right Auto", new WaitCommand(0));
-    m_autoChooser.addOption("BR_High Cone", new BR_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("BR_One Cube", new BR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("BL Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
+    m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
 
-    //Red Auto
-    m_autoChooser.addOption("Red Right Auto", new WaitCommand(0));
-    m_autoChooser.addOption("RR_High Cone", new RR_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("RR_One Cube", new RR_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
-
-    m_autoChooser.addOption("Red Left Auto", new WaitCommand(0));
-    m_autoChooser.addOption("RL_High Cone", new RL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("RL_One Cube", new RL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
-
+    
 
    // SmartDashboard.putData("Basic Auto", m_autoChooser);
     ProfiledPIDController thetaController =

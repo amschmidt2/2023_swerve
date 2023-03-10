@@ -8,11 +8,11 @@ public class IntakeArm extends SubsystemBase {
     private CANSparkMax intakeMotor;
     RelativeEncoder jr_spyeye_coder;
     private int intakeCurrentLimit = 25;
-    private int intakeHoldCurrentLimit = 5;
+   // private int intakeHoldCurrentLimit = 5;
     private double intakeOutputPower = 1.0;
-    private double intakeHoldPower = 0.07;
+   // private double intakeHoldPower = 0.07;
 
-    private boolean intakeExtended = false; 
+   // private boolean intakeExtended = false; 
     private int cone = 1;
     private int cube = 2;
     private int lastGamePiece;
@@ -84,7 +84,7 @@ public class IntakeArm extends SubsystemBase {
         if (counter++ % 10 == 0) {
             System.out.println("isExtractingCone position: " + position);
         }
-        if(position > 21){
+        if(position > 42){
             return true;
         }
         return false;

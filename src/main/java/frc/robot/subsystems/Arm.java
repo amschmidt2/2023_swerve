@@ -6,7 +6,7 @@ import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import com.revrobotics.CANSparkMax.ControlType;
+//import com.revrobotics.CANSparkMax.ControlType;
 //import com.revrobotics.CANSparkMax.ControlType.kPosition;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,9 +17,9 @@ public class Arm extends SubsystemBase{
     private CANSparkMax armMotor = new CANSparkMax(10, MotorType.kBrushless);
     //private int armCurrentLimit = 20;
     private double armOutputPower = 0.2; // speed  
-    private boolean armExtended = false;
+  //  private boolean armExtended = false;
     private double armPower;
-    private double kPosition = 0;
+  //  private double kPosition = 0;
     private SparkMaxPIDController m_pidController; // = new SparkMaxPIDController();
     private double kDt = 0.02;
     SparkMaxPIDController PID;
@@ -129,6 +129,11 @@ public class Arm extends SubsystemBase{
       armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 34));// 31
     }
 
+    public void collapse(){
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), -1));
+    }
+
+
     //************************************************************************************
 
     //Cube Posistion
@@ -187,6 +192,7 @@ public class Arm extends SubsystemBase{
       }
       return false;
     }
+
 
   
         

@@ -9,7 +9,7 @@ public class FloorIntake extends SubsystemBase {
     private CANSparkMax floorMotor;
     private double superSpeed = 0.4;
     public RelativeEncoder eyespy_coder;
-    private int counter = 0;
+    //private int counter = 0;
    
     public FloorIntake(){
         floorMotor = new CANSparkMax(12, MotorType.kBrushless);
