@@ -10,6 +10,7 @@ public class IntakeArm extends SubsystemBase {
     private int intakeCurrentLimit = 25;
    // private int intakeHoldCurrentLimit = 5;
     private double intakeOutputPower = 1.0;
+    private double intakeCubePower = 0.4;
    // private double intakeHoldPower = 0.07;
 
    // private boolean intakeExtended = false; 
@@ -31,7 +32,7 @@ public class IntakeArm extends SubsystemBase {
     }
 
     public void intakeCube(){
-        intakePower = intakeOutputPower;
+        intakePower = intakeCubePower;
         intakeAmps = intakeCurrentLimit;
         lastGamePiece = cube;
         setIntakeMotor(intakePower, intakeAmps);

@@ -1,24 +1,21 @@
 package frc.robot.commands.swerve;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
-
-public class ChargedPlat extends LoggingCommandBase {
-    
+public class LongerCommunity extends LoggingCommandBase{
     private DriveSubsystem m_drive;
 
-    public ChargedPlat(DriveSubsystem m_drive){
+    public LongerCommunity(DriveSubsystem m_drive){
         this.m_drive = m_drive;
         addRequirements(m_drive);
     }
 
     @Override
     public void execute(){
-        m_drive.drive(-0.30, 0, 0, true);
-        System.out.println("ChargePlat====");
+        m_drive.drive(-0.3, 0, 0, true);
     }
 
     @Override
@@ -28,16 +25,12 @@ public class ChargedPlat extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        System.out.println(this.getClass().getName() + " pose X " + m_drive.getPoseMeters().getX());
-        System.out.println(this.getClass().getName() + " pose Y " + m_drive.getPoseMeters().getY());
-        boolean finished = m_drive.getPoseMeters().getX() < -1.65;
+        boolean finished = m_drive.getPoseMeters().getX() < -4.05;
         if(finished){
-            System.out.println(this.getClass().getName()+ " is finished");
+            System.out.println(this.getClass().getName() + "Long Finished");
             m_drive.drive(0, 0, 0, false);
         }
         return finished;
     }
 
-
-
-} //<--
+} //<-_-

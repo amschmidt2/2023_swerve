@@ -74,6 +74,7 @@ import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_LongerCommunity;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Community;
 
@@ -266,7 +267,7 @@ public class RobotContainer {
 
       g_TwoButt.onTrue(new ArmCubeMidCommand(arm));
       g_TwoButt.onFalse(new ArmCollaspeCommand(arm));
-
+  
       g_ThreeButt.onTrue(new ArmCubeFloorCommand(arm));
       g_ThreeButt.onFalse(new ArmCollaspeCommand(arm));
 
@@ -324,10 +325,11 @@ public class RobotContainer {
 
     //Blue Auto 
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
-    m_autoChooser.addOption("BL_High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("BL_One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
-    m_autoChooser.addOption("BL Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
+    m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
 
     
 
