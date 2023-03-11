@@ -14,5 +14,9 @@ public class IntakeArmCubeExtractCommand extends CommandBase{
         intakeArm.extractCube();
     }
 
+    public boolean isFinished(){
+        return intakeArm.isExtractingCube();
+    }
+
 
 } // <-- keep brace 

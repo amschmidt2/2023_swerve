@@ -98,4 +98,12 @@ public class IntakeArm extends SubsystemBase {
         setIntakeMotor(intakePower, intakeAmps);
     }
 
+    public boolean isExtractingCube(){
+        double position = jr_spyeye_coder.getPosition();
+        if(position > 42){
+            return true;
+        }
+        return false;
+    }
+
 }    // leave brace

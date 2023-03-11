@@ -74,8 +74,10 @@ import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_LongerCommunity;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_TwoCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Community;
 
 //Compressor Imports
@@ -326,10 +328,13 @@ public class RobotContainer {
     //Blue Auto 
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("High Cube", new BL_HighCube(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
+
 
     
 
