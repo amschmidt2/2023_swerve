@@ -72,6 +72,7 @@ import frc.robot.commands.armPositions.ArmCollaspeCommand;
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
+import frc.robot.commands.auto.BlueAuto.BL_CubeComute;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCube;
@@ -332,9 +333,10 @@ public class RobotContainer {
     m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
     m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
-
+    
 
     
 

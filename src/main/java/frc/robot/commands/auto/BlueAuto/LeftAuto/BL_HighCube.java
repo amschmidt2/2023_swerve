@@ -1,5 +1,4 @@
 package frc.robot.commands.auto.BlueAuto.LeftAuto;
-
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.commands.armIntake.IntakeArmCubeExtractCommand;
