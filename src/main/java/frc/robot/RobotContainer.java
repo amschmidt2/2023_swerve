@@ -6,6 +6,7 @@ package frc.robot;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import com.pathplanner.lib.PathConstraints;
 import com.pathplanner.lib.PathPlanner;
@@ -15,8 +16,13 @@ import com.pathplanner.lib.commands.FollowPathWithEvents;
 import com.pathplanner.lib.PathPoint;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.trajectory.Trajectory;
+import edu.wpi.first.math.trajectory.TrajectoryConfig;
+import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import edu.wpi.first.math.trajectory.TrajectoryParameterizer.TrajectoryGenerationException;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,8 +33,10 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import frc.robot.Constants.DriveConstants.ModulePosition;
 import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ToggleFieldOriented;
 // import frc.robot.commands.auto.DriveForward;
@@ -72,7 +80,6 @@ import frc.robot.commands.armPositions.ArmCollaspeCommand;
 import frc.robot.commands.auto.BasicAuto;
 import frc.robot.commands.auto.DistanceAuto;
 import frc.robot.commands.auto.HighCube;
-import frc.robot.commands.auto.BlueAuto.BL_CubeComute;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCube;
@@ -80,7 +87,7 @@ import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_LongerCommunity;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_TwoCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Community;
-
+import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_CubeComute;
 //Compressor Imports
 import frc.robot.subsystems.Compressor; 
 import frc.robot.commands.compressor.CompressorCommandExtend;
@@ -349,6 +356,9 @@ public class RobotContainer {
             AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
+    
+
+
     // PathPlannerTrajectory autoBlue01Path = PathPlanner.loadPath(
     //         "Blue0(1)",
     //         AutoConstants.kMaxSpeedMetersPerSecond,
@@ -383,6 +393,9 @@ public class RobotContainer {
   //   return null;
   // }
 
+
+
+
   public void simulationPeriodic() {
     m_fieldSim.periodic();
     periodic();
@@ -396,9 +409,12 @@ public class RobotContainer {
     return -leftJoystick.getThrottle();
   }
 
+  //Old Command code
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return m_autoChooser.getSelected();
   }
+
+ 
 
 }
