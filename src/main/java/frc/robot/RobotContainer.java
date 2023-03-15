@@ -337,7 +337,7 @@ public class RobotContainer {
     m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cube", new BL_HighCube(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm, compressor));
+    m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
