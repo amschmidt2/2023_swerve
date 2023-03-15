@@ -119,7 +119,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public double targetAngle;
 
-   public boolean m_fieldOriented;
+  public boolean m_fieldOriented;
 
   private SwerveModuleSparkMax[] emptySwerveModuleArray = new SwerveModuleSparkMax[0]; // for less garbage when building ordered maps
   SwerveModulePosition[] emptySmp = new SwerveModulePosition[0];

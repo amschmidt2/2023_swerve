@@ -11,6 +11,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.DriveSubsystem;
 
+
 public class BL_LongerCommunity extends SequentialCommandGroup{
     
     public BL_LongerCommunity(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm){
