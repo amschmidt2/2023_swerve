@@ -5,6 +5,7 @@ import frc.robot.commands.armIntake.IntakeArmStopCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
 import frc.robot.commands.armPositions.ArmGoDown;
 import frc.robot.commands.swerve.LongerCommunity;
+import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.DriveSubsystem;
@@ -20,7 +21,8 @@ public class Right_OneCube extends SequentialCommandGroup {
             
             andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)).
             
-            andThen(new LongerCommunity(swerveDrive))
+            andThen(new LongerCommunity(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive,false).andThen(() -> swerveDrive.drive(0,0,0,false)))
+      
         );
     }
 
