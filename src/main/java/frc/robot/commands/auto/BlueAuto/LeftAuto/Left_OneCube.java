@@ -1,17 +1,21 @@
 package frc.robot.commands.auto.BlueAuto.LeftAuto;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
+import frc.robot.commands.armIntake.IntakeArmCubeCommand;
+import frc.robot.commands.armIntake.IntakeArmCubeExtractCommand;
 import frc.robot.commands.armIntake.IntakeArmStopCommand;
 import frc.robot.commands.armPositions.ArmConeHighCommand;
+import frc.robot.commands.armPositions.ArmCubeHighCommand;
 import frc.robot.commands.armPositions.ArmGoDown;
 import frc.robot.commands.compressor.CompressorCommandExtend;
 import frc.robot.commands.compressor.CompressorCommandRetract;
+import frc.robot.commands.conveyor.ConveyorGoCommand;
+import frc.robot.commands.conveyor.ConveyorStopCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 import frc.robot.commands.swerve.BackToDaCube;
 import frc.robot.commands.swerve.LeftStrafe;
 import frc.robot.commands.swerve.LongerCommunity;
-import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SlowMode;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
@@ -36,9 +40,15 @@ public class Left_OneCube extends SequentialCommandGroup{
             
             andThen(new FloorIntakeStopCommand(Fintake)).andThen(new CompressorCommandRetract(comp)).
             
-            andThen(new BackToDaCube(swerveDrive)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
-          
+            andThen(new BackToDaCube(swerveDrive)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
+
+            andThen(new ConveyorGoCommand(convey)).andThen(new IntakeArmCubeCommand(intakeArm)).
+            
+            andThen(new ConveyorStopCommand(convey)).andThen(new IntakeArmStopCommand(intakeArm)).
     
+            andThen(new ArmCubeHighCommand(arm)).andThen(new IntakeArmCubeExtractCommand(intakeArm)).
+            
+            andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)) 
         );
     }
 
