@@ -38,6 +38,7 @@ import frc.robot.Constants.DriveConstants.ModulePosition;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.LEDLights;
 import frc.robot.commands.ToggleFieldOriented;
 // import frc.robot.commands.auto.DriveForward;
 // import frc.robot.commands.auto.FiveBallAuto;
@@ -109,6 +110,9 @@ import frc.robot.commands.floorIntake.FloorIntakeCollectCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 
+// LED light imports
+import frc.robot.commands.LEDLights;
+
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -143,6 +147,8 @@ public class RobotContainer {
   IntakeArm intakeArm = new IntakeArm();
   FloorIntake floorIntake = new FloorIntake();
   SetSwerveDrive setSwerveDrive = new SetSwerveDrive(m_robotDrive, null, null, null);
+  LEDLights ledLights = new LEDLights();
+
 
 
   /**
@@ -157,6 +163,11 @@ public class RobotContainer {
 
     m_fieldSim.initSim();
     initializeAutoChooser();
+
+    // LED light initilization
+    LEDLights.robotInit();
+    LEDLights.changeColor(100, 0, 150);
+
     // sc.showAll();
     // Configure default commands
   // m_robotDrive.setDefaultCommand(
@@ -420,7 +431,5 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return m_autoChooser.getSelected();
   }
-
- 
 
 }
