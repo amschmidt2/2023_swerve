@@ -26,7 +26,7 @@ public class BL_TwoCube extends SequentialCommandGroup{
            
            andThen(new CompressorCommandExtend(compressor)).andThen(new FloorIntakeFartCommand(floorIntake)).
            
-           andThen(new MoveSwervePos(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
+           andThen(new MoveSwervePos(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
            
            andThen(new CompressorCommandRetract(compressor)).andThen(new FloorIntakeStopCommand(floorIntake))
              

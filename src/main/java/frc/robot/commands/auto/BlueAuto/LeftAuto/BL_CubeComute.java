@@ -20,7 +20,7 @@ public class BL_CubeComute extends SequentialCommandGroup{
             
             andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)).
 
-            andThen(new CubeComute(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
+            andThen(new CubeComute(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
 
 
         );

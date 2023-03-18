@@ -19,7 +19,7 @@ public class BasicAuto extends SequentialCommandGroup {
             new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm)),
 
 
-            new SetSwerveIdleMode(swerveDrive, false)
+            new SetSwerveIdleMode(swerveDrive, true)
                 .andThen(() -> swerveDrive.drive(0, 0, 0, false)));
     }
 } // <-- keep brace

@@ -78,6 +78,10 @@ public class Robot extends TimedRobot {
 
     m_robotContainer.m_robotDrive.throttleValue = m_robotContainer.getThrottle();
    
+    System.out.println(m_robotContainer.m_robotDrive.getPoseMeters().getX());
+    System.out.println("Ptich\t" +m_robotContainer.m_robotDrive.getPitch());
+
+
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

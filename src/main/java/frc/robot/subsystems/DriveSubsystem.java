@@ -413,6 +413,10 @@ public class DriveSubsystem extends SubsystemBase {
     return 180 * throttleValue;
   }
 
+  public double getPitch(){
+    //look at negitives
+    return m_gyro.getRoll();                             
+  }
  
 
 }

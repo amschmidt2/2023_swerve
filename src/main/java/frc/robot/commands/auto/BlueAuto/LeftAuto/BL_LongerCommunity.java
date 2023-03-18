@@ -19,7 +19,7 @@ public class BL_LongerCommunity extends SequentialCommandGroup{
             
             andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)).
 
-            andThen(new LongerCommunity(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, false).andThen(() -> swerveDrive.drive(0, 0, 0, false)))
+            andThen(new LongerCommunity(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, true).andThen(() -> swerveDrive.drive(0, 0, 0, false)))
         
 
         );

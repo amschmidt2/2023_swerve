@@ -9,7 +9,7 @@ public class DistanceAuto extends SequentialCommandGroup{
     
     public DistanceAuto(DriveSubsystem swerveDrive){
         addCommands(
-            new MoveSwervePos(swerveDrive).andThen(new SetSwerveIdleMode(swerveDrive, false)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
+            new MoveSwervePos(swerveDrive).andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
 
         );
     }
