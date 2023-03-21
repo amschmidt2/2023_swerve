@@ -193,9 +193,9 @@ public class RobotContainer {
         m_robotDrive.setDefaultCommand(
           new SetSwerveDrive(
             m_robotDrive,
-            () -> -leftJoystick.getRawAxis(5),  // 0
-            () -> -rightJoystick.getRawAxis(4), //4
-            () -> -rightJoystick.getRawAxis(0)  //5
+            () -> leftJoystick.getRawAxis(5),  // 0
+            () -> rightJoystick.getRawAxis(4), //4
+            () -> rightJoystick.getRawAxis(0)  //5
             )
           );
           

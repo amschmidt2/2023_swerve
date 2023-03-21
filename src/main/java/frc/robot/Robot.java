@@ -78,6 +78,8 @@ public class Robot extends TimedRobot {
 
     m_robotContainer.m_robotDrive.throttleValue = m_robotContainer.getThrottle();
    
+   // m_robotContainer.m_robotDrive.resetModuleEncoders();
+
     //System.out.println(m_robotContainer.m_robotDrive.getPoseMeters().getX());
     //System.out.println("Ptich\t" +m_robotContainer.m_robotDrive.getPitch());
     System.out.println("Fintake" + m_robotContainer.floorIntake.eyespy_coder.getPosition());

@@ -46,11 +46,11 @@ public class FloorIntake extends SubsystemBase {
     public void stopFloorIntake(){
         floorMotor.set(0);
     }
-
+ 
     public boolean isOff(){
         double position = eyespy_coder.getPosition();
-        if(position < -50.0){
-            return true;
+        if(position < -475.0){
+            return false;
         }
         return false;
     }
