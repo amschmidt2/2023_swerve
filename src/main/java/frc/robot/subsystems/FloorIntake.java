@@ -35,7 +35,7 @@ public class FloorIntake extends SubsystemBase {
 
     public boolean isMunchCube(){
         double position = eyespy_coder.getPosition();
-        if(position > -35.0){
+        if(position < -35.0){
             System.out.println("RUNNN" + position);
             return true;
         }
@@ -45,6 +45,14 @@ public class FloorIntake extends SubsystemBase {
 
     public void stopFloorIntake(){
         floorMotor.set(0);
+    }
+
+    public boolean isOff(){
+        double position = eyespy_coder.getPosition();
+        if(position < -50.0){
+            return true;
+        }
+        return false;
     }
 
     

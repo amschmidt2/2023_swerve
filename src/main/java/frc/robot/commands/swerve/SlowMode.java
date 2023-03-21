@@ -25,7 +25,7 @@ public class SlowMode extends LoggingCommandBase{
     }
 
     public boolean isFinished(){
-        boolean finished = m_drive.getPoseMeters().getX() < 0.25;
+        boolean finished = m_drive.getPoseMeters().getX() > 2.3;
         return finished;
     }
     

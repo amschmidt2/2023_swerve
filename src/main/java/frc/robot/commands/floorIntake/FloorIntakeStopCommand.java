@@ -13,9 +13,9 @@ public class FloorIntakeStopCommand extends CommandBase{
     public void execute(){
         floorIntake.stopFloorIntake();
     }
-
+ 
     public boolean isFinished(){
-        return true; 
+        return floorIntake.isOff(); 
     }
 
 
