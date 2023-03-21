@@ -14,6 +14,7 @@ public class Conveyor extends SubsystemBase{
     public Conveyor(){
         conveyorMotor = new CANSparkMax(13, MotorType.kBrushless); 
         sirSpyeye_coder = conveyorMotor.getEncoder();
+        sirSpyeye_coder.setPosition(0);
     }
 
     public void go(){
@@ -22,7 +23,7 @@ public class Conveyor extends SubsystemBase{
 
     public boolean conveyGo(){
         double position = sirSpyeye_coder.getPosition();
-        if(position > 120){
+        if(position > 12){
             System.out.println("RUNNN" + position);
             return true;
         }

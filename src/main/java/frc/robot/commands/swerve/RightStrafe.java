@@ -15,7 +15,7 @@ public class RightStrafe extends LoggingCommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(0, 0.2, 0, true);
+        m_drive.drive(0, -0.2, 0, true);
     }
 
     @Override

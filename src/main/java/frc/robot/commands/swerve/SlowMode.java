@@ -15,7 +15,7 @@ public class SlowMode extends LoggingCommandBase{
 
     @Override
     public void execute(){
-        m_drive.drive(-0.2, 0, 0, true);
+        m_drive.drive(0.2, 0, 0, true);
     }
 
     @Override

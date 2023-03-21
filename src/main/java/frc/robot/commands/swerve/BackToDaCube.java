@@ -15,7 +15,7 @@ public class BackToDaCube extends LoggingCommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(.3, 0, 0, true);
+        m_drive.drive(-0.3, 0, 0, true);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class BackToDaCube extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        boolean finished = m_drive.getPoseMeters().getX() < -1.25;
+        boolean finished = m_drive.getPoseMeters().getX() < -0.5; // -1.25
         return finished;
     }
 

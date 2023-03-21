@@ -25,7 +25,7 @@ public class LongerCommunity extends LoggingCommandBase{
     }
 
     public boolean isFinished(){
-        boolean finished = m_drive.getPoseMeters().getX() > 5.05;
+        boolean finished = m_drive.getPoseMeters().getX() > 1.5; // 5.05
         if(finished){
             System.out.println(this.getClass().getName() + "Long Finished");
             m_drive.drive(0, 0, 0, false);

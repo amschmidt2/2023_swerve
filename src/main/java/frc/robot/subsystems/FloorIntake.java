@@ -14,6 +14,7 @@ public class FloorIntake extends SubsystemBase {
     public FloorIntake(){
         floorMotor = new CANSparkMax(12, MotorType.kBrushless);
         eyespy_coder = floorMotor.getEncoder();
+        eyespy_coder.setPosition(0);
     }
 
     public void collectCube(){
@@ -34,7 +35,7 @@ public class FloorIntake extends SubsystemBase {
 
     public boolean isMunchCube(){
         double position = eyespy_coder.getPosition();
-        if(position > -600){
+        if(position > -35.0){
             System.out.println("RUNNN" + position);
             return true;
         }

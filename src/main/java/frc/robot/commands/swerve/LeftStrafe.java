@@ -25,7 +25,7 @@ public class LeftStrafe extends LoggingCommandBase{
     }
 
     public boolean isFinished(){
-        boolean finished = m_drive.getPoseMeters().getY() < -0.03;
+        boolean finished = m_drive.getPoseMeters().getY() < -0.4;
         return finished;
     }
 
