@@ -15,7 +15,7 @@ public class QuickStrafe extends LoggingCommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(0, 0.1, 0, true);
+        m_drive.drive(0, 0.15, 0.1, true);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class QuickStrafe extends LoggingCommandBase {
     }
 
     public boolean isFinished(){
-        boolean finished = m_drive.getPoseMeters().getY() < -0.02;
+        boolean finished = m_drive.getPoseMeters().getY() < -0.025;
         return finished;
     }
     

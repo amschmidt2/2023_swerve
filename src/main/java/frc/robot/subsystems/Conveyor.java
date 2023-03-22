@@ -31,14 +31,38 @@ public class Conveyor extends SubsystemBase{
         return false;
     }
 
+    public boolean gogo(){
+        double position = sirSpyeye_coder.getPosition();
+        if(position > 175){
+            return true;
+        }
+        return false;
+    }
+
     public void stop(){
         conveyorMotor.set(0);
     }
+
+    public boolean isFinished(){
+        double position = sirSpyeye_coder.getPosition();
+        if(position > 143){
+            return true;
+        }
+        return false;
+    } 
 
     public boolean conveyorStop(){
         double position = sirSpyeye_coder.getPosition();
         double threshold = 0.01;
         return Math.abs(position) < threshold;
+    }
+
+    public boolean STOP(){
+        double position = sirSpyeye_coder.getPosition();
+        if(position > 160){
+            return true;
+        }
+        return false;
     }
 
     public void reverse(){

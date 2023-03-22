@@ -10,6 +10,8 @@ import frc.robot.commands.armPositions.ArmGoDown;
 import frc.robot.commands.compressor.CompressorCommandExtend;
 import frc.robot.commands.compressor.CompressorCommandRetract;
 import frc.robot.commands.conveyor.ConveyorGoCommand;
+import frc.robot.commands.conveyor.ConveyorMOVEcommand;
+import frc.robot.commands.conveyor.ConveyorSTOP;
 import frc.robot.commands.conveyor.ConveyorStopCommand;
 import frc.robot.commands.floorIntake.FloorIntakeFartCommand;
 import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
@@ -38,20 +40,21 @@ public class Left_OneCube extends SequentialCommandGroup{
             andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0,0,0, false)).
  
             andThen(new CompressorCommandExtend(comp)).andThen(new FloorIntakeFartCommand(Fintake)).
-
+ 
             andThen(new ConveyorGoCommand(convey)).andThen(new SlowMode(swerveDrive)).andThen(() -> swerveDrive.drive( 0, 0, 0, false)).
             
             andThen(new ConveyorStopCommand(convey)).andThen(new CompressorCommandRetract(comp)).andThen(new FloorIntakeStopCommand(Fintake)).
             
-            andThen(new BackToDaCube(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
+          //  andThen(new BackToDaCube(swerveDrive)).
+            andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false))//.
 
-            andThen(new ConveyorGoCommand(convey)).andThen(new IntakeArmCubeCommand(intakeArm)).
+            // andThen(new ConveyorMOVEcommand(convey)).andThen(new IntakeArmCubeCommand(intakeArm)).
             
-            andThen(new ConveyorStopCommand(convey)).andThen(new IntakeArmStopCommand(intakeArm)).
+            // andThen(new ConveyorSTOP(convey)).andThen(new IntakeArmStopCommand(intakeArm)).
     
-            andThen(new ArmCubeHighCommand(arm)).andThen(new IntakeArmCubeExtractCommand(intakeArm)).
+            // andThen(new ArmCubeHighCommand(arm)).andThen(new IntakeArmCubeExtractCommand(intakeArm)).
             
-            andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)) 
+            // andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm)) 
         );
     }
 

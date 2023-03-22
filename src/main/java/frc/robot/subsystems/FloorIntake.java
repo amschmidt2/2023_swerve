@@ -35,7 +35,7 @@ public class FloorIntake extends SubsystemBase {
 
     public boolean isMunchCube(){
         double position = eyespy_coder.getPosition();
-        if(position < -100.0){
+        if(position < -80.0){
             System.out.println("RUNNN" + position);
             return true;
         }

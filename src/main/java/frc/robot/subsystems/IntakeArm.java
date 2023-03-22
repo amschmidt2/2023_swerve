@@ -101,7 +101,7 @@ public class IntakeArm extends SubsystemBase {
 
     public boolean isExtractingCube(){
         double position = jr_spyeye_coder.getPosition();
-        if(position > 42){
+        if(position > 60){
             return true;
         }
         return false;

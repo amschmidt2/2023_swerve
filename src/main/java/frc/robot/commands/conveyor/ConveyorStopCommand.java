@@ -17,6 +17,10 @@ public class ConveyorStopCommand extends LoggingCommandBase {
         conveyor.stop();
     }
 
+    public boolean isFinished(){
+        return conveyor.isFinished();
+    }
+
 
 
 
