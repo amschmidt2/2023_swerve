@@ -9,7 +9,7 @@ public class CompressorCommandStop extends CommandBase{
         addRequirements(compressor);
         this.compressor = compressor;
     }
-
+  
     public void execute(){
         compressor.stop();
     }

@@ -41,7 +41,7 @@ public class Left_OneCube extends SequentialCommandGroup{
 
             andThen(new ConveyorGoCommand(convey)).andThen(new SlowMode(swerveDrive)).andThen(() -> swerveDrive.drive( 0, 0, 0, false)).
             
-            andThen(new ConveyorStopCommand(convey)).andThen(new FloorIntakeStopCommand(Fintake)).andThen(new CompressorCommandRetract(comp)).
+            andThen(new ConveyorStopCommand(convey)).andThen(new CompressorCommandRetract(comp)).andThen(new FloorIntakeStopCommand(Fintake)).
             
             andThen(new BackToDaCube(swerveDrive)).andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
 

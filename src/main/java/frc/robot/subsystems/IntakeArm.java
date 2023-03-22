@@ -6,7 +6,7 @@ import com.revrobotics.RelativeEncoder;
 
 public class IntakeArm extends SubsystemBase {
     private CANSparkMax intakeMotor;
-    RelativeEncoder jr_spyeye_coder;
+    public RelativeEncoder jr_spyeye_coder;
     private int intakeCurrentLimit = 25;
    // private int intakeHoldCurrentLimit = 5;
     private double intakeOutputPower = 1.0;
@@ -24,6 +24,7 @@ public class IntakeArm extends SubsystemBase {
     public IntakeArm(){
         intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
         jr_spyeye_coder = intakeMotor.getEncoder();
+        jr_spyeye_coder.setPosition(0);
 
     }
 

@@ -5,10 +5,10 @@
 package frc.robot.commands.compressor;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.Compressor;
 
-public class CompressorCommandRetract extends CommandBase {
+public class CompressorCommandRetract extends LoggingCommandBase {
   Compressor compressor;
 
   public CompressorCommandRetract(Compressor compressor) {

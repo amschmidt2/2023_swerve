@@ -1,9 +1,10 @@
 package frc.robot.commands.conveyor;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.Conveyor;
 
-public class ConveyorGoCommand extends CommandBase{
+public class ConveyorGoCommand extends LoggingCommandBase{
     Conveyor conveyor;
 
     public ConveyorGoCommand(Conveyor conveyor){
