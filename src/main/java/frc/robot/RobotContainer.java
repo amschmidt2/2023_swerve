@@ -40,6 +40,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.LEDLights;
 import frc.robot.commands.ToggleFieldOriented;
+import frc.robot.commands.gyroReset;
 // import frc.robot.commands.auto.DriveForward;
 // import frc.robot.commands.auto.FiveBallAuto;
 import frc.robot.commands.swerve.JogDriveModule;
@@ -84,6 +85,8 @@ import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.TestDrive;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.Right_OneCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.Left_OneCube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.RedLeft_Cube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.RedRight_Cube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCone;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCube;
@@ -278,13 +281,13 @@ public class RobotContainer {
      // g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm).until(ArmLineBreak :: get));
       g_TenButt.onTrue(new IntakeArmConeCommand(intakeArm));
       g_TenButt.onFalse(new IntakeArmStopCommand(intakeArm));
-    
+     
 
       g_ElevButt.onTrue(new IntakeArmConeExtractCommand(intakeArm));
       g_ElevButt.onFalse(new IntakeArmStopCommand(intakeArm));
 
-      g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
-      g_TwelButt.onFalse(new ArmCollaspeCommand(arm));
+      // g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
+      // g_TwelButt.onFalse(new ArmCollaspeCommand(arm));
 
       // Cube Outputs
       g_OneButt.onTrue(new ArmCubeHighCommand(arm));
@@ -325,6 +328,7 @@ public class RobotContainer {
       d_leftBumper.onTrue(new FloorIntakeFartCommand(floorIntake));
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
+      d_rightBumper.onTrue(new gyroReset(m_robotDrive));
 
 
 
@@ -356,8 +360,10 @@ public class RobotContainer {
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("Right Cube", new Right_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
-    m_autoChooser.addOption("Left Cube", new Left_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
+    m_autoChooser.addOption("Blue Cable Cube", new Right_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
+    m_autoChooser.addOption("Blue Non Cable Cube", new Left_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
+    m_autoChooser.addOption("Red Cable Cube", new RedRight_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
+    m_autoChooser.addOption("Red Non Cable Cube", new RedLeft_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
     m_autoChooser.addOption("Test Drive Left", new TestDrive(m_robotDrive));
     // m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
     // m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));

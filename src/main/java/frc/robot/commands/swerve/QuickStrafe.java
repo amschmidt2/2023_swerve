@@ -15,7 +15,7 @@ public class QuickStrafe extends LoggingCommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(0, 0.15, 0.1, true);
+        m_drive.drive(0, 0.2, 0.1, true); // strafe -0.15
     }
 
     @Override

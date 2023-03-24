@@ -11,15 +11,15 @@ import frc.robot.commands.swerve.ChargedPlat;
 
 
 public class BL_Charged extends SequentialCommandGroup {
-    DriveSubsystem targetAngle; 
+    //DriveSubsystem targetAngle; 
 
     public BL_Charged(DriveSubsystem swerveDrive, Arm arm, IntakeArm intakeArm){
       addCommands(
-        new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm))
+      new ArmConeHighCommand(arm).andThen(new IntakeArmConeExtractCommand(intakeArm))
         
-        .andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm))
+      .andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm))
 
-        .andThen(new ChargedPlat(swerveDrive)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
+      .andThen(new ChargedPlat(swerveDrive).andThen(() -> swerveDrive.drive(0, 0, 0, false)))
       );
       
 

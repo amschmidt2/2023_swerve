@@ -84,7 +84,8 @@ public class Robot extends TimedRobot {
     //System.out.println("Ptich\t" +m_robotContainer.m_robotDrive.getPitch());
    // System.out.println("Fintake" + m_robotContainer.floorIntake.eyespy_coder.getPosition());
    // System.out.println("Aintake" + m_robotContainer.intakeArm.jr_spyeye_coder.getPosition());
-   System.out.println(m_robotContainer.conveyor.sirSpyeye_coder.getPosition());
+   //System.out.println(m_robotContainer.conveyor.sirSpyeye_coder.getPosition());
+   System.out.println(m_robotContainer.m_robotDrive.getPitch());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

@@ -120,6 +120,17 @@ public class DriveSubsystem extends SubsystemBase {
   public double targetAngle;
 
   public boolean m_fieldOriented;
+  Constants constant = new Constants();
+
+  public void ModulePosition(){
+    SwerveModuleState[] modPos = new SwerveModuleState[4];
+    modPos[0] = new SwerveModuleState(0, Rotation2d.fromDegrees(45));
+    modPos[1] = new SwerveModuleState(0, Rotation2d.fromDegrees(-45));
+    modPos[2] = new SwerveModuleState(0, Rotation2d.fromDegrees(45));
+    modPos[3] = new SwerveModuleState(0, Rotation2d.fromDegrees(-45));
+  }
+
+ 
 
   private SwerveModuleSparkMax[] emptySwerveModuleArray = new SwerveModuleSparkMax[0]; // for less garbage when building ordered maps
   SwerveModulePosition[] emptySmp = new SwerveModulePosition[0];
@@ -146,7 +157,10 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     ShuffleboardContent.initMisc(this);
+
+  
   }
+
 
   public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
     return new SequentialCommandGroup(
@@ -416,6 +430,10 @@ public class DriveSubsystem extends SubsystemBase {
   public double getPitch(){
     //look at negitives
     return m_gyro.getRoll();                             
+  }
+
+  public void resetGyro(){
+    m_gyro.reset();
   }
  
 

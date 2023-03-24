@@ -16,6 +16,7 @@ import frc.robot.commands.floorIntake.FloorIntakeStopCommand;
 import frc.robot.commands.swerve.BackToDaCube;
 import frc.robot.commands.swerve.LongerCommunity;
 import frc.robot.commands.swerve.RightStrafe;
+import frc.robot.commands.swerve.SetSwerveIdleMode;
 import frc.robot.commands.swerve.SlowMode;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.IntakeArm;
@@ -35,22 +36,18 @@ public class Right_OneCube extends SequentialCommandGroup {
             
             andThen(new LongerCommunity(swerveDrive)).andThen(new RightStrafe(swerveDrive)).
             
+            andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0,0,0, false)).
+ 
             andThen(new CompressorCommandExtend(comp)).andThen(new FloorIntakeFartCommand(Fintake)).
+ 
+            andThen(new ConveyorGoCommand(convey)).andThen(new SlowMode(swerveDrive)).andThen(() -> swerveDrive.drive( 0, 0, 0, false)).
             
-            andThen(new SlowMode(swerveDrive)).andThen(() -> swerveDrive.drive(0,0,0,false)).
-      
-            andThen(new FloorIntakeStopCommand(Fintake)).andThen(new CompressorCommandRetract(comp)).
+            andThen(new ConveyorStopCommand(convey)).andThen(new CompressorCommandRetract(comp)).andThen(new FloorIntakeStopCommand(Fintake)).
+            
+            andThen(new SetSwerveIdleMode(swerveDrive, true)).andThen(() -> swerveDrive.drive(0, 0, 0, false))
+
+        );           
         
-            andThen(new BackToDaCube(swerveDrive)).andThen(() -> swerveDrive.drive(0, 0, 0, false)).
-        
-            andThen(new ConveyorGoCommand(convey)).andThen(new IntakeArmCubeCommand(intakeArm)).
-            
-            andThen(new ConveyorStopCommand(convey)).andThen(new IntakeArmStopCommand(intakeArm).
-            
-            andThen(new ArmCubeHighCommand(arm))).andThen(new IntakeArmCubeExtractCommand(intakeArm)).
-            
-            andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm))
-        );  
     }
 
 
