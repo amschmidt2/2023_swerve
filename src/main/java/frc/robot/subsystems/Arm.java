@@ -23,7 +23,7 @@ public class Arm extends SubsystemBase{
     private SparkMaxPIDController m_pidController; // = new SparkMaxPIDController();
     private double kDt = 0.02;
     SparkMaxPIDController PID;
-    RelativeEncoder sir_eyespy_coder;
+   public RelativeEncoder sir_eyespy_coder;
     TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints(300, 150);
     ProfiledPIDController controller = new ProfiledPIDController(0.05, 0.02, 0, m_Constraints, kDt);
 
@@ -76,6 +76,7 @@ public class Arm extends SubsystemBase{
     public void armExtend(){
         armPower = -armOutputPower;
         setArmMotor(armPower);
+        System.out.println(sir_eyespy_coder.getPosition());
     }
 
     public void armHold(){
@@ -101,7 +102,7 @@ public class Arm extends SubsystemBase{
     }
 
     public void armMidCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15));// 18
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 13));// 15
     }
 
     public boolean isAtMidSetpoint(){
@@ -150,7 +151,7 @@ public class Arm extends SubsystemBase{
     }
 
     public void armMidCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15)); // 18
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 15)); // 15 
     }
 
     public boolean isCubeMidSetpoint(){
@@ -179,7 +180,7 @@ public class Arm extends SubsystemBase{
     }
 
     public void armHumanCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),30)); // 28
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(),31)); // 28
     }
 
     public void goDown(){

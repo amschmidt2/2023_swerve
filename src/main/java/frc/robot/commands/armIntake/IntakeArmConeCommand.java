@@ -1,9 +1,10 @@
 package frc.robot.commands.armIntake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.commands.LoggingCommandBase;
 import frc.robot.subsystems.IntakeArm;
 
-public class IntakeArmConeCommand extends CommandBase{
+public class IntakeArmConeCommand extends LoggingCommandBase{
   private boolean intakeExtended = false;
   IntakeArm intakeArm;
 
@@ -18,5 +19,9 @@ public class IntakeArmConeCommand extends CommandBase{
 
   public boolean isIntakeExtended() {
     return intakeExtended;
+  }
+
+  public boolean isFinished(){
+    return intakeArm.isIntakeCone();
   }
   }

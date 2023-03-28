@@ -45,6 +45,7 @@ import frc.robot.commands.gyroReset;
 // import frc.robot.commands.auto.FiveBallAuto;
 import frc.robot.commands.swerve.JogDriveModule;
 import frc.robot.commands.swerve.JogTurnModule;
+import frc.robot.commands.swerve.OverCPlatt;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
@@ -65,6 +66,7 @@ import frc.robot.commands.armIntake.IntakeArmCubeExtractCommand;
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.armPositions.ArmColaspeCommand;
 import frc.robot.commands.armPositions.ArmExtendCommand;
+import frc.robot.commands.armPositions.ArmGoDown;
 import frc.robot.commands.armPositions.ArmHoldCommand;
 
 import frc.robot.commands.armPositions.ArmConeFloorCommand;
@@ -85,6 +87,7 @@ import frc.robot.commands.auto.HighCube;
 import frc.robot.commands.auto.TestDrive;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.Right_OneCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.Left_OneCube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.OverCharged;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.RedLeft_Cube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.RedRight_Cube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Charged;
@@ -93,6 +96,7 @@ import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_HighCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_LongerCommunity;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_OneCube;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_TwoCube;
+import frc.robot.commands.auto.BlueAuto.LeftAuto.HighCommute;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_Community;
 import frc.robot.commands.auto.BlueAuto.LeftAuto.BL_CubeComute;
 //Compressor Imports
@@ -289,6 +293,9 @@ public class RobotContainer {
       // g_TwelButt.onTrue(new ArmCollaspeCommand(arm));
       // g_TwelButt.onFalse(new ArmCollaspeCommand(arm));
 
+      g_TwelButt.onTrue(new ArmExtendCommand(arm));
+      g_TwelButt.onFalse(new ArmGoDown(arm));
+
       // Cube Outputs
       g_OneButt.onTrue(new ArmCubeHighCommand(arm));
       g_OneButt.onFalse(new ArmCollaspeCommand(arm));
@@ -357,6 +364,7 @@ public class RobotContainer {
     m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("High Cube", new BL_HighCube(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("Over Charged Balance", new OverCharged(arm, intakeArm, m_robotDrive) );
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
@@ -365,6 +373,7 @@ public class RobotContainer {
     m_autoChooser.addOption("Red Cable Cube", new RedRight_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
     m_autoChooser.addOption("Red Non Cable Cube", new RedLeft_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
     m_autoChooser.addOption("Test Drive Left", new TestDrive(m_robotDrive));
+    m_autoChooser.addOption("High Long Commute", new HighCommute(m_robotDrive, arm, intakeArm));
     // m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
     // m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
      

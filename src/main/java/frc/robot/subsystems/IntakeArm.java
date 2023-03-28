@@ -54,6 +54,14 @@ public class IntakeArm extends SubsystemBase {
         setIntakeMotor(intakePower, intakeAmps);
     }
 
+    public boolean isIntakeCone(){
+        double position = jr_spyeye_coder.getPosition();
+        if(position < -40){
+            return true;
+        }
+        return false;
+    }
+
     public void resetPosition() {
         jr_spyeye_coder.setPosition(0.0);
     }
