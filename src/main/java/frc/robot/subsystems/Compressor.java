@@ -14,10 +14,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Compressor extends SubsystemBase {
   /** Creates a new Compressor. */
-  DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 15); //object
-  DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 1, 0); //object
+  //Old Compressor values
+  // DoubleSolenoid rightDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 14, 15); //object
+  // DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 1, 0); //object
 
-  // DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
+  //New Compressor values, need to be updates with the right channels 
+  private DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
+  private DoubleSolenoid leftDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
 
   public Compressor() {
     //this.name = name;
