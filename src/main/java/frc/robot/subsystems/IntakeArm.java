@@ -20,7 +20,7 @@ public class IntakeArm extends SubsystemBase {
     private double intakePower;
     private int intakeAmps;
     private int counter = 0;
-
+  
     public IntakeArm(){
         intakeMotor = new CANSparkMax(11, MotorType.kBrushless); // 12
         jr_spyeye_coder = intakeMotor.getEncoder();
@@ -92,7 +92,7 @@ public class IntakeArm extends SubsystemBase {
     public boolean isExtractingCone(){
         double position = jr_spyeye_coder.getPosition();
         if (counter++ % 10 == 0) {
-            System.out.println("isExtractingCone position: " + position);
+           // System.out.println("isExtractingCone position: " + position);
         }
         if(position > 42){
             return true;

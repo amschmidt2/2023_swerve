@@ -19,8 +19,8 @@ public class Compressor extends SubsystemBase {
   // DoubleSolenoid leftDS = new DoubleSolenoid((PneumaticsModuleType.REVPH), 1, 0); //object
 
   //New Compressor values, need to be updates with the right channels 
-  private DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
-  private DoubleSolenoid leftDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
+  private DoubleSolenoid leftDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 0);
+  private DoubleSolenoid rightDS = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7);
 
   public Compressor() {
     //this.name = name;
