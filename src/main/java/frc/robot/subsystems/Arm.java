@@ -95,7 +95,7 @@ public class Arm extends SubsystemBase{
 
     public boolean isAtHighSetpoint(){
      // System.out.println("======="+sir_eyespy_coder.getPosition());
-      if(sir_eyespy_coder.getPosition() > 36){
+      if(sir_eyespy_coder.getPosition() > 26){ //36
         return true;
       }
       return false;

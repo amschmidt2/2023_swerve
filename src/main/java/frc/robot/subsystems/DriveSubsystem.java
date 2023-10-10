@@ -435,6 +435,12 @@ public class DriveSubsystem extends SubsystemBase {
   public void resetGyro(){
     m_gyro.reset();
   }
- 
+
+  public void XFactor(){
+    m_swerveModules.get(ModulePosition.BACK_LEFT).positionTurn(-45);
+    m_swerveModules.get(ModulePosition.FRONT_RIGHT).positionTurn(-45);
+    m_swerveModules.get(ModulePosition.FRONT_LEFT).positionTurn(45);
+    m_swerveModules.get(ModulePosition.BACK_RIGHT).positionTurn(45);
+  }
 
 }
