@@ -48,6 +48,7 @@ import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.OverCPlatt;
 import frc.robot.commands.swerve.PositionTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
+import frc.robot.commands.swerve.XFactorCommand;
 import frc.robot.simulation.FieldSim;
 //import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
@@ -247,7 +248,7 @@ public class RobotContainer {
       JoystickButton d_Button_B = new JoystickButton(leftJoystick, 1);
       JoystickButton d_rightBumper = new JoystickButton(leftJoystick, 5);
       JoystickButton d_leftBumper = new JoystickButton(leftJoystick, 6);
-        //JoystickButton button_7 = new JoystickButton(leftJoystick, 7);  
+      JoystickButton d_button_7 = new JoystickButton(leftJoystick, 7);  
         
       // ***********************************************************
 
@@ -336,6 +337,8 @@ public class RobotContainer {
       d_leftBumper.onFalse(new FloorIntakeStopCommand(floorIntake));
 
       d_rightBumper.onTrue(new gyroReset(m_robotDrive));
+
+      d_button_7.onTrue(new XFactorCommand(m_robotDrive));
 
 
 
