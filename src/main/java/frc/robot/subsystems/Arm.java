@@ -90,12 +90,12 @@ public class Arm extends SubsystemBase{
 
     //Cone Position 
     public void armHighCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); //32
-    }
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 36)); //32
+    } 
 
     public boolean isAtHighSetpoint(){
      // System.out.println("======="+sir_eyespy_coder.getPosition());
-      if(sir_eyespy_coder.getPosition() > 31){
+      if(sir_eyespy_coder.getPosition() > 36){
         return true;
       }
       return false;
@@ -139,7 +139,7 @@ public class Arm extends SubsystemBase{
 
     //Cube Posistion
     public void armHighCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 40)); // 30
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 38)); // 30
     }
 
     public boolean isCubeHighSetpoint(){
@@ -163,12 +163,12 @@ public class Arm extends SubsystemBase{
     }
 
     public void armFloorCube(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 8)); // 10
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 11)); // 10
     }
 
     public boolean isCubeFloorSetpoint(){
      // System.out.println("====="+sir_eyespy_coder.getPosition()); 
-      if(sir_eyespy_coder.getPosition() > 10){
+      if(sir_eyespy_coder.getPosition() > 11){
         return true; 
       }
       return false;
