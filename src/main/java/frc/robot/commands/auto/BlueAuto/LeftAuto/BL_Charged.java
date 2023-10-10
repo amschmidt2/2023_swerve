@@ -8,6 +8,7 @@ import frc.robot.commands.armPositions.ArmGoDown;
 import frc.robot.commands.armIntake.IntakeArmConeExtractCommand;
 import frc.robot.commands.armIntake.IntakeArmStopCommand;
 import frc.robot.commands.swerve.ChargedPlat;
+import frc.robot.commands.swerve.XFactorCommand;
 
 
 public class BL_Charged extends SequentialCommandGroup {
@@ -20,6 +21,8 @@ public class BL_Charged extends SequentialCommandGroup {
       .andThen(new IntakeArmStopCommand(intakeArm)).andThen(new ArmGoDown(arm))
 
       .andThen(new ChargedPlat(swerveDrive).andThen(() -> swerveDrive.drive(0, 0, 0, false)))
+
+      .andThen(new XFactorCommand(swerveDrive))
       );
       
 
