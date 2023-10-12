@@ -95,19 +95,19 @@ public class Arm extends SubsystemBase{
 
     public boolean isAtHighSetpoint(){
      // System.out.println("======="+sir_eyespy_coder.getPosition());
-      if(sir_eyespy_coder.getPosition() > 26){ //36
+      if(sir_eyespy_coder.getPosition() > 36){ //36
         return true;
       }
       return false;
     }
 
     public void armMidCone(){
-      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 13));// 15
+      armMotor.set(controller.calculate(sir_eyespy_coder.getPosition(), 17));// 15
     }
 
     public boolean isAtMidSetpoint(){
      // System.out.println("====="+sir_eyespy_coder.getPosition());
-      if(sir_eyespy_coder.getPosition() > 15){ //find new setpoint
+      if(sir_eyespy_coder.getPosition() > 17){ //find new setpoint
         return true;
       }
       return false;
