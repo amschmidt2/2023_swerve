@@ -363,22 +363,24 @@ public class RobotContainer {
     // m_autoChooser.addOption("Auto Distance", new DistanceAuto(m_robotDrive));
 
     //Blue Auto 
-    m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
-    m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("High Cube", new BL_HighCube(m_robotDrive, arm, intakeArm));
+    //m_autoChooser.addOption("Blue Left Auto", new WaitCommand(0));
     m_autoChooser.addOption("Charged Platform", new BL_Charged(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("Over Charged Balance", new OverCharged(arm, intakeArm, m_robotDrive) );
+    // m_autoChooser.addOption("Over Charged Balance", new OverCharged(arm, intakeArm, m_robotDrive) );
     m_autoChooser.addOption("Community!", new BL_Community(m_robotDrive, arm, intakeArm));
     m_autoChooser.addOption("Longer Community!!", new BL_LongerCommunity(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
-    m_autoChooser.addOption("Blue Cable Cube", new Right_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
-    m_autoChooser.addOption("Blue Non Cable Cube", new Left_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
-    m_autoChooser.addOption("Red Cable Cube", new RedRight_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
-    m_autoChooser.addOption("Red Non Cable Cube", new RedLeft_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
-    m_autoChooser.addOption("Test Drive Left", new TestDrive(m_robotDrive));
-    m_autoChooser.addOption("High Long Commute", new HighCommute(m_robotDrive, arm, intakeArm));
-    // m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
-    // m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
+
+    //THESE TWO DON'T DRIVE BACK THEY JUST STAY IN PLACE
+    m_autoChooser.addOption("High Cone", new BL_HighCone(m_robotDrive, arm, intakeArm));
+    m_autoChooser.addOption("High Cube", new BL_HighCube(m_robotDrive, arm, intakeArm));
+    // m_autoChooser.addOption("Cube Long Community!", new BL_CubeComute(m_robotDrive, arm, intakeArm));
+    // m_autoChooser.addOption("Blue Cable Cube", new Right_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
+    // m_autoChooser.addOption("Blue Non Cable Cube", new Left_OneCube(arm, intakeArm, m_robotDrive, conveyor, compressor, floorIntake));
+    // m_autoChooser.addOption("Red Cable Cube", new RedRight_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
+    // m_autoChooser.addOption("Red Non Cable Cube", new RedLeft_Cube(arm, intakeArm, compressor, floorIntake, m_robotDrive, conveyor));
+    // m_autoChooser.addOption("Test Drive Left", new TestDrive(m_robotDrive));
+    // m_autoChooser.addOption("High Long Commute", new HighCommute(m_robotDrive, arm, intakeArm));
+    // // m_autoChooser.addOption("High Cone & One Cube", new BL_OneCube(m_robotDrive, arm, intakeArm, compressor, conveyor, floorIntake));
+    // // m_autoChooser.addOption("Only Two Cube", new BL_TwoCube(m_robotDrive, arm, intakeArm, floorIntake, compressor, conveyor));
      
 
     
