@@ -94,7 +94,7 @@ public class IntakeArm extends SubsystemBase {
         if (counter++ % 10 == 0) {
            // System.out.println("isExtractingCone position: " + position);
         }
-        if(position > 42){
+        if(position > 40){
             return true;
         }
         return false;

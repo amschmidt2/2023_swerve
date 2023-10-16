@@ -31,8 +31,8 @@ public class ChargedPlat extends LoggingCommandBase {
 
         else if(m_AutoBalanceState == 1){
             System.out.println("Can YOU SeE mE");
-            if(m_drive.getPitch() < -6){ // tune angle (-10) <
-                m_drive.drive(.1, 0, 0.085, true); //tune speed // .075
+            if(m_drive.getPitch() < -4.5){ // tune angle (-10) <
+                m_drive.drive(.1, 0, 0, true); //tune speed // .075
             }
             else{
                 m_drive.drive(0, 0.02, 0, false); //STOP! Collaborate & Listen, ice is back w/a brand new addiction...
